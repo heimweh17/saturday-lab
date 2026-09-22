@@ -1,0 +1,168 @@
+{
+  "rawFiles": [
+    {
+      "file": "box_2018.csv",
+      "sha256": "74b6ff13c4c1e09043699d4c2711739d53793c5eb3f0ebfe9fb15a1e2db2961e",
+      "bytes": 190320,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2018.csv"
+    },
+    {
+      "file": "box_2019.csv",
+      "sha256": "6076dbb7d9188071d909315fcbd3a5adf46d771162284bbc29bed439d7eca3e2",
+      "bytes": 189624,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2019.csv"
+    },
+    {
+      "file": "box_2020.csv",
+      "sha256": "e85d65bf4db0833a9193bfd23db48b4c6cf9a554837bf4e807171e1c6815b3e8",
+      "bytes": 137091,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2020.csv"
+    },
+    {
+      "file": "box_2021.csv",
+      "sha256": "5e3ebbeb3cc3137fc62ae17b38c7579f7374f5183b7b8b4c7d90e78d75c20bc7",
+      "bytes": 190046,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2021.csv"
+    },
+    {
+      "file": "box_2022.csv",
+      "sha256": "f0254f784613d3918315f3cd1998ca3cbaf90fe39165ee9d6b05ed13fe88a239",
+      "bytes": 191773,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2022.csv"
+    },
+    {
+      "file": "box_2023.csv",
+      "sha256": "41637076d7bd57c0943c2a8d75d39ae3093e808681514dfa69c87b3c0d91b799",
+      "bytes": 193808,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2023.csv"
+    },
+    {
+      "file": "box_2024.csv",
+      "sha256": "02baf937b43da8f1a9f0e25cefaa243bad572389b47090a92a44dfa2c1bff324",
+      "bytes": 205716,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2024.csv"
+    },
+    {
+      "file": "box_2025.csv",
+      "sha256": "4ecc44939c4a90760fced98b8802a6d2483556516fe47410c41ccb79f8ed10b8",
+      "bytes": 203897,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2025.csv"
+    },
+    {
+      "file": "box_2026.csv",
+      "sha256": "f4ac209138f9af4af6eb667f1b9ae5c06ce4fdb6755fa01ece1a50042484b1a5",
+      "bytes": 55675,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_team_box/team_box_2026.csv"
+    },
+    {
+      "file": "schedules_2018.csv",
+      "sha256": "9d42a7908b1fd4fb29af9152f8e975e75de3be6dc680d0b109dcb684c41c89c5",
+      "bytes": 145485,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2018.csv"
+    },
+    {
+      "file": "schedules_2019.csv",
+      "sha256": "26a0ced78824b2795eba6abcb8b58b77a5d01c0b353e104754fb774d68767560",
+      "bytes": 144290,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2019.csv"
+    },
+    {
+      "file": "schedules_2020.csv",
+      "sha256": "00cdff66c2d6fc6aa03323a6afa18266364971d1ec208d3a6eade2b8d54bb26c",
+      "bytes": 111139,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2020.csv"
+    },
+    {
+      "file": "schedules_2021.csv",
+      "sha256": "cf5015fc724898e2449de86ef9544c3a9d52074f361c2c2538ed31d6cef41752",
+      "bytes": 144916,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2021.csv"
+    },
+    {
+      "file": "schedules_2022.csv",
+      "sha256": "71259290b32d363ec7e6b996bc460d4b79a7978f7ec655601a5b8d0be81dc02e",
+      "bytes": 146261,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2022.csv"
+    },
+    {
+      "file": "schedules_2023.csv",
+      "sha256": "5739569b8e7684ed6fa838c9e3cf13ab1d62f223cef0e7785e466544d5d0a7c1",
+      "bytes": 147712,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2023.csv"
+    },
+    {
+      "file": "schedules_2024.csv",
+      "sha256": "6249cc0922e3fe3eade3634b733bd193b92b5b07e6ee4ca456b5efd2b670ca86",
+      "bytes": 156942,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2024.csv"
+    },
+    {
+      "file": "schedules_2025.csv",
+      "sha256": "2b8e4e24f3c62c8833b7e15703675d9648f438aaa01de966e6498eae50b1d86f",
+      "bytes": 155659,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2025.csv"
+    },
+    {
+      "file": "schedules_2026.csv",
+      "sha256": "4d61d1bb40683f19b124b4f12ad939f2007016f332fa0dc0e6b1b519af2272b8",
+      "bytes": 42454,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_schedules/cfb_schedule_2026.csv"
+    },
+    {
+      "file": "teams_2018.csv",
+      "sha256": "4fc168c0dda8157225810e8d85e323a5823aedebd46d0257b8065073f17fc93e",
+      "bytes": 422151,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2018.csv"
+    },
+    {
+      "file": "teams_2019.csv",
+      "sha256": "2cdcd8b790b30b03fb530469903fd13b76c670b06a8d3c7ede8a282bc9a42439",
+      "bytes": 422422,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2019.csv"
+    },
+    {
+      "file": "teams_2020.csv",
+      "sha256": "245f0668a577110621e9e6ef17a7fba1e7b27f831ed53892eecb712e7575f711",
+      "bytes": 416512,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2020.csv"
+    },
+    {
+      "file": "teams_2021.csv",
+      "sha256": "2a84aeab110aefd7f42cd4be573ee25a83081d5834888084b7d87b4858d3bd22",
+      "bytes": 424484,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2021.csv"
+    },
+    {
+      "file": "teams_2022.csv",
+      "sha256": "f2df16ad081c457b24e21f8b32d27b3cfe7bf21803f6866c0cd902c4faf15ce6",
+      "bytes": 413277,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2022.csv"
+    },
+    {
+      "file": "teams_2023.csv",
+      "sha256": "dfd6f69fd5f3110d93fc7967f687f88b01da98a432106582aa27b8b7c23bab09",
+      "bytes": 414988,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2023.csv"
+    },
+    {
+      "file": "teams_2024.csv",
+      "sha256": "e7a355a6201de935341e1415d6ffb5e941e8122d99637259138ce2e86984b1b4",
+      "bytes": 402773,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2024.csv"
+    },
+    {
+      "file": "teams_2025.csv",
+      "sha256": "5446f91a8a0d27e112fa7369ba0e887ed27aa6eec61130e00f20339ef50e7abf",
+      "bytes": 405362,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2025.csv"
+    },
+    {
+      "file": "teams_2026.csv",
+      "sha256": "6d3ec4bd262943dfa3777e4c31ece0a20eac2bb6194ef20a84c165b7cd2240fd",
+      "bytes": 409132,
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_teams/cfb_teams_2026.csv"
+    }
+  ],
+  "featureEngineSha256": "7aed68569ad1e10ca9e555db49be3e961ff43ead6a9d185fd49f71a6b83e1b30",
+  "modelPipelineSha256": "f77fd6424b81b1d4fe7d06b5227c63aa64ebaaa16d2d5a055c65c050b11e8101"
+}

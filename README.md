@@ -2,7 +2,8 @@
 
 NCAA football analytics: one opponent-adjusted model, transparent temporal validation and an inspectable game-data workbench.
 
-**Website:** https://heimweh17.github.io/saturday-lab/  
+**Website:** https://heimweh17.github.io/saturday-lab/
+
 **Source:** https://github.com/heimweh17/saturday-lab
 
 ## What you can do
@@ -77,6 +78,7 @@ python analytics/final_model.py --data analytics/raw
 python analytics/box_export.py --data analytics/raw
 python analytics/fixtures.py
 python analytics/service_index.py
+python analytics/provenance.py --data analytics/raw
 python -m unittest discover -s analytics -p 'test*.py' -v
 node scripts/check-model.mjs
 npm run build:pages
@@ -102,3 +104,5 @@ Key files: `analytics/feature_engine.py`, `analytics/final_model.py`, `analytics
 Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, nested temporal selection over 73 model configurations, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests and calibration diagnostics, including limitations and comparisons that did not favor the new model.
 
 Independent personal project, not affiliated with the NCAA, ESPN or universities. Team names and marks belong to their respective owners.
+
+To publish a freshly built artifact with an authenticated Git credential helper, run `node scripts/publish-pages.mjs`. The `gh-pages` branch is the configured Pages source; each artifact push triggers publication. Exact raw-source URLs and checksums are in `public/data/provenance.json`.
