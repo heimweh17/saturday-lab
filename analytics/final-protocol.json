@@ -1,0 +1,1217 @@
+{
+  "version": "3.0.0",
+  "featureNames": [
+    "scoring_margin",
+    "elo_delta",
+    "passing_efficiency",
+    "rushing_efficiency",
+    "third_down",
+    "turnover_control",
+    "play_volume",
+    "completion_rate",
+    "first_down_rate",
+    "penalty_discipline",
+    "fourth_down",
+    "possession_time",
+    "recent_form",
+    "schedule_strength",
+    "experience_interaction",
+    "rest_days",
+    "passing_matchup",
+    "rushing_matchup"
+  ],
+  "ratingParameters": {
+    "shrinkage": 5.0,
+    "home": 3.0,
+    "decay": 0.94,
+    "scale": 8.0
+  },
+  "candidates": [
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring",
+      "indices": [
+        0
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "scoring_elo",
+      "indices": [
+        0,
+        1
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "core_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "full_efficiency",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "context",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 1.0,
+      "weight": 0.25
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 1.0,
+      "weight": 0.5
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 1.0,
+      "weight": 0.75
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 1.0,
+      "weight": 1.0
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 10.0,
+      "weight": 0.25
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 10.0,
+      "weight": 0.5
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 10.0,
+      "weight": 0.75
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 10.0,
+      "weight": 1.0
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 100.0,
+      "weight": 0.25
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 100.0,
+      "weight": 0.5
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 100.0,
+      "weight": 0.75
+    },
+    {
+      "name": "matchup",
+      "indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "ridge": 100.0,
+      "weight": 1.0
+    },
+    {
+      "name": "scoring_anchor",
+      "indices": [
+        0
+      ],
+      "ridge": 1.0,
+      "weight": 0.0
+    }
+  ],
+  "selection": "Minimum pooled log loss in the three seasons preceding each target year. Each inner fold trains only through its previous year. Refit chosen logistic coefficients through targetYear-1. The fixed scoring anchor has shrinkage 5, home 3, decay .94, scale 8.",
+  "scope": "All evaluations are retrospective. No future results enter a target week, but historical source revisions and developer exposure preclude pristine prospective-test claims."
+}

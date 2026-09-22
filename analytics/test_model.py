@@ -73,7 +73,9 @@ class ExportTests(unittest.TestCase):
                     self.assertEqual(t['games'],len(own));self.assertEqual(t['wins']+t['losses'],len(own))
             if data['season'] in (2024,2025):hold+=data['predictions']
         report=json.loads((root/'report.json').read_text())
-        self.assertEqual(len(hold),1606);self.assertEqual(len(report['candidates']),53)
+        self.assertEqual(len(hold),1606)
+        protocol=json.loads((root/'model.json').read_text())
+        self.assertEqual(len(protocol['candidates']),73)
         brier=sum((p['prob']-p['outcome'])**2 for p in hold)/len(hold)
         self.assertAlmostEqual(brier,report['holdout']['brier'],places=12)
         self.assertEqual(report['config']['eloWeight'],0)

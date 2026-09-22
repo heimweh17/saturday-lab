@@ -9,7 +9,7 @@ b=get(q+'a=333&b=194&venue=neutral')['prediction']
 h=get(q+'a=194&b=333&venue=a')['prediction']
 assert abs(a['probability']+b['probability']-1)<1e-12
 assert abs(a['margin']+b['margin'])<1e-12
-assert abs(h['margin']-a['margin']-2)<1e-12
+assert abs(h['margin']-a['margin']-3)<1e-12
 assert h['probability']>a['probability']
 for query in ['a=194&b=194','a=missing&b=333','a=194&b=333&venue=invalid']:
     try:get(q+query);raise AssertionError('Expected validation failure')

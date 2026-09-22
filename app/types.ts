@@ -1,8 +1,9 @@
-export type Team={id:string;name:string;short:string;abbr:string;conference:string;color:string;logo:string;rank:number;change:number;power:number;offense:number;defense:number;elo:number;wins:number;losses:number;games:number;modelGames:number;pf:number|null;pa:number|null;sos:number|null;yards:number|null;passYards:number|null;rushYards:number|null;yardsAllowed:number|null;thirdDown:number|null;completion:number|null;turnovers:number|null;takeaways:number|null;boxGames:number};
+import type {ModelState,Model} from '@/lib/model';
+export type Team={modelState?:ModelState;winIndex?:number;modelRank?:number;modelChange?:number;id:string;name:string;short:string;abbr:string;conference:string;color:string;logo:string;rank:number;change:number;power:number;offense:number;defense:number;elo:number;wins:number;losses:number;games:number;modelGames:number;pf:number|null;pa:number|null;sos:number|null;yards:number|null;passYards:number|null;rushYards:number|null;yardsAllowed:number|null;thirdDown:number|null;completion:number|null;turnovers:number|null;takeaways:number|null;boxGames:number};
 export type Game={id:string;season:number;week:number;date:string;home:string;away:string;homeName:string;awayName:string;hs:number;as:number;neutral:boolean;fbs:boolean};
 export type Prediction=Game & {prob:number;elo:number;scoreProb:number;margin:number;homeScore:number;awayScore:number;outcome:number;cutoff:string};
 export type Snapshot={teams:Team[];mu:number;gamesUsed:number;modelGames:number;through:string|null};
-export type Season={season:number;weeks:number[];snapshots:Record<string,Snapshot>;games:Game[];predictions:Prediction[]};
+export type Season={scoringConfig?:Config;model?:Model;season:number;weeks:number[];snapshots:Record<string,Snapshot>;games:Game[];predictions:Prediction[]};
 export type Config={elo:{k:number;home:number;carry:number};scoring:{shrinkage:number;home:number;decay:number;scale:number};eloWeight:number};
 export type Metric={season:number;model:string;n:number;accuracy:number;brier:number;logLoss:number;mae?:number};
 export type Report={config:Config;candidates:Array<{family:string;params:Record<string,number>;n:number;accuracy:number;brier:number;logLoss:number}>;evaluation:Metric[];calibration:Array<{season:number;bin:number;n:number;predicted:number|null;actual:number|null}>;holdout:Metric;residual80:number};

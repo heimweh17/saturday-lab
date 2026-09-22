@@ -48,3 +48,9 @@ __pycache__/
 *.pyc
 *.tsbuildinfo
 /analytics/raw/
+
+/analytics/raw-fixtures/
+/analytics/v2-feature-cache.json
+/.api-build-backup/
+/analytics/final-feature-cache.json
+/.api-build-backup/
