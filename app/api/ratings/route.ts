@@ -1,0 +1,3 @@
+import index from '@/lib/model-index.json';
+import manifest from '@/public/data/manifest.json';
+export async function GET(request:Request){const q=new URL(request.url).searchParams;const season=q.get('season')??String(manifest.latestSeason),week=q.get('week')??'99';if(!manifest.seasons.includes(Number(season))||String(Number(season))!==season||!/^\d{1,2}$/.test(week))return Response.json({error:'Invalid season or week.'},{status:400});const data=index as Record<string,Record<string,unknown>>;const snapshot=data[season]?.[week];if(!snapshot)return Response.json({error:'Unknown season or week.'},{status:400});return Response.json({modelVersion:manifest.version,season:Number(season),week:Number(week),snapshot},{headers:{'Cache-Control':'public, max-age=3600'}})}

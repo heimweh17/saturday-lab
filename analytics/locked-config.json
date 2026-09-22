@@ -1,0 +1,682 @@
+{
+  "config": {
+    "elo": {
+      "k": 64,
+      "home": 40,
+      "carry": 0.75
+    },
+    "scoring": {
+      "shrinkage": 2,
+      "home": 2.0,
+      "decay": 1.0,
+      "scale": 8.0
+    },
+    "eloWeight": 0.0
+  },
+  "candidates": [
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18074593256126892,
+      "logLoss": 0.5377158795336332
+    },
+    {
+      "family": "Blend",
+      "params": {
+        "eloWeight": 0.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18074593256126892,
+      "logLoss": 0.5377158795336332
+    },
+    {
+      "family": "Blend",
+      "params": {
+        "eloWeight": 0.25
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18052678700201172,
+      "logLoss": 0.5382050365102047
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7323232323232324,
+      "brier": 0.18085514720418272,
+      "logLoss": 0.5386745335756418
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7222222222222222,
+      "brier": 0.1814007469656582,
+      "logLoss": 0.5389459654561263
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7373737373737373,
+      "brier": 0.18113208332849545,
+      "logLoss": 0.5395136501444799
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7310606060606061,
+      "brier": 0.18168176544960024,
+      "logLoss": 0.5406196126521291
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.1818721661500801,
+      "logLoss": 0.540726309846949
+    },
+    {
+      "family": "Blend",
+      "params": {
+        "eloWeight": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.7310606060606061,
+      "brier": 0.18257332741477245,
+      "logLoss": 0.5441204151049331
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7348484848484849,
+      "brier": 0.18311564814813966,
+      "logLoss": 0.5441974155749721
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7373737373737373,
+      "brier": 0.18298566315116918,
+      "logLoss": 0.5448395936030538
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18329945091363933,
+      "logLoss": 0.5456482898748443
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7159090909090909,
+      "brier": 0.18398626440984725,
+      "logLoss": 0.5459498987254355
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18418125431023127,
+      "logLoss": 0.5478765744787634
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7361111111111112,
+      "brier": 0.18430002115312702,
+      "logLoss": 0.5480491129487662
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7222222222222222,
+      "brier": 0.18451807454141528,
+      "logLoss": 0.5488258728716167
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7209595959595959,
+      "brier": 0.18538858825161736,
+      "logLoss": 0.5500096070840321
+    },
+    {
+      "family": "Blend",
+      "params": {
+        "eloWeight": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.18688555379955116,
+      "logLoss": 0.5546459105531489
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7310606060606061,
+      "brier": 0.18658059242108077,
+      "logLoss": 0.5551045973945344
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7323232323232324,
+      "brier": 0.18681975791872107,
+      "logLoss": 0.5560458521366506
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7272727272727273,
+      "brier": 0.1878853735935981,
+      "logLoss": 0.5569499438263505
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 8.0
+      },
+      "n": 792,
+      "accuracy": 0.7121212121212122,
+      "brier": 0.18899143113795336,
+      "logLoss": 0.5586395088909855
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7373737373737373,
+      "brier": 0.18880919205463884,
+      "logLoss": 0.5612007041637496
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7159090909090909,
+      "brier": 0.1896251549538052,
+      "logLoss": 0.5624963776204105
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.1894596080185495,
+      "logLoss": 0.5628114949755919
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7348484848484849,
+      "brier": 0.18997100609050185,
+      "logLoss": 0.5637476069817996
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7285353535353535,
+      "brier": 0.19022681152757423,
+      "logLoss": 0.5646435316194938
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 2,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7222222222222222,
+      "brier": 0.19093245155232608,
+      "logLoss": 0.5664088567876017
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7209595959595959,
+      "brier": 0.19204356973163944,
+      "logLoss": 0.568692879497842
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 64,
+        "home": 40,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.6957070707070707,
+      "brier": 0.19346346615634774,
+      "logLoss": 0.5696369500274099
+    },
+    {
+      "family": "Blend",
+      "params": {
+        "eloWeight": 1.0
+      },
+      "n": 792,
+      "accuracy": 0.6957070707070707,
+      "brier": 0.19346346615634774,
+      "logLoss": 0.5696369500274099
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7361111111111112,
+      "brier": 0.19231748590046654,
+      "logLoss": 0.5698494726175599
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 64,
+        "home": 65,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.696969696969697,
+      "brier": 0.19375755773537778,
+      "logLoss": 0.5700651467137337
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7310606060606061,
+      "brier": 0.19376772447496748,
+      "logLoss": 0.5737879830790816
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7323232323232324,
+      "brier": 0.19444716154736355,
+      "logLoss": 0.5755641295033405
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7121212121212122,
+      "brier": 0.19641170046071127,
+      "logLoss": 0.5789618943440449
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 12.0
+      },
+      "n": 792,
+      "accuracy": 0.7272727272727273,
+      "brier": 0.1968401807518494,
+      "logLoss": 0.5804965487373479
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 64,
+        "home": 65,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.7121212121212122,
+      "brier": 0.1976848919245091,
+      "logLoss": 0.5806037282808088
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 64,
+        "home": 40,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.6881313131313131,
+      "brier": 0.19747044423482774,
+      "logLoss": 0.5806294700431925
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7159090909090909,
+      "brier": 0.1969818920841487,
+      "logLoss": 0.5811979184489506
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 40,
+        "home": 40,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.7007575757575758,
+      "brier": 0.1984911218058895,
+      "logLoss": 0.5824928485866658
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 40,
+        "home": 65,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.7007575757575758,
+      "brier": 0.1989385361852352,
+      "logLoss": 0.5828444890085733
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 5,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7348484848484849,
+      "brier": 0.19779029371800624,
+      "logLoss": 0.5832620217638572
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7209595959595959,
+      "brier": 0.1996653629761638,
+      "logLoss": 0.5875109097543934
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 1.0,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7361111111111112,
+      "brier": 0.2004365998501326,
+      "logLoss": 0.589503957665778
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 40,
+        "home": 65,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.6893939393939394,
+      "brier": 0.2040566653289858,
+      "logLoss": 0.5957557724230057
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 40,
+        "home": 40,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.696969696969697,
+      "brier": 0.2037271159842612,
+      "logLoss": 0.595849742886698
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 3.5,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7121212121212122,
+      "brier": 0.20404088863349018,
+      "logLoss": 0.5973029804433202
+    },
+    {
+      "family": "Adjusted scoring",
+      "params": {
+        "shrinkage": 9,
+        "home": 2.0,
+        "decay": 0.94,
+        "scale": 16.0
+      },
+      "n": 792,
+      "accuracy": 0.7272727272727273,
+      "brier": 0.2049762179930922,
+      "logLoss": 0.5996307511124324
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 24,
+        "home": 40,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.6931818181818182,
+      "brier": 0.2063327828887486,
+      "logLoss": 0.6011682102916298
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 24,
+        "home": 65,
+        "carry": 0.75
+      },
+      "n": 792,
+      "accuracy": 0.6818181818181818,
+      "brier": 0.20680116170506033,
+      "logLoss": 0.6013345421728328
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 24,
+        "home": 65,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.6654040404040404,
+      "brier": 0.2128011679653206,
+      "logLoss": 0.6153977407006455
+    },
+    {
+      "family": "Elo",
+      "params": {
+        "k": 24,
+        "home": 40,
+        "carry": 0.5
+      },
+      "n": 792,
+      "accuracy": 0.6906565656565656,
+      "brier": 0.21248886724627306,
+      "logLoss": 0.6156189005372562
+    }
+  ],
+  "selectedOn": "2023",
+  "version": "1.0.0"
+}
