@@ -19,7 +19,7 @@ def values(b):
     if d is None:return [None]*10
     return [d[k] for k in ('passYpa','rushYpa','thirdRate','turnoverRate','plays','completionRate','firstDownRate','penaltyRate','fourthRate','possessionMinutes')]
 
-def box_fit(history, ids, prior):
+def box_fit(history, ids, prior, carry=.65):
     """Joint offense/opponent-defense ridge for each metric; missing pairs omitted."""
     result={t:[] for t in ids}
     for j in range(10):
@@ -28,7 +28,7 @@ def box_fit(history, ids, prior):
         # Center input first because ridge_fit's intercept prior is points-specific.
         center=[7.,4.,.4,.025,68.,.6,.3,.7,.5,30.][j]
         hs=[{**g,'hs':g['hs']-center+28,'as':g['as']-center+28} for g in hs]
-        o,d,_=ridge_fit(hs,ids,pr,5.,0.,.94)
+        o,d,_=ridge_fit(hs,ids,pr,5.,0.,.94,carry=carry)
         for i,t in enumerate(ids): result[t].extend([float(o[i]),float(d[i])])
     return result
 
@@ -44,14 +44,14 @@ def features(a,b,location,date=None):
     x += [a['form']-b['form'],a['sos']-b['sos'],margin*(min(a['sample'],b['sample'])/12),rest(a)-rest(b),a['box'][0]*b['box'][1]-b['box'][0]*a['box'][1],a['box'][2]*b['box'][3]-b['box'][2]*a['box'][3]]
     return x
 
-def build(teams,seasons,boxes):
+def build(teams,seasons,boxes,carry=.65):
     print('Building frozen-week ratings and opponent-adjusted box features',flush=True)
-    sp,ss=score_run(teams,seasons,5.,3.,.94); ep,es=elo_run(teams,seasons,40,55,.65)
+    sp,ss=score_run(teams,seasons,5.,3.,.94,carry=carry); ep,es=elo_run(teams,seasons,40,55,carry)
     rows=[]; snapshots={}; prior={}
     for year in YEARS:
         ids=list(teams[year]); history=[]
         for seq,week in enumerate(seasons[year]['weeks']+[99]):
-            box=box_fit(history,ids,prior); ratings=ss[(year,week)]['ratings']; state={}
+            box=box_fit(history,ids,prior,carry=carry); ratings=ss[(year,week)]['ratings']; state={}
             for t in ids:
                 gs=[g for g in history if t in (g['home'],g['away'])]
                 form=[]; sos=[]

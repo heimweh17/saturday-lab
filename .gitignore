@@ -54,3 +54,7 @@ __pycache__/
 /.api-build-backup/
 /analytics/final-feature-cache.json
 /.api-build-backup/
+
+/analytics/carry-audit/cache-*.json
+/analytics/carry-audit/fpi-source.html
+/analytics/carry-audit/predictions-*.json

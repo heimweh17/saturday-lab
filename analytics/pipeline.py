@@ -82,9 +82,9 @@ def elo_run(teams,seasons,k,h,carry,end=2026):
         snapshots[(year,99)] = dict(ratings)
     return preds,snapshots
 
-def ridge_fit(history,ids,prior,lam,h,decay):
+def ridge_fit(history,ids,prior,lam,h,decay,carry=.65):
     n=len(ids); index={t:i for i,t in enumerate(ids)}
-    po=np.array([prior.get(t,(0,0))[0]*.65 for t in ids]); pd=np.array([prior.get(t,(0,0))[1]*.65 for t in ids])
+    po=np.array([prior.get(t,(0,0))[0]*carry for t in ids]); pd=np.array([prior.get(t,(0,0))[1]*carry for t in ids])
     o,d=po.copy(),pd.copy(); mu=28.
     if not history: return o,d,mu
     attack=[];defend=[];target=[];weight=[]
@@ -106,13 +106,13 @@ def ridge_fit(history,ids,prior,lam,h,decay):
         if np.max(np.abs(np.r_[o,d,mu]-old))<1e-7: break
     return o,d,mu
 
-def score_run(teams,seasons,lam,h,decay,end=2026):
+def score_run(teams,seasons,lam,h,decay,end=2026,carry=.65):
     prior,preds,snaps={},{},{}
     for year in YEARS:
         if year>end: break
         ids=list(teams[year]); idx={t:i for i,t in enumerate(ids)}; history=[]
         for seq,week in enumerate(seasons[year]['weeks']):
-            o,d,mu=ridge_fit(history,ids,prior,lam,h,decay)
+            o,d,mu=ridge_fit(history,ids,prior,lam,h,decay,carry=carry)
             snaps[(year,week)]={'ratings':{t:(float(o[i]),float(d[i])) for t,i in idx.items()},'mu':mu}
             cutoff=min(g['date'] for g in seasons[year]['games'] if g['week']==week)
             assert all(g['date']<cutoff for g in history), 'Overlapping week buckets: reject leakage'
@@ -122,7 +122,7 @@ def score_run(teams,seasons,lam,h,decay,end=2026):
                 hs=mu+o[hi]-d[ai]+adv; aws=mu+o[ai]-d[hi]-adv
                 preds[g['id']]={'margin':float(hs-aws),'homeScore':float(hs),'awayScore':float(aws),'cutoff':cutoff}
                 history.append({**g,'seq':seq})
-        o,d,mu=ridge_fit(history,ids,prior,lam,h,decay)
+        o,d,mu=ridge_fit(history,ids,prior,lam,h,decay,carry=carry)
         prior={t:(float(o[i]),float(d[i])) for t,i in idx.items()}
         snaps[(year,99)]={'ratings':dict(prior),'mu':mu}
     return preds,snaps
