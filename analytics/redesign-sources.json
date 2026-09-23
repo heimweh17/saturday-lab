@@ -1,0 +1,218 @@
+[
+  {
+    "file": "adv_team_gamelog_2018.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2018.csv",
+    "sha256": "226dae4d87989dc27746b0f3109da2d2ffba50eadae44672dcfbbae068427641",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2019.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2019.csv",
+    "sha256": "f77931da5ac4140ead71e7381c5ff17c1bfecb1b3fdabb9039e9541ec10d65bb",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2020.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2020.csv",
+    "sha256": "e00149819da5caf9cb3c638d974fc4837530910ecc8006c51e4e12db7c862fbe",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2021.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2021.csv",
+    "sha256": "ef10790e87d5a996bb98c2d5339ee57509ccbe2acdf97fd93c26ca3787aeea64",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2022.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2022.csv",
+    "sha256": "2cf4623bfb11742149cb64ce0ebc15e154f3531e034b92b217334e7bf0a0416a",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2023.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2023.csv",
+    "sha256": "880c3009f08f0edd08457e8d20a69728c65a69d2cb066d066a04a190b23b3c68",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2024.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2024.csv",
+    "sha256": "2453dcbd9bbbc0b89ec2dfe29d8454e37c786aafb98c9c8c628beaddb7d54851",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2025.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2025.csv",
+    "sha256": "e7908ec7fb1997561a685702190148c96cf291c78a8322ad8c4050700091a53e",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "adv_team_gamelog_2026.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_adv_team_gamelog/adv_team_gamelog_2026.csv",
+    "sha256": "b551e6f307f6840b16180deb8dbf5a248d683e2789a3d7fb2739a61bec63a898",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_team_talent_2018.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2018.parquet",
+    "sha256": "cf99cd8a512fbcd575638d1005b520713cfa4bfb36a63d3c85c1b5726d7d3549",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2019.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2019.parquet",
+    "sha256": "39995eda9dba43efb640a1b673f92d3a7c71ace9ef47d8aba8b6613a6d1cfe82",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2020.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2020.parquet",
+    "sha256": "03580a3bd44d11b6f3c6c8963a1678beb307cf53b69f6e39987d64c0a478d5f4",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2021.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2021.parquet",
+    "sha256": "090352cd6a666824c6dabdc7cdba623882e114951a9338060a5e5387a493f25b",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2022.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2022.parquet",
+    "sha256": "8534953607eb6e4a37edb9d3a22112de34a460e6677b3d4b8558c52b130597d2",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2023.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2023.parquet",
+    "sha256": "bbf8bb471be0337afb1894dcd96c536a8c5b4d85a5a8e19161531b1f1ef27404",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2024.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2024.parquet",
+    "sha256": "7df0c091bfe277454f561a74d324a7642dd65d825e0049c4ade3738ffbebf0d9",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2025.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2025.parquet",
+    "sha256": "448bef20a83952737efc3fee42d35f6ffa32c83df4dddb657902df862cf7e0d2",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_team_talent_2026.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_team_talent/cfb_team_talent_2026.parquet",
+    "sha256": "2dd38a1537e6982f2888d1672070b39b81c98140224a1041f1299b42d14079ed",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2018.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2018.parquet",
+    "sha256": "a3744f70c283d380ef161fa13d620d2f3b4454d2ee92bf7cb47d56e88b3d1c2d",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2019.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2019.parquet",
+    "sha256": "46ab5854f9e3fa45e3f26b27a050956876f0b4672dbddd67c9c9d156ae5c70d0",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2020.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2020.parquet",
+    "sha256": "09fbdcc278910aa0fc8274189d94f50e2ee706a4bc14ee29a922fe7cd941bfe0",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2021.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2021.parquet",
+    "sha256": "00f27783533647a19c6362ac3e3802ca4f32550d876f53dfe9bc8145ed3dc162",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2022.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2022.parquet",
+    "sha256": "c4924d060f0ba62ef76f4a5e716b330a7bd20b40408ec72cbb89bf28cd140c68",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2023.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2023.parquet",
+    "sha256": "7ad6d072ac36226794e034a26f65203a2350919a206161f0b65f4411ce2ece99",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2024.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2024.parquet",
+    "sha256": "1b4fdb5608ab0776e18e292f85171f37e24375cfae2ef6238174d575a2ca1527",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2025.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2025.parquet",
+    "sha256": "b9de637074faf96409ecd62477ce4c0a53523b666c50970ff3a92218ca9fc596",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_returning_production_2026.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_returning_production/cfb_returning_production_2026.parquet",
+    "sha256": "22dd8bab7d4047a8f68c165dd0853719c0009b9fe4414cb10115b0932130cc81",
+    "hashNormalization": "raw bytes"
+  },
+  {
+    "file": "cfb_fpi_weekly_2018.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2018.csv",
+    "sha256": "1edef17c38e059cd84df3531c86843723f0fe5d0f684914945ac5e912779f01b",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2019.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2019.csv",
+    "sha256": "1bd26d03516056542255643d6efbda206d73b46c5564f55e6301f8078474a095",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2020.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2020.csv",
+    "sha256": "4c68bbd86cbe0342929f47bd6c20cb8c0630c5d06ea8233bbb2938f10d706e56",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2021.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2021.csv",
+    "sha256": "fd28ba5bf9af1c7d6523ffcbdada1077aea65f5736254b8e61af9c293164abac",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2022.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2022.csv",
+    "sha256": "3b7c59268c515726ec667aa759f8fbcc9de68ef0a4e347ab7bdd56b21dbf105d",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2023.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2023.csv",
+    "sha256": "4e8f181b0d6e40d46f67096f89c3b7c0c414d2a26fda1113fd9ca4d6573f5fa8",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2024.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2024.csv",
+    "sha256": "b976e8de065f60b71f6f78196b497894057c7e15b3054f786e2e1c5ba63bed8c",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2025.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2025.csv",
+    "sha256": "ba66fe35d0f52a0d171224273c0e7be0bb70f4e78f84648e5f1d02a8177dd9ff",
+    "hashNormalization": "CRLF to LF"
+  },
+  {
+    "file": "cfb_fpi_weekly_2026.csv",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_fpi_weekly/cfb_fpi_weekly_2026.csv",
+    "sha256": "87b7a85283c2e2ad30075eb00194ffb4b8a71246516470c0d62aab7857e51bb2",
+    "hashNormalization": "CRLF to LF"
+  }
+]

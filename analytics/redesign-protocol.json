@@ -1,0 +1,254 @@
+{
+  "version": "4-research-coverage-correction",
+  "ratingConfigurations": [
+    {
+      "method": "raw",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "raw",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "cap28",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.4,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.4,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.65,
+      "lam": 1.0,
+      "memory": 3,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "method": "soft28",
+      "carry": 0.65,
+      "lam": 4.0,
+      "memory": 3,
+      "decay": 0.97
+    }
+  ],
+  "featureBundles": {
+    "score": [
+      0,
+      8,
+      9
+    ],
+    "score_talent": [
+      0,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "epa": [
+      0,
+      1,
+      4,
+      8,
+      9
+    ],
+    "epa_talent": [
+      0,
+      1,
+      4,
+      6,
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "units": [
+      0,
+      2,
+      3,
+      4,
+      5,
+      8,
+      9,
+      11
+    ],
+    "units_talent": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ]
+  },
+  "ridges": [
+    1.0,
+    10.0
+  ],
+  "features": [
+    "Scoring strength",
+    "EPA offense/defense",
+    "Passing EPA",
+    "Rushing EPA",
+    "Special teams EPA",
+    "Yards/play strength",
+    "Recruiting talent",
+    "Blue-chip share",
+    "Home field",
+    "Rest days",
+    "Early-season talent",
+    "Nonlinear scoring strength",
+    "Talent coverage flag"
+  ],
+  "selection": "For each outer year 2023-2026, minimum pooled log loss over previous three years; each fold trains coefficients on 2019 through foldYear-1. Refit winner through outerYear-1.",
+  "coverageCorrection": "Missing signed-class talent is imputed to the same-season FBS mean with an explicit missing indicator; preliminary zero-imputation run superseded before deployment.",
+  "scope": "Retrospective corrected upstream data; EPA source model may have been fitted on later data. No pristine prospective claim. Returning-production files excluded because same-season participation leaks roster availability. Recruiting composite is a signed-class proxy, not transfer-adjusted roster talent. FPI never used as training label."
+}

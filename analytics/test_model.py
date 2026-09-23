@@ -75,7 +75,7 @@ class ExportTests(unittest.TestCase):
         report=json.loads((root/'report.json').read_text())
         self.assertEqual(len(hold),1606)
         protocol=json.loads((root/'model.json').read_text())
-        self.assertEqual(len(protocol['candidates']),73)
+        self.assertEqual(protocol['candidateCount'],288)
         brier=sum((p['prob']-p['outcome'])**2 for p in hold)/len(hold)
         self.assertAlmostEqual(brier,report['holdout']['brier'],places=12)
         self.assertEqual(report['config']['eloWeight'],0)

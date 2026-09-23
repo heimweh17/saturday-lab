@@ -1,7 +1,12 @@
-export type ModelState={basePower:number;elo:number;box:number[];form:number;sos:number;sample:number;lastDate:string|null};
-export type Model={version:string;coefficients:number[];weight:number;trainingThrough:number};
+export type ModelState={basePower:number;elo:number;box:number[];form:number;sos:number;sample:number;lastDate:string|null;v?:number[];talentMissing?:boolean};
+export type Model={version:string;coefficients:number[];weight:number;trainingThrough:number;featureNames?:string[]};
 export const featureNames=['Scoring strength','Elo strength','Passing efficiency','Rushing efficiency','Third-down efficiency','Turnover control','Play volume','Completion rate','First-down efficiency','Penalty discipline','Fourth-down efficiency','Possession time','Recent form','Schedule strength','Experience','Rest','Passing matchup','Rushing matchup'];
 export function modelFeatures(a:ModelState,b:ModelState,location:number,date?:string){
+ if(a.v&&b.v){
+  const v=a.v.map((x,i)=>x-b.v![i]);
+  const rest=(t:ModelState)=>date&&t.lastDate?Math.max(3,Math.min(21,(Date.parse(date)-Date.parse(t.lastDate))/86400000)):7;
+  return [...v.slice(0,8),location,rest(a)-rest(b),v[6]*Math.exp(-Math.min(a.sample,b.sample)/4),20*Math.tanh(v[0]/20),Number(a.talentMissing??false)-Number(b.talentMissing??false)];
+ }
  const margin=a.basePower-b.basePower+3*location;const x=[margin,a.elo-b.elo+55*location];
  for(let j=0;j<10;j++)x.push(([3,7].includes(j)?-1:1)*(a.box[j*2]+a.box[j*2+1]-b.box[j*2]-b.box[j*2+1]));
  const rest=(t:ModelState)=>date&&t.lastDate?Math.max(3,Math.min(21,(Date.parse(date)-Date.parse(t.lastDate))/86400000)):7;
@@ -10,7 +15,7 @@ export function modelFeatures(a:ModelState,b:ModelState,location:number,date?:st
 export function modelPredict(a:ModelState,b:ModelState,location:number,model:Model,date?:string){
  const x=modelFeatures(a,b,location,date);const contributions=x.map((v,i)=>v*model.coefficients[i]);
  const logit=contributions.reduce((a,b)=>a+b,0);const probability=model.weight/(1+Math.exp(-Math.max(-30,Math.min(30,logit))))+(1-model.weight)/(1+Math.exp(-Math.max(-30,Math.min(30,x[0]/8))));
- return {probability,contributions,scoringProbability:1/(1+Math.exp(-x[0]/8)),efficiencyProbability:1/(1+Math.exp(-logit))};
+ return {probability,contributions,scoringProbability:1/(1+Math.exp(-(a.basePower-b.basePower+3*location)/8)),efficiencyProbability:1/(1+Math.exp(-logit))};
 }
 export function winDistribution(probabilities:number[]){
  let distribution=[1];

@@ -19,27 +19,26 @@ Results cover 2018–2026. Current results end September 20, 2026; schedules wer
 
 ## One production model
 
-Version 3 publishes a single probability:
+Version 4 publishes `P(win) = logistic(beta * pregame features)`, one probability and one ranking.
 
-`P(win) = w * logistic(beta · x) + (1-w) * logistic(adjusted scoring margin / 8)`.
+The redesign compares **288 configurations**: 24 scoring-rating designs x six feature bundles x two regularization penalties. Designs test raw, clipped and smoothly compressed margins; 40%/65% carry; one/three prior seasons; weak/strong prior penalties. Bundles test scoring, opponent-adjusted total/passing/rushing EPA, special teams, yards per play, recruiting talent, rest, venue and nonlinear terms.
 
-The ensemble’s components are internal. There is no visitor-facing model switch.
+Each target season selects by pooled log loss over its preceding three seasons. Every inner year itself trains only on prior years. Current selection: raw-score ratings, 65% carry, one prior year, rating penalty 4, EPA + talent bundle, regression penalty 1. The complete protocol is `analytics/redesign-protocol.json`. FPI ranks never enter training or selection.
 
-The scoring anchor jointly estimates offense and opponent defense with ridge shrinkage 5, home margin 3, weekly decay .94 and offseason carryover .65. Ten box metrics receive separate opponent adjustment. Eighteen candidate inputs cover scoring, Elo, passing/rushing efficiency, conversion rates, turnovers, play volume, completion, first downs, penalties, possession, form, schedule, experience, rest and interactions.
+### Evidence and limits
 
-For each target year, **73 fixed configurations** are compared on the preceding three years. Each inner validation year trains only on earlier seasons. The selected specification is refitted through the year before the target season. Within each season, all team states are frozen before a whole week and updated afterward.
+| Outer season | Games | New accuracy | Previous v3 | New log loss | V3 log loss |
+|---|---:|---:|---:|---:|---:|
+| 2023 | 792 | 73.48% | 72.98% | .53609 | .54134 |
+| 2024 | 798 | 68.55% | 68.17% | .54966 | .55904 |
+| 2025 | 808 | 73.02% | 72.52% | .53511 | .53767 |
+| 2026 partial | 157 | 81.53% | 80.25% | .43328 | .46912 |
 
-`analytics/final-protocol.json` is written before evaluation and locks the search. Current 2026 selection is the matchup input bundle, ridge 1, and efficiency/scoring weights .5/.5. The model report records all annual choices. Do not change this protocol to chase a particular evaluation result; create a separately documented new version.
+2024-25 pooled log-loss improvement has a descriptive week-bootstrap interval crossing zero. 2025 late-season loss is worse than v3. The original scoring model still beats v4 on some measures. Historical FPI-based picks outperform v4 in 2024/2025 matched samples; these are our picks from timestamped FPI + three home points, not ESPN official probabilities. No claim of outperforming ESPN is made.
 
-### Evidence, not exaggerated claims
+Current whole-field rank agreement with FPI improves (mean gap 11.84 to 8.68 places, Spearman .920 to .954). Model results end September 20; FPI reference is September 22. This comparison is diagnostic, not a tuning target.
 
-| Outer season | FBS games | Winner accuracy | Brier | Log loss |
-|---|---:|---:|---:|---:|
-| 2024 | 798 | 68.17% | .19129 | .55904 |
-| 2025 | 808 | 72.52% | .18142 | .53767 |
-| 2026, partial | 157 | 80.25% | .14944 | .46912 |
-
-All results are **retrospective forward backtests**, not forecasts actually published before kickoff. Historical seasons were inspected during development. The richer model does not consistently outperform the original scoring benchmark; that comparison and week-cluster bootstrap intervals are published. The 2018–2022 archive remains exploratory scoring-model history. No performance improvement is claimed merely because more features were added.
+All tests are retrospective. Upstream EPA estimation may reflect later data, and development has inspected these seasons. Missing talent now uses an FBS mean and explicit indicator; the preliminary zero-imputation experiment was superseded before publication. Returning-production data were excluded because same-season participation cannot establish preseason availability. Archived v3 remains in `public/data/model-v3.json`; the earlier carry-only study remains downloadable.
 
 ## Data and boundaries
 
@@ -48,7 +47,7 @@ All results are **retrospective forward backtests**, not forecasts actually publ
 - Both have ESPN upstream; they are not independent sources corroborating one another.
 - FCS games appear in records and box views but not in rating fits or backtest metrics; no FCS probability is fabricated.
 - Rate summaries use aggregate numerators/denominators. Missing and zero-attempt rates remain missing. Pass + rush attempts is explicitly a play-volume proxy.
-- No injury, roster availability, transfers, recruiting, weather, betting lines, EPA, true success rate or garbage-time adjustment is claimed.
+- EPA game logs come from the public cfbfastR pipeline; recruiting is a four-signed-class proxy, not a transfer-adjusted roster. No verified injury, quarterback, coaching, weather, betting-line or garbage-time correction is claimed. Missing EPA pairs are omitted; missing talent is explicitly flagged.
 - Future schedules use fixed current strength and published rest intervals; hypothetical matchups assume equal rest. Win-count distributions assume independent outcomes.
 
 ## Run and build
@@ -77,6 +76,9 @@ python analytics/pipeline.py --data analytics/raw
 python analytics/final_model.py --data analytics/raw
 python analytics/box_export.py --data analytics/raw
 python analytics/fixtures.py
+python analytics/fetch_redesign.py
+python analytics/redesign.py --data analytics/raw
+python analytics/export_redesign.py
 python analytics/service_index.py
 python analytics/provenance.py --data analytics/raw
 python -m unittest discover -s analytics -p 'test*.py' -v
@@ -84,7 +86,7 @@ node scripts/check-model.mjs
 npm run build:pages
 ```
 
-The first pipeline regenerates the original locked benchmark. The final model pipeline overlays the unified model on 2023 onward and preserves `baselineProb` for comparison. Raw CSV downloads are cached; changing their contents changes the data version. `fixtures.py` writes fresh published schedule data and preserves retrieval coverage. No API key is required for these endpoints; availability and source schemas can change.
+The first pipeline regenerates the original locked benchmark. The old final-model pipeline recreates v3. The redesign then selects and exports v4; run the commands in order. `baselineProb` preserves v1 and `previousProb` preserves v3. `fetch_redesign.py` verifies 36 source files against pinned hashes and refuses silently revised inputs. Raw CSV downloads are cached; changing their contents changes the data version. `fixtures.py` writes fresh published schedule data and preserves retrieval coverage. No API key is required for these endpoints; availability and source schemas can change.
 
 ## Tests and implementation
 
@@ -93,7 +95,7 @@ The first pipeline regenerates the original locked benchmark. The final model pi
 - Optional API checks: `python analytics/check_api.py http://localhost:3000`.
 - UI checked on desktop and 390px mobile: schedule, metric selection, past game details, before-week empty states, matchup swapping and audit navigation.
 
-Key files: `analytics/feature_engine.py`, `analytics/final_model.py`, `analytics/final-protocol.json`, `lib/model.ts`, `app/forecast.tsx`, `app/data-explorer.tsx`, `app/model-audit.tsx`.
+Key files: `analytics/redesign.py`, `analytics/export_redesign.py`, `analytics/redesign-protocol.json`, `lib/model.ts`, `app/forecast.tsx`, `app/data-explorer.tsx`, `app/model-audit.tsx`.
 
 ### Data endpoints on Pages
 
@@ -101,7 +103,7 @@ Key files: `analytics/feature_engine.py`, `analytics/final_model.py`, `analytics
 
 ### Portfolio description
 
-Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, nested temporal selection over 73 model configurations, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests and calibration diagnostics, including limitations and comparisons that did not favor the new model.
+Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, nested temporal selection over 288 model configurations, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests and calibration diagnostics, including limitations and comparisons that did not favor the new model.
 
 Independent personal project, not affiliated with the NCAA, ESPN or universities. Team names and marks belong to their respective owners.
 

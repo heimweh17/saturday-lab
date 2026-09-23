@@ -13,7 +13,7 @@ def main():
     protocol={'carry':[0.,.25,.4,.5,.65],'scope':'All scoring, efficiency and Elo priors; fixed published annual feature/ridge/mixture choices; refit through preceding year. Retrospective sensitivity only.','selectionYears':[2023,2024,2025],'diagnosticYear':2026}
     out=ROOT/'analytics/carry-audit';out.mkdir(exist_ok=True)
     (out/'protocol.json').write_text(json.dumps(protocol,indent=2))
-    old=json.loads((ROOT/'public/data/model.json').read_text());teams,seasons,boxes,_=load_data(ROOT.parent/'research/data');results=[]
+    baseline=ROOT/'public/data/model-v3.json';old=json.loads((baseline if baseline.exists() else ROOT/'public/data/model.json').read_text());teams,seasons,boxes,_=load_data(ROOT.parent/'research/data');results=[]
     for carry in protocol['carry']:
         cache=out/f'cache-{carry}.json'
         if carry==.65: data=json.loads((ROOT/'analytics/final-feature-cache.json').read_text())

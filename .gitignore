@@ -58,3 +58,7 @@ __pycache__/
 /analytics/carry-audit/cache-*.json
 /analytics/carry-audit/fpi-source.html
 /analytics/carry-audit/predictions-*.json
+
+/analytics/research-v4/
+/analytics/discovery-releases.json
+/analytics/redesign-cache.json

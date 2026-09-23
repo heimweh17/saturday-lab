@@ -3,6 +3,7 @@ from pathlib import Path
 import numpy as np
 from scipy.optimize import minimize
 import feature_engine as f
+import redesign as r4
 import pipeline
 from box_export import parse
 ROOT=Path(__file__).resolve().parents[1]
@@ -36,12 +37,12 @@ class FinalModelTests(unittest.TestCase):
    data=json.loads((ROOT/f'public/data/{year}.json').read_text());config=data['model'];coef=np.array(config['coefficients'])
    self.assertEqual(config['trainingThrough'],year-1)
    annual=report['annual'][str(year)];self.assertTrue(all(y<year for y in annual['validationYears']))
-   candidates=next(s['candidates'] for s in report['searches'] if s['targetSeason']==year);self.assertEqual(len(candidates),73);self.assertEqual(annual['selected'],min(candidates,key=lambda c:c['logLoss']))
+   candidates=next(s['candidates'] for s in report['searches'] if s['targetSeason']==year);self.assertEqual(len(candidates),288);self.assertEqual(annual['selected'],min(candidates,key=lambda c:c['logLoss']))
    for p in data['predictions']:
     snap=data['snapshots'][str(p['week'])];teams={t['id']:t for t in snap['teams']};a=teams[p['home']]['modelState'];b=teams[p['away']]['modelState'];loc=0 if p['neutral'] else 1
-    x=np.array(f.features(a,b,loc,p['date']));prob=config['weight']*pipeline.sigmoid(x@coef)+(1-config['weight'])*pipeline.sigmoid(x[0]/8)
+    x=np.array(r4.features(a,b,loc,p['date']));prob=config['weight']*pipeline.sigmoid(x@coef)+(1-config['weight'])*pipeline.sigmoid(x[0]/8)
     self.assertAlmostEqual(prob,p['prob'],places=12);self.assertAlmostEqual(prob,lookup[p['id']]['prob'],places=12)
-    np.testing.assert_allclose(x,-np.array(f.features(b,a,-loc,p['date'])),atol=1e-12)
+    np.testing.assert_allclose(x,-np.array(r4.features(b,a,-loc,p['date'])),atol=1e-12)
     self.assertLess(a['lastDate'] or '',p['cutoff']);self.assertLess(b['lastDate'] or '',p['cutoff'])
    latest=data['snapshots']['99']['teams'];self.assertEqual(sorted(t['modelRank'] for t in latest),list(range(1,len(latest)+1)))
    self.assertAlmostEqual(np.mean([t['winIndex'] for t in latest]),.5,places=12)
