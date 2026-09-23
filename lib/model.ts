@@ -1,7 +1,11 @@
-export type ModelState={basePower:number;elo:number;box:number[];form:number;sos:number;sample:number;lastDate:string|null;v?:number[];talentMissing?:boolean};
+export type ModelState={basePower:number;elo:number;box:number[];form:number;sos:number;sample:number;lastDate:string|null;v?:number[];q?:number[];passerContext?:{values:number[];observedThrough:string|null;priorSeason:number;available:boolean};calendar?:number;talentMissing?:boolean};
 export type Model={version:string;coefficients:number[];weight:number;trainingThrough:number;featureNames?:string[]};
 export const featureNames=['Scoring strength','Elo strength','Passing efficiency','Rushing efficiency','Third-down efficiency','Turnover control','Play volume','Completion rate','First-down efficiency','Penalty discipline','Fourth-down efficiency','Possession time','Recent form','Schedule strength','Experience','Rest','Passing matchup','Rushing matchup'];
 export function modelFeatures(a:ModelState,b:ModelState,location:number,date?:string){
+ if(a.q&&b.q){
+  const rest=(t:ModelState)=>date&&t.lastDate?Math.max(3,Math.min(21,(Date.parse(date)-Date.parse(t.lastDate))/86400000)):7;
+  return [...a.q.map((v,i)=>v-b.q![i]),location,rest(a)-rest(b)];
+ }
  if(a.v&&b.v){
   const v=a.v.map((x,i)=>x-b.v![i]);
   const rest=(t:ModelState)=>date&&t.lastDate?Math.max(3,Math.min(21,(Date.parse(date)-Date.parse(t.lastDate))/86400000)):7;

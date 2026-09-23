@@ -1,0 +1,703 @@
+{
+  "version": "5-research-2-prior-only",
+  "ratingConfigurations": [
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 6.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "talentPrior": 12.0,
+      "memory": 1,
+      "decay": 0.97
+    }
+  ],
+  "bundles": {
+    "score": [
+      0,
+      6,
+      7
+    ],
+    "score_elo": [
+      0,
+      3,
+      6,
+      7
+    ],
+    "score_epa": [
+      0,
+      1,
+      2,
+      6,
+      7
+    ],
+    "score_epa_elo": [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7
+    ]
+  },
+  "ridges": [
+    1.0,
+    10.0
+  ],
+  "featureNames": [
+    "Scoring strength",
+    "Opponent-adjusted EPA",
+    "Special teams",
+    "Results-based Elo",
+    "Recruiting composite",
+    "Blue-chip share",
+    "Home field",
+    "Rest days"
+  ],
+  "constraints": "All team-strength and home-field coefficients nonnegative; rest unconstrained. No intercept. Neutral strength is scalar and transitive.",
+  "selection": "Minimum pooled previous-three-year log loss. Inner-year fits train only on preceding years from 2019. Refit through outerYear-1.",
+  "calendarDecay": "None. Recruiting affects preseason scoring prior only, never a direct probability input.",
+  "scope": "Retrospective revised historical data; all evaluation years have been inspected previously. EPA upstream fitting may include later data. No pristine holdout or verified garbage-time-filter claim.",
+  "blueprintSha256": "3fdb519e43434bf5381fd3ab648e578ae3b2483824345b8e8c2be4063ee39b61",
+  "priorDefinition": "Net scoring prior = carry * previous final net rating + talentPrior * (centered recruiting composite/1000 + centered blue-chip share). Split equally between offense and defense. Current-season games replace prior through weighted ridge.",
+  "stageTwoReason": "First-stage additive calendar decay still mechanically reduces talent-rich teams after positive performances. This second stage was specified after inspecting stage one; all results remain exploratory retrospective evidence.",
+  "stageTwoBlueprintSha256": "6c820305ef50421a9a4ca0ecb6e33e5e3a0f6455c2525b8518821995d963c241"
+}

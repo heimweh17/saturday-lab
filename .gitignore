@@ -62,3 +62,11 @@ __pycache__/
 /analytics/research-v4/
 /analytics/discovery-releases.json
 /analytics/redesign-cache.json
+/analytics/ranking-review-cache.json
+/analytics/ranking-review-work/
+/analytics/prior-review-cache.json
+/analytics/prior-review-work/
+/analytics/cohort-review-cache.json
+/analytics/cohort-review-work/
+/analytics/research-roster/
+/analytics/qb-review-cache.json

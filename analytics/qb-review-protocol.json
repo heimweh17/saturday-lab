@@ -1,0 +1,58 @@
+{
+  "version": "5-research-4-observed-passers",
+  "selection": "For each outer year, take the three best distinct rating configs in stage-three earlier-year validation. Test four component bundles x four passer treatments x two penalties = 96 candidates. Inner fits train only on previous years; choose pooled earlier-three-year log loss; refit through outerYear-1.",
+  "blueprintSha256": "79b3e721e43b12c03ce79df61ec88af29ef4feb88d67c69d51f5f74f5f9cedc6",
+  "sources": [
+    {
+      "file": "player_box_2017.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2017.parquet",
+      "sha256": "be57bc465c407ddd065f9aa33445a316fcfab22940fbed80ab58c880e295bd92"
+    },
+    {
+      "file": "player_box_2018.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2018.parquet",
+      "sha256": "42d9607f03e5b6e56974289825201ce9a92079a26bac9329af84b729445cda23"
+    },
+    {
+      "file": "player_box_2019.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2019.parquet",
+      "sha256": "fdd30bf40f4d3cb4a336cf80a8622401defd4cf11165f21927d8ced4997d35fe"
+    },
+    {
+      "file": "player_box_2020.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2020.parquet",
+      "sha256": "7cfa97bcce7a69bbbaf787e93c5a5feafe9ab28f929cf42a5607ce7c949d9df2"
+    },
+    {
+      "file": "player_box_2021.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2021.parquet",
+      "sha256": "0a6eed194330956e2c03561e1e7c7e0ade4645002479c022aacd957a137ed939"
+    },
+    {
+      "file": "player_box_2022.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2022.parquet",
+      "sha256": "f02b5809abeb03f5bbaf51c657863a0f65d3d0e9abc685234e6dacabfb2c53ba"
+    },
+    {
+      "file": "player_box_2023.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2023.parquet",
+      "sha256": "c468119d73d089e3d30d53a936c9fc0d7eb1992d7bb2b567889c3ef413fb7c3b"
+    },
+    {
+      "file": "player_box_2024.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2024.parquet",
+      "sha256": "644ffdfe5b2303265bff528db21591e1eec7c6c4356e297ee1037c6972d8ad45"
+    },
+    {
+      "file": "player_box_2025.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2025.parquet",
+      "sha256": "ad2e6cbe50001dc26e3d1435aa80836453c823797061d0adede0ab862e4d5e3d"
+    },
+    {
+      "file": "player_box_2026.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2026.parquet",
+      "sha256": "a5ab89e4fbe9184a6b420cfa3ab922638fb04e0f6c4099742742665276d0d5c7"
+    }
+  ],
+  "scope": "Hierarchical retrospective study requested after earlier experiments; no pristine holdout. Observed passers are not verified future starters. Individual passing efficiency is raw/shrunken, not opponent-adjusted QBR."
+}

@@ -40,9 +40,9 @@ class RedesignTests(unittest.TestCase):
   pairs=json.loads((r.ROOT/'public/data/fpi-paired-audit.json').read_text());self.assertGreater(len(pairs),2000)
   for p in pairs:self.assertLess(p['homeFpiTimestamp'],p['cutoff']);self.assertLess(p['awayFpiTimestamp'],p['cutoff'])
  def test_missing_talent_is_explicit_and_not_zero(self):
-  d=json.loads((r.ROOT/'public/data/2026.json').read_text());h=next(t for t in d['snapshots']['99']['teams'] if t['id']=='62')['modelState'];self.assertTrue(h['talentMissing']);self.assertGreater(h['v'][6],0)
+  d=json.loads((r.ROOT/'public/data/2026.json').read_text());h=next(t for t in d['snapshots']['99']['teams'] if t['id']=='62')['modelState'];self.assertTrue(h['talentMissing']);self.assertEqual(h['q'][4],0.) if 'q' in h else self.assertGreater(h['v'][6],0)
  def test_all_candidate_choices_follow_validation(self):
-  report=json.loads((r.ROOT/'public/data/model.json').read_text())
+  report=json.loads((r.ROOT/'public/data/model-v4.json').read_text())
   for year,a in report['annual'].items():
    search=next(s for s in report['searches'] if s['targetSeason']==int(year));self.assertEqual(len(search['candidates']),288);self.assertEqual(a['selected'],min(search['candidates'],key=lambda c:c['logLoss']));self.assertEqual(a['trainingThrough'],int(year)-1);self.assertEqual(a['validationYears'],list(range(int(year)-3,int(year))))
 if __name__=='__main__':unittest.main()

@@ -1,7 +1,7 @@
 "use client";
 import {useState} from 'react';
 import type {Season} from './types';
-import {dateLabel,download} from './ui';
+import {dateLabel,download,signed} from './ui';
 import {Button} from '@/components/ui/button';
 
 export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:string}){
@@ -16,6 +16,7 @@ export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:s
     return [{label:priorWeek===null?'Preseason':priorWeek>=30?`After postseason ${priorWeek-30}`:`After week ${priorWeek}`,short:priorWeek===null?'Pre':priorWeek>=30?`Post ${priorWeek-30}`:`W${priorWeek}`,rank:team.modelRank??team.rank,through:snapshot.through,teams:snapshot.teams.length}];
   });
   if(!points.length)return null;
+  const explanation=data.snapshots[week]?.teams.find(t=>t.id===teamId)?.ratingExplanation;
   const last=points[points.length-1],first=points[0],change=first.rank-last.rank;
   const active=points[Math.min(hovered??points.length-1,points.length-1)];
   const total=Math.max(...points.map(p=>p.teams));
@@ -40,6 +41,7 @@ export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:s
     </svg></div>
     <p className="rank-point-readout" aria-live="polite"><strong>{active.label}: #{active.rank}</strong> of {active.teams} FBS teams <span>Results through {dateLabel(active.through)}</span></p>
     <p className="fine-print">This is Saturday Lab’s ranking, not the AP poll or ESPN FPI. Each point uses only results available at that time. A bye week can still change a team’s rank as other teams play.{data.season<2023?' This archived season uses the exploratory scoring model.':''}</p>
+    {explanation&&<details className="rank-values"><summary>Why did this ranking change?</summary><p className="subcopy">Previous rank #{explanation.previousRank}; now #{last.rank}. Rank is relative to the whole FBS field.</p><dl className="stat-list"><div><dt>This team’s update, holding the previous field fixed</dt><dd>{signed(explanation.ownIndexChange*100,2)} percentage points</dd></div><div><dt>Then updating the rest of the field</dt><dd>{signed(explanation.fieldIndexChange*100,2)} percentage points</dd></div></dl><p className="fine-print">These two steps add up to the change in the strength index. A team can improve while its rank falls if other teams improve more. This decomposition is descriptive, not a causal estimate.</p><details><summary>Strength components</summary><dl className="stat-list">{explanation.drivers.map(d=><div key={d.label}><dt>{d.label}</dt><dd>{signed(d.logOddsChange,3)}</dd></div>)}</dl><p className="fine-print">Changes in model log odds, not points scored. Opponent adjustment can revise a team’s strength even during a bye.</p></details></details>}
     <details className="rank-values"><summary>View exact weekly rankings</summary><table><thead><tr><th>Week completed</th><th>Rank</th><th>Results through</th></tr></thead><tbody>{points.map(p=><tr key={p.label}><td>{p.label}</td><td>#{p.rank}</td><td>{dateLabel(p.through)}</td></tr>)}</tbody></table></details>
   </section>;
 }

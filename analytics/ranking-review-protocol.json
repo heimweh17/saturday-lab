@@ -1,0 +1,360 @@
+{
+  "version": "5-research-1",
+  "ratingConfigurations": [
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.0,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 1.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "cap28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "mismatch",
+      "memory": 1,
+      "decay": 0.97
+    }
+  ],
+  "bundles": {
+    "score": [
+      0,
+      6,
+      7
+    ],
+    "score_elo": [
+      0,
+      3,
+      6,
+      7
+    ],
+    "score_epa": [
+      0,
+      1,
+      2,
+      6,
+      7
+    ],
+    "score_epa_elo": [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7
+    ],
+    "all_constant": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "all_calendar": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  },
+  "ridges": [
+    1.0,
+    10.0
+  ],
+  "featureNames": [
+    "Scoring strength",
+    "Opponent-adjusted EPA",
+    "Special teams",
+    "Results-based Elo",
+    "Recruiting composite",
+    "Blue-chip share",
+    "Home field",
+    "Rest days"
+  ],
+  "constraints": "All team-strength and home-field coefficients nonnegative; rest unconstrained. No intercept. Neutral strength is scalar and transitive.",
+  "selection": "Minimum pooled previous-three-year log loss. Inner-year fits train only on preceding years from 2019. Refit through outerYear-1.",
+  "calendarDecay": "Recruiting in all_calendar multiplied by exp(-completed calendar weeks/6), never opponent sample count.",
+  "scope": "Retrospective revised historical data; all evaluation years have been inspected previously. EPA upstream fitting may include later data. No pristine holdout or verified garbage-time-filter claim.",
+  "blueprintSha256": "3fdb519e43434bf5381fd3ab648e578ae3b2483824345b8e8c2be4063ee39b61"
+}

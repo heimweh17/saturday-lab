@@ -1,0 +1,162 @@
+[
+  {
+    "file": "cfb_recruits_2014.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2014.parquet",
+    "sha256": "a608554ec6764ef9ab331e62c9d972f37bcc8c116dcab74628acbbd053dc644e"
+  },
+  {
+    "file": "cfb_recruits_2015.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2015.parquet",
+    "sha256": "8bcf2aa037aedff6fdc6f9e3567631f20f68f8e1fab57e9a31f33d2aee58947f"
+  },
+  {
+    "file": "cfb_recruits_2016.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2016.parquet",
+    "sha256": "fa24c0e520777ff92ece13646491e54a8448615b61e03f13dbffbd162f8abd3c"
+  },
+  {
+    "file": "cfb_recruits_2017.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2017.parquet",
+    "sha256": "d7d2b2104542df45d105694812348339f3dfa750bd9efa830fe7cfb0414f695e"
+  },
+  {
+    "file": "cfb_recruits_2018.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2018.parquet",
+    "sha256": "e62fd4291e16b8bc2cc6d58d5dac5cf14877c4902e1af31bc9b769a9672e5df5"
+  },
+  {
+    "file": "cfb_recruits_2019.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2019.parquet",
+    "sha256": "7d4bfe2b79418174bffe716032bf935a20634b0c4d9eb9111628b4904581fb6d"
+  },
+  {
+    "file": "cfb_recruits_2020.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2020.parquet",
+    "sha256": "5c34694a0642c787cead7d0854e006d907d52fe1ad243a8199375854ed15aa8a"
+  },
+  {
+    "file": "cfb_recruits_2021.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2021.parquet",
+    "sha256": "f9360162f0ddfca94d68bf65e4d9788afcce6c25ac7e86b577d904e3e9b55031"
+  },
+  {
+    "file": "cfb_recruits_2022.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2022.parquet",
+    "sha256": "626cb48999eaac4c14592dba72041404555bf94de97c5e28ec4cd091b9d9ad68"
+  },
+  {
+    "file": "cfb_recruits_2023.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2023.parquet",
+    "sha256": "2da8cc68c78d32ce3053f4852a133e6e70479989cacdcb1b7437de1a5a74d127"
+  },
+  {
+    "file": "cfb_recruits_2024.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2024.parquet",
+    "sha256": "91cc5275f402d2db8b85bb93333460e0508c0c0490080c2389da10ab9a4d2a84"
+  },
+  {
+    "file": "cfb_recruits_2025.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2025.parquet",
+    "sha256": "908a79237a7c05d66eb80a00e3c64d6f253295a8ecd66ccfb7e064e0004c32d1"
+  },
+  {
+    "file": "cfb_recruits_2026.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2026.parquet",
+    "sha256": "e0e7f3eb54825c8673ed581a0de35c6c3ca6800d81265eb429ddc6cffea9c48a"
+  },
+  {
+    "file": "game_rosters_2018.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2018.parquet",
+    "sha256": "f3dad004aff62bc0e121b1d53a30dd3624c1a81026632e13d6f4aeeacdbb3f26"
+  },
+  {
+    "file": "game_rosters_2019.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2019.parquet",
+    "sha256": "d73ddf0bf3fb2619244688f883ddb149e4361e3597fb9c2a57490021aba871c4"
+  },
+  {
+    "file": "game_rosters_2020.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2020.parquet",
+    "sha256": "dac23cd4d05b40a8fa4b1ff5b8d08feda2cc246e460809add790e8fbe7af2dd5"
+  },
+  {
+    "file": "game_rosters_2021.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2021.parquet",
+    "sha256": "df647cac82acd95f3155d3cd45d0191c50789c74db852c3f9a6aedc6f753ae9b"
+  },
+  {
+    "file": "game_rosters_2022.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2022.parquet",
+    "sha256": "8706830c5c3070c23b18c3fa48fedd85864724fdc2d7f9fb645c287d8edae36b"
+  },
+  {
+    "file": "game_rosters_2023.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2023.parquet",
+    "sha256": "b9bf31b65e879fff3cf42869815596b6d7301b90598b145cbaa2e692b0b637db"
+  },
+  {
+    "file": "game_rosters_2024.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2024.parquet",
+    "sha256": "bb39b3d58e0a0e5d0a063c8c6f889cfb65d49cbc328ec5fc5581eaedc9a3d9e6"
+  },
+  {
+    "file": "game_rosters_2025.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2025.parquet",
+    "sha256": "911a977e0ee51a1ae063500a955144fad72131a93b7b5d6307caaa18634473ea"
+  },
+  {
+    "file": "game_rosters_2026.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2026.parquet",
+    "sha256": "57dce394a74613aa297cad24a50ff77ac168e58b0dc154febe05a2c4c4f1eb92"
+  },
+  {
+    "file": "player_box_2017.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2017.parquet",
+    "sha256": "be57bc465c407ddd065f9aa33445a316fcfab22940fbed80ab58c880e295bd92"
+  },
+  {
+    "file": "player_box_2018.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2018.parquet",
+    "sha256": "42d9607f03e5b6e56974289825201ce9a92079a26bac9329af84b729445cda23"
+  },
+  {
+    "file": "player_box_2019.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2019.parquet",
+    "sha256": "fdd30bf40f4d3cb4a336cf80a8622401defd4cf11165f21927d8ced4997d35fe"
+  },
+  {
+    "file": "player_box_2020.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2020.parquet",
+    "sha256": "7cfa97bcce7a69bbbaf787e93c5a5feafe9ab28f929cf42a5607ce7c949d9df2"
+  },
+  {
+    "file": "player_box_2021.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2021.parquet",
+    "sha256": "0a6eed194330956e2c03561e1e7c7e0ade4645002479c022aacd957a137ed939"
+  },
+  {
+    "file": "player_box_2022.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2022.parquet",
+    "sha256": "f02b5809abeb03f5bbaf51c657863a0f65d3d0e9abc685234e6dacabfb2c53ba"
+  },
+  {
+    "file": "player_box_2023.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2023.parquet",
+    "sha256": "c468119d73d089e3d30d53a936c9fc0d7eb1992d7bb2b567889c3ef413fb7c3b"
+  },
+  {
+    "file": "player_box_2024.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2024.parquet",
+    "sha256": "644ffdfe5b2303265bff528db21591e1eec7c6c4356e297ee1037c6972d8ad45"
+  },
+  {
+    "file": "player_box_2025.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2025.parquet",
+    "sha256": "ad2e6cbe50001dc26e3d1435aa80836453c823797061d0adede0ab862e4d5e3d"
+  },
+  {
+    "file": "player_box_2026.parquet",
+    "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_player_box/player_box_2026.parquet",
+    "sha256": "a5ab89e4fbe9184a6b420cfa3ab922638fb04e0f6c4099742742665276d0d5c7"
+  }
+]

@@ -1,0 +1,1522 @@
+{
+  "version": "5-research-3-cohorts",
+  "ratingConfigurations": [
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.35,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 2.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "raw",
+      "weight": "mismatch",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "none",
+      "talentPrior": 0.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "published",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "equal",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "developmental",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "no_freshmen",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 2.0,
+      "memory": 1,
+      "decay": 0.97
+    },
+    {
+      "carry": 0.65,
+      "lam": 4.0,
+      "method": "residual28",
+      "weight": "uniform",
+      "talentMode": "lagged_four",
+      "talentPrior": 4.0,
+      "memory": 1,
+      "decay": 0.97
+    }
+  ],
+  "bundles": {
+    "score": [
+      0,
+      8,
+      9
+    ],
+    "score_elo": [
+      0,
+      3,
+      8,
+      9
+    ],
+    "score_epa_elo": [
+      0,
+      1,
+      2,
+      3,
+      8,
+      9
+    ],
+    "robust_efficiency": [
+      0,
+      1,
+      2,
+      3,
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  "ridges": [
+    1.0,
+    10.0
+  ],
+  "featureNames": [
+    "Scoring strength",
+    "Opponent-adjusted EPA",
+    "Special teams",
+    "Results-based Elo",
+    "Recruiting composite",
+    "Blue-chip share",
+    "Non-explosive EPA",
+    "Turnover control",
+    "Home field",
+    "Rest days"
+  ],
+  "constraints": "All team-strength and home-field coefficients nonnegative; rest unconstrained. No intercept. Neutral strength is scalar and transitive.",
+  "selection": "Minimum pooled previous-three-year log loss. Inner-year fits train only on preceding years from 2019. Refit through outerYear-1.",
+  "calendarDecay": "None. Recruiting only affects the scoring prior.",
+  "scope": "Retrospective revised historical data; all evaluation years have been inspected previously. EPA upstream fitting may include later data. No pristine holdout or verified garbage-time-filter claim.",
+  "blueprintSha256": "3fdb519e43434bf5381fd3ab648e578ae3b2483824345b8e8c2be4063ee39b61",
+  "priorDefinition": "carry * previous final net rating + talentPrior * standardized cohort proxy, split equally between offense/defense.",
+  "stageThreeReason": "User requested freshman/age/roster ablations after the first two experiments. All results remain exploratory retrospective evidence.",
+  "cohortWeights": {
+    "equal": [
+      1,
+      1,
+      1,
+      1,
+      0
+    ],
+    "developmental": [
+      0.25,
+      0.75,
+      1,
+      1,
+      0
+    ],
+    "no_freshmen": [
+      0,
+      1,
+      1,
+      1,
+      0
+    ],
+    "lagged_four": [
+      0,
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  "stageThreeBlueprintSha256": "1c749232b5f634276aa567f9b786a6166aa41128fdf7f6f7d073635bf4f29276",
+  "additionalSources": [
+    {
+      "file": "cfb_recruits_2014.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2014.parquet",
+      "sha256": "a608554ec6764ef9ab331e62c9d972f37bcc8c116dcab74628acbbd053dc644e"
+    },
+    {
+      "file": "cfb_recruits_2015.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2015.parquet",
+      "sha256": "8bcf2aa037aedff6fdc6f9e3567631f20f68f8e1fab57e9a31f33d2aee58947f"
+    },
+    {
+      "file": "cfb_recruits_2016.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2016.parquet",
+      "sha256": "fa24c0e520777ff92ece13646491e54a8448615b61e03f13dbffbd162f8abd3c"
+    },
+    {
+      "file": "cfb_recruits_2017.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2017.parquet",
+      "sha256": "d7d2b2104542df45d105694812348339f3dfa750bd9efa830fe7cfb0414f695e"
+    },
+    {
+      "file": "cfb_recruits_2018.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2018.parquet",
+      "sha256": "e62fd4291e16b8bc2cc6d58d5dac5cf14877c4902e1af31bc9b769a9672e5df5"
+    },
+    {
+      "file": "cfb_recruits_2019.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2019.parquet",
+      "sha256": "7d4bfe2b79418174bffe716032bf935a20634b0c4d9eb9111628b4904581fb6d"
+    },
+    {
+      "file": "cfb_recruits_2020.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2020.parquet",
+      "sha256": "5c34694a0642c787cead7d0854e006d907d52fe1ad243a8199375854ed15aa8a"
+    },
+    {
+      "file": "cfb_recruits_2021.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2021.parquet",
+      "sha256": "f9360162f0ddfca94d68bf65e4d9788afcce6c25ac7e86b577d904e3e9b55031"
+    },
+    {
+      "file": "cfb_recruits_2022.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2022.parquet",
+      "sha256": "626cb48999eaac4c14592dba72041404555bf94de97c5e28ec4cd091b9d9ad68"
+    },
+    {
+      "file": "cfb_recruits_2023.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2023.parquet",
+      "sha256": "2da8cc68c78d32ce3053f4852a133e6e70479989cacdcb1b7437de1a5a74d127"
+    },
+    {
+      "file": "cfb_recruits_2024.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2024.parquet",
+      "sha256": "91cc5275f402d2db8b85bb93333460e0508c0c0490080c2389da10ab9a4d2a84"
+    },
+    {
+      "file": "cfb_recruits_2025.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2025.parquet",
+      "sha256": "908a79237a7c05d66eb80a00e3c64d6f253295a8ecd66ccfb7e064e0004c32d1"
+    },
+    {
+      "file": "cfb_recruits_2026.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/cfb_recruits/cfb_recruits_2026.parquet",
+      "sha256": "e0e7f3eb54825c8673ed581a0de35c6c3ca6800d81265eb429ddc6cffea9c48a"
+    },
+    {
+      "file": "game_rosters_2018.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2018.parquet",
+      "sha256": "f3dad004aff62bc0e121b1d53a30dd3624c1a81026632e13d6f4aeeacdbb3f26"
+    },
+    {
+      "file": "game_rosters_2019.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2019.parquet",
+      "sha256": "d73ddf0bf3fb2619244688f883ddb149e4361e3597fb9c2a57490021aba871c4"
+    },
+    {
+      "file": "game_rosters_2020.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2020.parquet",
+      "sha256": "dac23cd4d05b40a8fa4b1ff5b8d08feda2cc246e460809add790e8fbe7af2dd5"
+    },
+    {
+      "file": "game_rosters_2021.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2021.parquet",
+      "sha256": "df647cac82acd95f3155d3cd45d0191c50789c74db852c3f9a6aedc6f753ae9b"
+    },
+    {
+      "file": "game_rosters_2022.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2022.parquet",
+      "sha256": "8706830c5c3070c23b18c3fa48fedd85864724fdc2d7f9fb645c287d8edae36b"
+    },
+    {
+      "file": "game_rosters_2023.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2023.parquet",
+      "sha256": "b9bf31b65e879fff3cf42869815596b6d7301b90598b145cbaa2e692b0b637db"
+    },
+    {
+      "file": "game_rosters_2024.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2024.parquet",
+      "sha256": "bb39b3d58e0a0e5d0a063c8c6f889cfb65d49cbc328ec5fc5581eaedc9a3d9e6"
+    },
+    {
+      "file": "game_rosters_2025.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2025.parquet",
+      "sha256": "911a977e0ee51a1ae063500a955144fad72131a93b7b5d6307caaa18634473ea"
+    },
+    {
+      "file": "game_rosters_2026.parquet",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_game_rosters/game_rosters_2026.parquet",
+      "sha256": "57dce394a74613aa297cad24a50ff77ac168e58b0dc154febe05a2c4c4f1eb92"
+    }
+  ]
+}

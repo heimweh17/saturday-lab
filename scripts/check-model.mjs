@@ -9,6 +9,15 @@ const {modelPredict,winDistribution}=module.exports;
 let checked=0;
 for(const year of [2023,2024,2025,2026]){
  const data=JSON.parse(fs.readFileSync(`public/data/${year}.json`,'utf8'));
+ for(const snapshot of Object.values(data.snapshots)){
+  const teams=snapshot.teams;
+  const sorted=[...teams].sort((a,b)=>a.modelRank-b.modelRank);
+  for(let i=1;i<sorted.length;i++)assert.ok(sorted[i-1].winIndex>=sorted[i].winIndex-1e-12);
+  for(const team of teams){
+   const index=teams.filter(t=>t.id!==team.id).reduce((sum,t)=>sum+modelPredict(team.modelState,t.modelState,0,data.model).probability,0)/(teams.length-1);
+   assert.ok(Math.abs(index-team.winIndex)<1e-12,`Rank index mismatch: ${year}/${team.id}`);
+  }
+ }
  for(const p of data.predictions){
   const teams=data.snapshots[String(p.week)].teams;const a=teams.find(t=>t.id===p.home).modelState,b=teams.find(t=>t.id===p.away).modelState,location=p.neutral?0:1;
   const result=modelPredict(a,b,location,data.model,p.date);
