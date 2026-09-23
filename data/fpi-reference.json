@@ -1,0 +1,976 @@
+{
+  "source": "https://www.espn.co.uk/college-football/fpi/_/season/2026",
+  "retrievedAt": "2026-09-23T06:45:56.711010+00:00",
+  "sourceUpdated": "Last Updated: 22 September 2026",
+  "sourceSha256": "697212962052549fd9e875945ccc4ca69f173b77db27463ee11690291f26c4b1",
+  "season": 2026,
+  "scope": "External current ranking reference only. ESPN snapshot date differs from Saturday Lab results through September 20; not a matched-time accuracy benchmark or a historical model input.",
+  "teams": [
+    {
+      "id": "194",
+      "name": "Ohio State Buckeyes",
+      "record": "2-1",
+      "fpi": 28.1,
+      "rank": 1
+    },
+    {
+      "id": "251",
+      "name": "Texas Longhorns",
+      "record": "3-0",
+      "fpi": 28.1,
+      "rank": 2
+    },
+    {
+      "id": "61",
+      "name": "Georgia Bulldogs",
+      "record": "3-0",
+      "fpi": 27.1,
+      "rank": 3
+    },
+    {
+      "id": "87",
+      "name": "Notre Dame Fighting Irish",
+      "record": "3-0",
+      "fpi": 26.8,
+      "rank": 4
+    },
+    {
+      "id": "84",
+      "name": "Indiana Hoosiers",
+      "record": "3-0",
+      "fpi": 24.6,
+      "rank": 5
+    },
+    {
+      "id": "2390",
+      "name": "Miami Hurricanes",
+      "record": "3-0",
+      "fpi": 23.9,
+      "rank": 6
+    },
+    {
+      "id": "333",
+      "name": "Alabama Crimson Tide",
+      "record": "3-0",
+      "fpi": 22.3,
+      "rank": 7
+    },
+    {
+      "id": "99",
+      "name": "LSU Tigers",
+      "record": "2-1",
+      "fpi": 20.3,
+      "rank": 8
+    },
+    {
+      "id": "2483",
+      "name": "Oregon Ducks",
+      "record": "2-1",
+      "fpi": 19.2,
+      "rank": 9
+    },
+    {
+      "id": "2633",
+      "name": "Tennessee Volunteers",
+      "record": "3-0",
+      "fpi": 18.5,
+      "rank": 10
+    },
+    {
+      "id": "245",
+      "name": "Texas A&M Aggies",
+      "record": "2-1",
+      "fpi": 18.2,
+      "rank": 11
+    },
+    {
+      "id": "213",
+      "name": "Penn State Nittany Lions",
+      "record": "3-0",
+      "fpi": 18.2,
+      "rank": 12
+    },
+    {
+      "id": "145",
+      "name": "Ole Miss Rebels",
+      "record": "3-0",
+      "fpi": 17.7,
+      "rank": 13
+    },
+    {
+      "id": "201",
+      "name": "Oklahoma Sooners",
+      "record": "2-1",
+      "fpi": 16.7,
+      "rank": 14
+    },
+    {
+      "id": "254",
+      "name": "Utah Utes",
+      "record": "3-0",
+      "fpi": 16.5,
+      "rank": 15
+    },
+    {
+      "id": "57",
+      "name": "Florida Gators",
+      "record": "3-0",
+      "fpi": 16.4,
+      "rank": 16
+    },
+    {
+      "id": "2641",
+      "name": "Texas Tech Red Raiders",
+      "record": "3-0",
+      "fpi": 15.8,
+      "rank": 17
+    },
+    {
+      "id": "30",
+      "name": "USC Trojans",
+      "record": "4-0",
+      "fpi": 15.5,
+      "rank": 18
+    },
+    {
+      "id": "252",
+      "name": "BYU Cougars",
+      "record": "3-0",
+      "fpi": 15.2,
+      "rank": 19
+    },
+    {
+      "id": "130",
+      "name": "Michigan Wolverines",
+      "record": "3-0",
+      "fpi": 14.9,
+      "rank": 20
+    },
+    {
+      "id": "158",
+      "name": "Nebraska Cornhuskers",
+      "record": "3-0",
+      "fpi": 14.2,
+      "rank": 21
+    },
+    {
+      "id": "344",
+      "name": "Mississippi State Bulldogs",
+      "record": "3-0",
+      "fpi": 14.1,
+      "rank": 22
+    },
+    {
+      "id": "97",
+      "name": "Louisville Cardinals",
+      "record": "2-1",
+      "fpi": 13.9,
+      "rank": 23
+    },
+    {
+      "id": "2",
+      "name": "Auburn Tigers",
+      "record": "2-1",
+      "fpi": 12.9,
+      "rank": 24
+    },
+    {
+      "id": "221",
+      "name": "Pittsburgh Panthers",
+      "record": "3-0",
+      "fpi": 12.3,
+      "rank": 25
+    },
+    {
+      "id": "2567",
+      "name": "SMU Mustangs",
+      "record": "2-1",
+      "fpi": 12.2,
+      "rank": 26
+    },
+    {
+      "id": "2579",
+      "name": "South Carolina Gamecocks",
+      "record": "2-1",
+      "fpi": 12.1,
+      "rank": 27
+    },
+    {
+      "id": "2294",
+      "name": "Iowa Hawkeyes",
+      "record": "3-0",
+      "fpi": 12.1,
+      "rank": 28
+    },
+    {
+      "id": "259",
+      "name": "Virginia Tech Hokies",
+      "record": "3-0",
+      "fpi": 11.6,
+      "rank": 29
+    },
+    {
+      "id": "2306",
+      "name": "Kansas State Wildcats",
+      "record": "3-0",
+      "fpi": 11.2,
+      "rank": 30
+    },
+    {
+      "id": "248",
+      "name": "Houston Cougars",
+      "record": "2-1",
+      "fpi": 10.8,
+      "rank": 31
+    },
+    {
+      "id": "142",
+      "name": "Missouri Tigers",
+      "record": "3-0",
+      "fpi": 10.5,
+      "rank": 32
+    },
+    {
+      "id": "77",
+      "name": "Northwestern Wildcats",
+      "record": "2-0",
+      "fpi": 9.3,
+      "rank": 33
+    },
+    {
+      "id": "258",
+      "name": "Virginia Cavaliers",
+      "record": "2-1",
+      "fpi": 9.2,
+      "rank": 34
+    },
+    {
+      "id": "150",
+      "name": "Duke Blue Devils",
+      "record": "3-0",
+      "fpi": 9.1,
+      "rank": 35
+    },
+    {
+      "id": "96",
+      "name": "Kentucky Wildcats",
+      "record": "2-1",
+      "fpi": 8.5,
+      "rank": 36
+    },
+    {
+      "id": "68",
+      "name": "Boise State Broncos",
+      "record": "2-1",
+      "fpi": 8.1,
+      "rank": 37
+    },
+    {
+      "id": "239",
+      "name": "Baylor Bears",
+      "record": "2-1",
+      "fpi": 8.1,
+      "rank": 38
+    },
+    {
+      "id": "52",
+      "name": "Florida State Seminoles",
+      "record": "1-2",
+      "fpi": 7.8,
+      "rank": 39
+    },
+    {
+      "id": "26",
+      "name": "UCLA Bruins",
+      "record": "3-0",
+      "fpi": 7.4,
+      "rank": 40
+    },
+    {
+      "id": "2628",
+      "name": "TCU Horned Frogs",
+      "record": "2-1",
+      "fpi": 7.2,
+      "rank": 41
+    },
+    {
+      "id": "228",
+      "name": "Clemson Tigers",
+      "record": "2-1",
+      "fpi": 6.1,
+      "rank": 42
+    },
+    {
+      "id": "238",
+      "name": "Vanderbilt Commodores",
+      "record": "3-0",
+      "fpi": 6.1,
+      "rank": 43
+    },
+    {
+      "id": "356",
+      "name": "Illinois Fighting Illini",
+      "record": "2-1",
+      "fpi": 6.0,
+      "rank": 44
+    },
+    {
+      "id": "12",
+      "name": "Arizona Wildcats",
+      "record": "2-1",
+      "fpi": 5.9,
+      "rank": 45
+    },
+    {
+      "id": "2132",
+      "name": "Cincinnati Bearcats",
+      "record": "3-0",
+      "fpi": 5.8,
+      "rank": 46
+    },
+    {
+      "id": "264",
+      "name": "Washington Huskies",
+      "record": "3-0",
+      "fpi": 5.8,
+      "rank": 47
+    },
+    {
+      "id": "120",
+      "name": "Maryland Terrapins",
+      "record": "2-1",
+      "fpi": 5.5,
+      "rank": 48
+    },
+    {
+      "id": "277",
+      "name": "West Virginia Mountaineers",
+      "record": "3-0",
+      "fpi": 5.3,
+      "rank": 49
+    },
+    {
+      "id": "197",
+      "name": "Oklahoma State Cowboys",
+      "record": "2-1",
+      "fpi": 5.0,
+      "rank": 50
+    },
+    {
+      "id": "153",
+      "name": "North Carolina Tar Heels",
+      "record": "2-1",
+      "fpi": 4.9,
+      "rank": 51
+    },
+    {
+      "id": "2116",
+      "name": "UCF Knights",
+      "record": "2-1",
+      "fpi": 4.9,
+      "rank": 52
+    },
+    {
+      "id": "275",
+      "name": "Wisconsin Badgers",
+      "record": "2-1",
+      "fpi": 4.8,
+      "rank": 53
+    },
+    {
+      "id": "154",
+      "name": "Wake Forest Demon Deacons",
+      "record": "2-1",
+      "fpi": 4.6,
+      "rank": 54
+    },
+    {
+      "id": "66",
+      "name": "Iowa State Cyclones",
+      "record": "2-1",
+      "fpi": 4.4,
+      "rank": 55
+    },
+    {
+      "id": "127",
+      "name": "Michigan State Spartans",
+      "record": "2-1",
+      "fpi": 4.2,
+      "rank": 56
+    },
+    {
+      "id": "167",
+      "name": "New Mexico Lobos",
+      "record": "2-1",
+      "fpi": 4.0,
+      "rank": 57
+    },
+    {
+      "id": "9",
+      "name": "Arizona State Sun Devils",
+      "record": "2-1",
+      "fpi": 3.8,
+      "rank": 58
+    },
+    {
+      "id": "256",
+      "name": "James Madison Dukes",
+      "record": "3-0",
+      "fpi": 3.2,
+      "rank": 59
+    },
+    {
+      "id": "59",
+      "name": "Georgia Tech Yellow Jackets",
+      "record": "1-2",
+      "fpi": 2.1,
+      "rank": 60
+    },
+    {
+      "id": "152",
+      "name": "NC State Wolfpack",
+      "record": "1-2",
+      "fpi": 2.0,
+      "rank": 61
+    },
+    {
+      "id": "135",
+      "name": "Minnesota Golden Gophers",
+      "record": "2-1",
+      "fpi": 0.9,
+      "rank": 62
+    },
+    {
+      "id": "58",
+      "name": "South Florida Bulls",
+      "record": "3-0",
+      "fpi": 0.8,
+      "rank": 63
+    },
+    {
+      "id": "183",
+      "name": "Syracuse Orange",
+      "record": "1-2",
+      "fpi": 0.6,
+      "rank": 64
+    },
+    {
+      "id": "2449",
+      "name": "North Dakota State Bison",
+      "record": "4-0",
+      "fpi": 0.3,
+      "rank": 65
+    },
+    {
+      "id": "2711",
+      "name": "Western Michigan Broncos",
+      "record": "2-1",
+      "fpi": -0.0,
+      "rank": 66
+    },
+    {
+      "id": "2305",
+      "name": "Kansas Jayhawks",
+      "record": "1-2",
+      "fpi": -0.1,
+      "rank": 67
+    },
+    {
+      "id": "2655",
+      "name": "Tulane Green Wave",
+      "record": "1-2",
+      "fpi": -0.2,
+      "rank": 68
+    },
+    {
+      "id": "278",
+      "name": "Fresno State Bulldogs",
+      "record": "2-1",
+      "fpi": -0.5,
+      "rank": 69
+    },
+    {
+      "id": "38",
+      "name": "Colorado Buffaloes",
+      "record": "2-1",
+      "fpi": -0.7,
+      "rank": 70
+    },
+    {
+      "id": "235",
+      "name": "Memphis Tigers",
+      "record": "3-1",
+      "fpi": -0.8,
+      "rank": 71
+    },
+    {
+      "id": "202",
+      "name": "Tulsa Golden Hurricane",
+      "record": "3-0",
+      "fpi": -1.0,
+      "rank": 72
+    },
+    {
+      "id": "25",
+      "name": "California Golden Bears",
+      "record": "2-1",
+      "fpi": -1.5,
+      "rank": 73
+    },
+    {
+      "id": "8",
+      "name": "Arkansas Razorbacks",
+      "record": "1-2",
+      "fpi": -1.6,
+      "rank": 74
+    },
+    {
+      "id": "2509",
+      "name": "Purdue Boilermakers",
+      "record": "1-2",
+      "fpi": -1.6,
+      "rank": 75
+    },
+    {
+      "id": "2636",
+      "name": "UTSA Roadrunners",
+      "record": "2-1",
+      "fpi": -1.7,
+      "rank": 76
+    },
+    {
+      "id": "2649",
+      "name": "Toledo Rockets",
+      "record": "2-1",
+      "fpi": -1.8,
+      "rank": 77
+    },
+    {
+      "id": "204",
+      "name": "Oregon State Beavers",
+      "record": "1-2",
+      "fpi": -2.2,
+      "rank": 78
+    },
+    {
+      "id": "249",
+      "name": "North Texas Mean Green",
+      "record": "1-2",
+      "fpi": -2.3,
+      "rank": 79
+    },
+    {
+      "id": "349",
+      "name": "Army Black Knights",
+      "record": "1-1",
+      "fpi": -2.7,
+      "rank": 80
+    },
+    {
+      "id": "21",
+      "name": "San Diego State Aztecs",
+      "record": "1-2",
+      "fpi": -3.3,
+      "rank": 81
+    },
+    {
+      "id": "48",
+      "name": "Delaware Blue Hens",
+      "record": "2-1",
+      "fpi": -4.0,
+      "rank": 82
+    },
+    {
+      "id": "2335",
+      "name": "Liberty Flames",
+      "record": "2-1",
+      "fpi": -4.4,
+      "rank": 83
+    },
+    {
+      "id": "151",
+      "name": "East Carolina Pirates",
+      "record": "1-2",
+      "fpi": -4.6,
+      "rank": 84
+    },
+    {
+      "id": "218",
+      "name": "Temple Owls",
+      "record": "1-2",
+      "fpi": -4.6,
+      "rank": 85
+    },
+    {
+      "id": "326",
+      "name": "Texas State Bobcats",
+      "record": "1-2",
+      "fpi": -4.9,
+      "rank": 86
+    },
+    {
+      "id": "2026",
+      "name": "App State Mountaineers",
+      "record": "3-0",
+      "fpi": -5.0,
+      "rank": 87
+    },
+    {
+      "id": "2426",
+      "name": "Navy Midshipmen",
+      "record": "1-1",
+      "fpi": -5.3,
+      "rank": 88
+    },
+    {
+      "id": "309",
+      "name": "Louisiana Ragin' Cajuns",
+      "record": "2-1",
+      "fpi": -5.5,
+      "rank": 89
+    },
+    {
+      "id": "164",
+      "name": "Rutgers Scarlet Knights",
+      "record": "0-3",
+      "fpi": -5.6,
+      "rank": 90
+    },
+    {
+      "id": "103",
+      "name": "Boston College Eagles",
+      "record": "2-1",
+      "fpi": -5.8,
+      "rank": 91
+    },
+    {
+      "id": "41",
+      "name": "UConn Huskies",
+      "record": "2-1",
+      "fpi": -5.8,
+      "rank": 92
+    },
+    {
+      "id": "2439",
+      "name": "UNLV Rebels",
+      "record": "1-2",
+      "fpi": -5.9,
+      "rank": 93
+    },
+    {
+      "id": "2005",
+      "name": "Air Force Falcons",
+      "record": "1-1",
+      "fpi": -5.9,
+      "rank": 94
+    },
+    {
+      "id": "2653",
+      "name": "Troy Trojans",
+      "record": "2-1",
+      "fpi": -6.0,
+      "rank": 95
+    },
+    {
+      "id": "36",
+      "name": "Colorado State Rams",
+      "record": "2-1",
+      "fpi": -6.1,
+      "rank": 96
+    },
+    {
+      "id": "265",
+      "name": "Washington State Cougars",
+      "record": "1-2",
+      "fpi": -7.0,
+      "rank": 97
+    },
+    {
+      "id": "2348",
+      "name": "Louisiana Tech Bulldogs",
+      "record": "1-2",
+      "fpi": -7.0,
+      "rank": 98
+    },
+    {
+      "id": "6",
+      "name": "South Alabama Jaguars",
+      "record": "2-1",
+      "fpi": -7.4,
+      "rank": 99
+    },
+    {
+      "id": "295",
+      "name": "Old Dominion Monarchs",
+      "record": "1-2",
+      "fpi": -7.4,
+      "rank": 100
+    },
+    {
+      "id": "290",
+      "name": "Georgia Southern Eagles",
+      "record": "1-2",
+      "fpi": -7.8,
+      "rank": 101
+    },
+    {
+      "id": "24",
+      "name": "Stanford Cardinal",
+      "record": "1-2",
+      "fpi": -7.9,
+      "rank": 102
+    },
+    {
+      "id": "324",
+      "name": "Coastal Carolina Chanticleers",
+      "record": "1-2",
+      "fpi": -8.3,
+      "rank": 103
+    },
+    {
+      "id": "193",
+      "name": "Miami (OH) RedHawks",
+      "record": "1-2",
+      "fpi": -8.4,
+      "rank": 104
+    },
+    {
+      "id": "2440",
+      "name": "Nevada Wolf Pack",
+      "record": "1-2",
+      "fpi": -8.5,
+      "rank": 105
+    },
+    {
+      "id": "62",
+      "name": "Hawai'i Rainbow Warriors",
+      "record": "1-2",
+      "fpi": -8.5,
+      "rank": 106
+    },
+    {
+      "id": "2247",
+      "name": "Georgia State Panthers",
+      "record": "2-1",
+      "fpi": -8.8,
+      "rank": 107
+    },
+    {
+      "id": "328",
+      "name": "Utah State Aggies",
+      "record": "0-3",
+      "fpi": -8.8,
+      "rank": 108
+    },
+    {
+      "id": "55",
+      "name": "Jacksonville State Gamecocks",
+      "record": "2-2",
+      "fpi": -8.9,
+      "rank": 109
+    },
+    {
+      "id": "2534",
+      "name": "Sam Houston Bearkats",
+      "record": "1-2",
+      "fpi": -8.9,
+      "rank": 110
+    },
+    {
+      "id": "2032",
+      "name": "Arkansas State Red Wolves",
+      "record": "1-2",
+      "fpi": -10.2,
+      "rank": 111
+    },
+    {
+      "id": "195",
+      "name": "Ohio Bobcats",
+      "record": "1-2",
+      "fpi": -10.2,
+      "rank": 112
+    },
+    {
+      "id": "2226",
+      "name": "Florida Atlantic Owls",
+      "record": "2-1",
+      "fpi": -10.4,
+      "rank": 113
+    },
+    {
+      "id": "2229",
+      "name": "Florida International Panthers",
+      "record": "1-2",
+      "fpi": -10.8,
+      "rank": 114
+    },
+    {
+      "id": "338",
+      "name": "Kennesaw State Owls",
+      "record": "1-2",
+      "fpi": -11.0,
+      "rank": 115
+    },
+    {
+      "id": "113",
+      "name": "Massachusetts Minutemen",
+      "record": "3-0",
+      "fpi": -11.4,
+      "rank": 116
+    },
+    {
+      "id": "276",
+      "name": "Marshall Thundering Herd",
+      "record": "2-1",
+      "fpi": -11.9,
+      "rank": 117
+    },
+    {
+      "id": "2572",
+      "name": "Southern Miss Golden Eagles",
+      "record": "1-2",
+      "fpi": -13.1,
+      "rank": 118
+    },
+    {
+      "id": "23",
+      "name": "San Jos\u00e9 State Spartans",
+      "record": "2-2",
+      "fpi": -13.2,
+      "rank": 119
+    },
+    {
+      "id": "2393",
+      "name": "Middle Tennessee Blue Raiders",
+      "record": "2-1",
+      "fpi": -13.2,
+      "rank": 120
+    },
+    {
+      "id": "2623",
+      "name": "Missouri State Bears",
+      "record": "1-2",
+      "fpi": -13.5,
+      "rank": 121
+    },
+    {
+      "id": "242",
+      "name": "Rice Owls",
+      "record": "1-2",
+      "fpi": -13.5,
+      "rank": 122
+    },
+    {
+      "id": "166",
+      "name": "New Mexico State Aggies",
+      "record": "1-2",
+      "fpi": -13.5,
+      "rank": 123
+    },
+    {
+      "id": "98",
+      "name": "Western Kentucky Hilltoppers",
+      "record": "0-3",
+      "fpi": -14.3,
+      "rank": 124
+    },
+    {
+      "id": "5",
+      "name": "UAB Blazers",
+      "record": "1-2",
+      "fpi": -14.9,
+      "rank": 125
+    },
+    {
+      "id": "2429",
+      "name": "Charlotte 49ers",
+      "record": "0-3",
+      "fpi": -15.0,
+      "rank": 126
+    },
+    {
+      "id": "2117",
+      "name": "Central Michigan Chippewas",
+      "record": "2-1",
+      "fpi": -16.2,
+      "rank": 127
+    },
+    {
+      "id": "2084",
+      "name": "Buffalo Bulls",
+      "record": "1-2",
+      "fpi": -16.6,
+      "rank": 128
+    },
+    {
+      "id": "2459",
+      "name": "Northern Illinois Huskies",
+      "record": "0-3",
+      "fpi": -17.0,
+      "rank": 129
+    },
+    {
+      "id": "2006",
+      "name": "Akron Zips",
+      "record": "1-2",
+      "fpi": -17.9,
+      "rank": 130
+    },
+    {
+      "id": "2638",
+      "name": "UTEP Miners",
+      "record": "1-2",
+      "fpi": -18.3,
+      "rank": 131
+    },
+    {
+      "id": "2199",
+      "name": "Eastern Michigan Eagles",
+      "record": "1-3",
+      "fpi": -19.3,
+      "rank": 132
+    },
+    {
+      "id": "2751",
+      "name": "Wyoming Cowboys",
+      "record": "1-2",
+      "fpi": -19.7,
+      "rank": 133
+    },
+    {
+      "id": "2050",
+      "name": "Ball State Cardinals",
+      "record": "1-2",
+      "fpi": -21.6,
+      "rank": 134
+    },
+    {
+      "id": "2433",
+      "name": "UL Monroe Warhawks",
+      "record": "0-3",
+      "fpi": -22.6,
+      "rank": 135
+    },
+    {
+      "id": "189",
+      "name": "Bowling Green Falcons",
+      "record": "0-3",
+      "fpi": -23.2,
+      "rank": 136
+    },
+    {
+      "id": "2309",
+      "name": "Kent State Golden Flashes",
+      "record": "1-2",
+      "fpi": -23.2,
+      "rank": 137
+    },
+    {
+      "id": "16",
+      "name": "Sacramento State Hornets",
+      "record": "1-3",
+      "fpi": -25.0,
+      "rank": 138
+    }
+  ]
+}
