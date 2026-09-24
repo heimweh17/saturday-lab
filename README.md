@@ -9,11 +9,13 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 ## What you can do
 
 - Scan a Top 25 or search and filter the complete 138-team FBS ranking by model-average neutral win probability against the entire field.
+- Open the dedicated team directory to search by school, nickname, abbreviation or conference, or use large quick-access cards for frequently followed programs.
 - Start with a weekly matchup board ranked by a documented marquee score: 60% team quality and 40% projected closeness, limited to games with a Top 25 team or two Top 50 teams. Close projections are flagged, and every matchup opens its own game center.
 - See the latest movement around the rankings: biggest riser, biggest slide and the leading opponent-adjusted offense and defense.
 - Select historical seasons and before-week snapshots, filter conferences, compare scoring offense/defense and export rankings.
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
 - Select among 30 raw and derived box metrics, switch team/opponent views, filter home/away/FBS games, compare against FBS team averages and inspect complete past-game box scores.
+- Open any completed game for a side-by-side team box score including first downs, total/passing/rushing yards, attempts, down conversions, turnovers, penalties and possession. Upcoming game centers show one-decimal probabilities and a broader current-form comparison.
 - Compare two teams and venues, inspect probability contributions and scoring-component margin decomposition.
 - Compare as many as 12 teams on one season-long ranking chart, switch between a fitted view and all FBS ranks, zoom the scale, or follow one team week by week with the game result behind every ranking point.
 - Explore every team on a large, expandable offense-versus-defense map with hover details, range controls, wheel/pinch zoom, panning and direct links to team reports.

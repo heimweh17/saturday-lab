@@ -3,7 +3,7 @@ import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {ArrowUpRight} from 'lucide-react';
 
-const items=[['/','Rankings'],['/matchup/','Matchup Lab'],['/rank-trends/','Rank trends'],['/model/','Model'],['/methodology/','Methodology']];
+const items=[['/','Rankings'],['/teams/','Find a team'],['/matchup/','Matchup Lab'],['/rank-trends/','Rank trends'],['/model/','Model'],['/methodology/','Methodology']];
 
 export function SiteHeader(){
   const pathname=usePathname();
