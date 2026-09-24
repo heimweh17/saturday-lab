@@ -1,0 +1,10 @@
+[
+  {"file":"cfb_matchup_line_2019.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2019.parquet","sha256":"196b8aa27e0926982750cb01ceca74121f8850d3b6036778db5f02839198f1e5"},
+  {"file":"cfb_matchup_line_2020.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2020.parquet","sha256":"5d72965ebb04f8947de993dc396b44178d68ab6eccc0faa59a1a14a4a9090a96"},
+  {"file":"cfb_matchup_line_2021.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2021.parquet","sha256":"310a60ef048a22b96c70fc82e2c036bca752aa2145c82af6bc3720ff02638b01"},
+  {"file":"cfb_matchup_line_2022.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2022.parquet","sha256":"9b7d56bf317d4e15de8d738bba7954ef46e969bde2c97cd2fcd9e25aa86f00f3"},
+  {"file":"cfb_matchup_line_2023.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2023.parquet","sha256":"46fd0334f0601bc0b06a22cb81bd8b9ef318268cd9e751d2cc97e8746c05cc5c"},
+  {"file":"cfb_matchup_line_2024.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2024.parquet","sha256":"063a1135f275b0cc1a2622acacf3240b4025eba0f25a654499551ea486841708"},
+  {"file":"cfb_matchup_line_2025.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2025.parquet","sha256":"dbe9d4911988bc6ee281628e15510cf4b89c2d9b628e24dcb4815d5cb99549b8"},
+  {"file":"cfb_matchup_line_2026.parquet","url":"https://raw.githubusercontent.com/sportsdataverse/cfbfastR-cfb-data/main/data/parquet/cfb_matchup_line_2026.parquet","sha256":"2c8fd074b7f4419d416e0bc8b099c2db72f891700097a5cc2800eb21178a06ef"}
+]

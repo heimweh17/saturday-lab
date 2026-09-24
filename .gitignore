@@ -74,3 +74,5 @@ __pycache__/
 /analytics/research-stability/
 /analytics/stability-review-cache.json
 /analytics/opponent-stability-review-cache.json
+/analytics/research-durability/
+/analytics/durability-review-cache.json
