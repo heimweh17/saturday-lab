@@ -1,5 +1,7 @@
 "use client";
+/* eslint-disable react/no-unescaped-entities */
 import {useState} from 'react';
+import type {CSSProperties} from 'react';
 import {ArrowDownToLine} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Table,TableHeader,TableBody,TableHead,TableRow,TableCell} from '@/components/ui/table';
@@ -7,7 +9,7 @@ import {Picker,Logo,signed,fixed,pct,dateLabel,download} from './ui';
 import {DataExplorer} from './data-explorer';
 import {RankHistory} from './rank-history';
 import {Forecast} from './forecast';
-import type {Team,Season,Snapshot,Config} from './types';
+import type {Season,Snapshot,Config} from './types';
 export function Scouting({data,snapshot,week,selected,onSelect,onCompare,config}:{config:Config;data:Season;snapshot:Snapshot;week:string;selected:string;onSelect:(v:string)=>void;onCompare:(v:string)=>void}){
 const [section,setSection]=useState('overview');const [split,setSplit]=useState('all');const team=snapshot.teams.find(t=>t.id===selected)??snapshot.teams[0];
 const cutoff=data.weeks.indexOf(Number(week));const allowed=new Set(data.weeks.slice(0,cutoff));
@@ -16,7 +18,7 @@ const filtered=games.filter(g=>split==='all'||split==='fbs'&&g.fbs||split==='hom
 const trend=data.weeks.slice(0,cutoff+1).map(w=>({week:w,team:data.snapshots[String(w)].teams.find(t=>t.id===team.id)})).filter(x=>x.team);
 const max=Math.max(20,...trend.map(t=>Math.abs(t.team!.power)))+3;const tx=(i:number)=>42+i/Math.max(1,trend.length-1)*670;const ty=(v:number)=>125-v/max*85;
 const options=snapshot.teams.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(t=>({value:t.id,label:t.name}));
-return <><div className="section-heading"><div><h1>Teams &amp; schedules</h1><p>Choose a team, then explore its season, upcoming games or detailed statistics.</p></div><Picker label="Team" value={team.id} onChange={onSelect} options={options}/></div><section className="team-banner" style={{borderLeftColor:team.color}}><div className="team-identity"><Logo team={team} size={75}/><div><p>{team.conference}</p><h2>{team.name}</h2><span>{team.wins}–{team.losses} overall · {team.modelGames} FBS games in this season’s model</span></div></div><div className="team-national"><strong>#{team.modelRank??team.rank}</strong><span>National power rank</span></div><Button onClick={()=>onCompare(team.id)}>Compare a matchup</Button></section>
+return <><div className="section-heading"><div><h1>Teams &amp; schedules</h1><p>Choose a team, then explore its season, upcoming games or detailed statistics.</p></div><Picker label="Team" value={team.id} onChange={onSelect} options={options}/></div><section className="team-banner" style={{'--team-color':team.color} as CSSProperties}><div className="team-identity"><Logo team={team} size={75}/><div><p>{team.conference}</p><h2>{team.name}</h2><span>{team.wins}–{team.losses} overall · {team.modelGames} FBS games in this season’s model</span></div></div><div className="team-national"><strong>#{team.modelRank??team.rank}</strong><span>National power rank</span></div><Button onClick={()=>onCompare(team.id)}>Compare a matchup</Button></section>
 <nav className="team-sections" aria-label="Team report sections">{[['overview','Overview'],['upcoming','Upcoming games'],['results','Results'],['stats','Detailed stats']].map(([id,label])=><button key={id} aria-pressed={section===id} onClick={()=>setSection(id)}>{label}</button>)}</nav>
 {section==='overview'&&<><RankHistory data={data} teamId={team.id} week={week}/><details className="advanced-details"><summary>Scoring ratings &amp; model inputs</summary><div className="stat-strip"><Stat label="Scoring power" value={signed(team.power)} note="Points vs. average FBS"/><Stat label="Adjusted offense" value={signed(team.offense)} note="Points added / game"/><Stat label="Adjusted defense" value={signed(team.defense)} note="Points prevented / game"/><Stat label="Schedule strength" value={signed(team.sos)} note="Mean opponent net rating"/></div>
 {team.modelGames<4&&<p className="callout">Small sample: {team.modelGames} FBS games. The prior-year rating and shrinkage still have a meaningful influence. A low early-season rating is not a final verdict.</p>}

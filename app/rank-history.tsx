@@ -1,5 +1,5 @@
 "use client";
-import {useState} from 'react';
+import {useEffect,useState} from 'react';
 import type {Season} from './types';
 import {dateLabel,download,signed} from './ui';
 import {Button} from '@/components/ui/button';
@@ -7,6 +7,13 @@ import {Button} from '@/components/ui/button';
 export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:string}){
   const [fullScale,setFullScale]=useState(false);
   const [hovered,setHovered]=useState<number|null>(null);
+  const [expanded,setExpanded]=useState(false);
+  useEffect(()=>{
+    if(!expanded)return;
+    const closeOnEscape=(event:KeyboardEvent)=>{if(event.key==='Escape')setExpanded(false);};
+    document.addEventListener('keydown',closeOnEscape);
+    return ()=>document.removeEventListener('keydown',closeOnEscape);
+  },[expanded]);
   const cutoff=data.weeks.indexOf(Number(week));
   const points=data.weeks.slice(0,cutoff+1).flatMap((w,i)=>{
     const snapshot=data.snapshots[String(w)];
@@ -26,8 +33,8 @@ export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:s
   const y=(rank:number)=>38+(rank-low)/Math.max(1,high-low)*214;
   const step=high-low>60?25:high-low>30?10:5;
   const ticks=[low,...Array.from({length:Math.ceil(high/step)},(_,i)=>(i+1)*step).filter(n=>n>low+2&&n<high-2),high];
-  return <section className="surface rank-history">
-    <div className="panel-title"><div><h2>Season ranking history</h2><p className="subcopy">{data.season} national model rank after each completed week. Higher on the chart means a stronger ranking.</p></div><Button variant="outline" onClick={()=>download(`rank-history-${teamId}-${data.season}.csv`,points)}>Export ranking history</Button></div>
+  return <section className={`surface rank-history${expanded?' rank-history-expanded':''}`} role={expanded?'dialog':undefined} aria-modal={expanded||undefined} aria-label={expanded?'Expanded season ranking history':undefined}>
+    <div className="panel-title"><div><h2>Season ranking history</h2><p className="subcopy">{data.season} national model rank after each completed week. Higher on the chart means a stronger ranking.</p></div><div className="rank-history-actions"><Button variant="outline" onClick={()=>setExpanded(!expanded)}>{expanded?'Close expanded view':'Expand chart'}</Button><Button variant="outline" onClick={()=>download(`rank-history-${teamId}-${data.season}.csv`,points)}>Export ranking history</Button></div></div>
     <div className="rank-history-summary"><strong>#{last.rank}<small>{last.label}</small></strong><p>{change===0?'Unchanged':`${Math.abs(change)} ${Math.abs(change)===1?'place':'places'} ${change>0?'up':'down'}`} from preseason <span>#{first.rank}</span></p></div>
     <label className="rank-scale"><input type="checkbox" checked={fullScale} onChange={e=>setFullScale(e.target.checked)}/> Show all {total} ranks</label><div className="rank-chart-scroll"><svg viewBox="0 0 780 305" className="rank-chart" style={{minWidth:points.length>8?560:undefined}} role="group" aria-label="Weekly national ranking. Rank one is at the top. Focus a point for its exact rank.">
       {ticks.map(n=><g key={n}><line x1="64" x2="724" y1={y(n)} y2={y(n)} stroke="#dce5eb"/><text x="49" y={y(n)+4} textAnchor="end">#{n}</text></g>)}
