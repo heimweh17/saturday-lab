@@ -42,6 +42,7 @@ next-env.d.ts
 /.sites-runtime/
 /.agents/
 /.codex/
+/.codex-dev.log
 /outputs/
 /work/
 __pycache__/
@@ -70,3 +71,6 @@ __pycache__/
 /analytics/cohort-review-work/
 /analytics/research-roster/
 /analytics/qb-review-cache.json
+/analytics/research-stability/
+/analytics/stability-review-cache.json
+/analytics/opponent-stability-review-cache.json

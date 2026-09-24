@@ -1,0 +1,10 @@
+[
+  {"file":"cfb_matchup_features_2019.parquet","sha256":"4ab8bd9c6634bef06c23c0de8f01fc7542d4e326bef9febb27d0091b1632b2d5"},
+  {"file":"cfb_matchup_features_2020.parquet","sha256":"b3e487f59e48f06a210d80e9024216bc44d2ed628104b46f2568621d76e5eaee"},
+  {"file":"cfb_matchup_features_2021.parquet","sha256":"41b1337763861bc7d1ba17945f9ede3bb2f5095a99f246b5260613b44d3f19cd"},
+  {"file":"cfb_matchup_features_2022.parquet","sha256":"dae545a020298fe4f64a6d6ee24cf0251b186383c4a8676b05bc13581fe7a51c"},
+  {"file":"cfb_matchup_features_2023.parquet","sha256":"2c7147b2ceaf37b56c94c01c267ea264881c20dbf37f0959fdd8277dce896bd6"},
+  {"file":"cfb_matchup_features_2024.parquet","sha256":"8b116638d715662e3f9294f2606460ab97e95be33f3a1ee239ddefaa1cddcf48"},
+  {"file":"cfb_matchup_features_2025.parquet","sha256":"c414d898a604cd2cbf448289d1db149c9981affec92556fff6d7178ed5d3d501"},
+  {"file":"cfb_matchup_features_2026.parquet","sha256":"de6b55d4d257e999ade193e9063ceeb460d50fd0093d720b2bb95d86adce864d"}
+]

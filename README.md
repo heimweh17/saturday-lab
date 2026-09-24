@@ -20,30 +20,30 @@ Results cover 2018–2026. Current results end September 20, 2026; schedules wer
 
 ## One production model
 
-Version 5 publishes one scalar neutral-field strength per team:
+Version 6 publishes one scalar neutral-field strength per team:
 
 `P(A wins) = logistic(S(A) - S(B) + venue + rest)`.
 
 Opponent-adjusted offense and defense are fitted jointly, with regularization toward `carry × last season final rating + recruiting weight × standardized recruiting proxy`. Recruiting affects that prior, not a separate opponent-dependent weekly bonus. The ranking averages neutral win probabilities across all FBS opponents and has the same order as scalar strength.
 
-Four documented, retrospective research stages tested **432 additive-recruiting configurations**, **576 recruiting-prior configurations**, **1,056 cohort/efficiency configurations**, then **96 passer-context combinations per annual search** using three earlier-validation-selected rating designs. We compared no talent, equal classes, reduced freshman weight, no freshmen and lagged classes; raw/bounded margins, mismatch weighting, EPA, non-explosive EPA, turnovers, Elo and previous-season observed-passer performance. More variables were not automatically retained.
+Six documented, retrospective research stages tested recruiting placement, prior strength, roster cohorts, passer history, raw pregame play features and an opponent-adjusted replication. The final stage compares scoring strength with opponent-adjusted non-explosive EPA, first-down creation, passing EPA, rushing EPA, yards per play and explosive-play rate. The raw success-rate result was not promoted until its signal survived explicit schedule-strength adjustment.
 
-For each outer season, choose by pooled previous-three-year log loss. Each inner-year coefficient fit trains only on preceding years. Refit through outerYear-1. FPI ranks never enter selection. Current selection: **scoring + prior observed-passer efficiency + venue/rest**, 65% carry, rating penalty 2, published four-class recruiting proxy at 4 points per standard deviation, uniform game weights, regression penalty 1. Prior passer efficiency is shrunk previous-season adjusted yards/attempt, weighted by the most recently observed passers' attempt shares; not future starter knowledge or ESPN QBR.
+For each outer season, choose by pooled previous-three-year log loss. Each inner-year coefficient fit trains only on preceding years. Refit through outerYear-1. FPI ranks never enter selection. Current selection is the broad opponent-adjusted bundle; its fitted nonzero terms are scoring strength, first-down creation, rushing EPA, yards per play, prior observed-passer efficiency, venue and rest. It retains 65% carry, rating penalty 2, the published recruiting prior at 4 points per standard deviation, uniform game weights and regression penalty 1.
 
 ### Evidence and limits
 
-| Outer season | Games | V5 accuracy | V4 accuracy | Original accuracy | V5 log loss | V4 log loss |
+| Outer season | Games | V6 accuracy | V5 accuracy | Original accuracy | V6 log loss | V5 log loss |
 |---|---:|---:|---:|---:|---:|---:|
-| 2023 | 792 | 72.85% | 73.48% | 72.85% | .52841 | .53609 |
-| 2024 | 798 | 69.17% | 68.55% | 68.67% | .55407 | .54966 |
-| 2025 | 808 | 72.40% | 73.02% | 72.15% | .53204 | .53511 |
-| 2026 partial | 157 | 82.17% | 81.53% | 82.17% | .42845 | .43328 |
+| 2023 | 792 | 74.12% | 72.85% | 72.85% | .53238 | .52841 |
+| 2024 | 798 | 69.30% | 69.17% | 68.67% | .54709 | .55407 |
+| 2025 | 808 | 73.02% | 72.40% | 72.15% | .53025 | .53204 |
+| 2026 partial | 157 | 81.53% | 82.17% | 82.17% | .42688 | .42845 |
 
-2024–25: v5 and v4 both pick **1,137/1,606** winners; original picks 1,131. Pooled log loss is **.54298 (v5), .54234 (v4), .54654 (original)**. V5 is slightly worse than v4 on pooled probability error and better than the original. Current partial season: 129 correct versus v4's 128. This is not uniform superiority or a pristine holdout. Development has inspected these seasons; upstream historical inputs can be revised. Descriptive week-bootstrap intervals and unfavorable subgroup results are published in the model audit.
+2024–25: v6 picks **1,143/1,606** winners versus v5's 1,137. Pooled log loss improves **.54298 → .53862**. A prespecified week-block bootstrap favored v6 in **92.9%** of 10,000 resamples, above the 90% promotion threshold, and neither complete season breached the regression guard. The partial 2026 sample improves log loss slightly but has one fewer correct pick. This is retrospective evidence rather than a pristine holdout.
 
 Recruiting-age ablations do **not** establish that ignoring freshmen is better: the published proxy narrowly wins the current earlier-year validation comparison before the final passer search. Signed-class records do not establish actual redshirts, transfers or playing time. Unreliable game-roster participation flags and same-season returning-production archives were excluded. See `analytics/REVIEW-RESULTS.md` and the four research blueprints.
 
-Current whole-field FPI mean rank gap changes **8.68 → 7.59**, Spearman **.954 → .967**. Model cutoff is September 20; FPI reference September 22. This is diagnostic, not a tuning target or proof of predictive superiority. Historical timestamp-matched FPI-based picks are our calculations with three home points, not official ESPN game probabilities. Archived v3/v4, all preliminary experiments and all final predictions remain downloadable.
+Current whole-field FPI mean rank gap changes **7.59 → 7.57** from v5 to v6, with Spearman **.967 → .968**. Model cutoff is September 20; FPI reference September 22. This is diagnostic, not a tuning target. Archived v3/v4/v5, all preliminary experiments and final predictions remain downloadable.
 
 ## Data and boundaries
 
@@ -91,6 +91,9 @@ python analytics/prior_review.py --data analytics/raw
 python analytics/cohort_review.py --data analytics/raw
 python analytics/qb_review.py --data analytics/raw
 python analytics/export_ranking_review.py
+python analytics/stability_review.py
+python analytics/opponent_stability_review.py
+python analytics/export_opponent_stability.py
 python analytics/service_index.py
 python analytics/provenance.py --data analytics/raw
 python -m unittest discover -s analytics -p 'test*.py' -v
@@ -98,7 +101,7 @@ node scripts/check-model.mjs
 npm run build:pages
 ```
 
-The first pipeline regenerates the original benchmark; `final_model.py` recreates v3, and `redesign.py` recreates v4. Then run the four research stages and the final exporter in order. V5 predictions retain `previousProb` (v4), `v3Prob`, and `benchmark` (original); season archives also preserve `baselineProb`. The committed `model-v4.json` is the frozen v4 comparison baseline.
+The first pipeline regenerates the original benchmark; `final_model.py` recreates v3, and `redesign.py` recreates v4. Run the research stages in order. The final two studies freeze their designs before results, test raw as-of play features, then repeat the useful signals with opponent adjustment. The committed model-v4/v5 reports preserve comparison baselines.
 
 `fetch_redesign.py` verifies 36 pinned source files; `fetch_extended.py` restores and verifies 32 recruiting/player-box/roster investigation files. The research scripts additionally verify 27 normalized core CSV hashes. A mismatch stops reproduction rather than silently mixing revised inputs with cached research. Fresh source revisions require a new research version. Core data default to the original local research directory; pass `--data analytics/raw` when reproducing elsewhere. Set `OPENBLAS_NUM_THREADS=1` to avoid excessive small-matrix threading. Final research caches are generated locally and ignored by Git; selected states, predictions, protocols, source hashes and reports are published.
 
@@ -111,7 +114,7 @@ Schedules are separately refreshed by `fixtures.py`. No API key is required for 
 - Optional API checks: `python analytics/check_api.py http://localhost:3000`.
 - UI checked on desktop and 390px mobile: schedule, metric selection, past game details, before-week empty states, matchup swapping and audit navigation.
 
-Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analytics/qb_review.py`, `analytics/export_ranking_review.py`, `lib/model.ts`, `app/forecast.tsx`, `app/data-explorer.tsx`, `app/model-audit.tsx`.
+Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analytics/qb_review.py`, `analytics/stability_review.py`, `analytics/opponent_stability_review.py`, `analytics/export_opponent_stability.py`, `lib/model.ts`, `app/forecast.tsx`, `app/model-audit.tsx`.
 
 ### Data endpoints on Pages
 
@@ -119,7 +122,7 @@ Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analyti
 
 ### Portfolio description
 
-Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, four-stage retrospective research with nested temporal selection, recruiting-age ablations and observed-passer context, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests and calibration diagnostics, including limitations and comparisons that did not favor the new model.
+Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, six-stage retrospective research with nested temporal selection, recruiting-age ablations, observed-passer context, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests, promotion gates and calibration diagnostics, including unfavorable comparisons.
 
 Independent personal project, not affiliated with the NCAA, ESPN or universities. Team names and marks belong to their respective owners.
 
