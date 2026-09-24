@@ -20,7 +20,13 @@ export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:s
     const team=snapshot.teams.find(t=>t.id===teamId);
     if(!team)return [];
     const priorWeek=i?data.weeks[i-1]:null;
-    return [{label:priorWeek===null?'Preseason':priorWeek>=30?`After postseason ${priorWeek-30}`:`After week ${priorWeek}`,short:priorWeek===null?'Pre':priorWeek>=30?`Post ${priorWeek-30}`:`W${priorWeek}`,rank:team.modelRank??team.rank,through:snapshot.through,teams:snapshot.teams.length}];
+    const weekGames=priorWeek===null?[]:data.games.filter(g=>g.week===priorWeek&&(g.home===teamId||g.away===teamId)).map(g=>{
+      const home=g.home===teamId,teamScore=home?g.hs:g.as,opponentScore=home?g.as:g.hs,opponent=home?g.awayName:g.homeName;
+      const site=g.neutral?'vs.':home?'vs.':'at';
+      return `${teamScore>opponentScore?'W':'L'} ${teamScore}–${opponentScore} ${site} ${opponent}`;
+    });
+    const result=priorWeek===null?'Offseason prior':weekGames.length?weekGames.join(' · '):'Bye / no completed game';
+    return [{label:priorWeek===null?'Preseason':priorWeek>=30?`After postseason ${priorWeek-30}`:`After week ${priorWeek}`,short:priorWeek===null?'Pre':priorWeek>=30?`Post ${priorWeek-30}`:`W${priorWeek}`,rank:team.modelRank??team.rank,through:snapshot.through,teams:snapshot.teams.length,result}];
   });
   if(!points.length)return null;
   const explanation=data.snapshots[week]?.teams.find(t=>t.id===teamId)?.ratingExplanation;
@@ -39,16 +45,16 @@ export function RankHistory({data,teamId,week}:{data:Season;teamId:string;week:s
     <label className="rank-scale"><input type="checkbox" checked={fullScale} onChange={e=>setFullScale(e.target.checked)}/> Show all {total} ranks</label><div className="rank-chart-scroll"><svg viewBox="0 0 780 305" className="rank-chart" style={{minWidth:points.length>8?560:undefined}} role="group" aria-label="Weekly national ranking. Rank one is at the top. Focus a point for its exact rank.">
       {ticks.map(n=><g key={n}><line x1="64" x2="724" y1={y(n)} y2={y(n)} stroke="#dce5eb"/><text x="49" y={y(n)+4} textAnchor="end">#{n}</text></g>)}
       <polyline points={points.map((p,i)=>`${x(i)},${y(p.rank)}`).join(' ')} fill="none" stroke="#1768ac" strokeWidth="3"/>
-      {points.map((p,i)=><g key={p.label} tabIndex={0} role="img" aria-label={`${p.label}: rank ${p.rank} of ${p.teams}; results through ${dateLabel(p.through)}`} onFocus={()=>setHovered(i)} onBlur={()=>setHovered(null)} onMouseEnter={()=>setHovered(i)} onMouseLeave={()=>setHovered(null)} onClick={()=>setHovered(i)}>
+      {points.map((p,i)=><g key={p.label} tabIndex={0} role="img" aria-label={`${p.label}: rank ${p.rank} of ${p.teams}; ${p.result}; results through ${dateLabel(p.through)}`} onFocus={()=>setHovered(i)} onBlur={()=>setHovered(null)} onMouseEnter={()=>setHovered(i)} onMouseLeave={()=>setHovered(null)} onClick={()=>setHovered(i)}>
         <circle cx={x(i)} cy={y(p.rank)} r="13" fill="transparent"/>
         <circle cx={x(i)} cy={y(p.rank)} r={active===p?6:4} fill="#1768ac" stroke="white" strokeWidth="2"/>
-        <title>{p.label}: #{p.rank}</title>
+        <title>{p.label}: #{p.rank} · {p.result}</title>
         {(points.length<=10||i%2===0||i===points.length-1)&&<text x={x(i)} y="281" textAnchor="middle">{p.short}</text>}
       </g>)}
     </svg></div>
-    <p className="rank-point-readout" aria-live="polite"><strong>{active.label}: #{active.rank}</strong> of {active.teams} FBS teams <span>Results through {dateLabel(active.through)}</span></p>
+    <p className="rank-point-readout" aria-live="polite"><strong>{active.label}: #{active.rank}</strong> of {active.teams} FBS teams <span>{active.result}</span><span>Results through {dateLabel(active.through)}</span></p>
     <p className="fine-print">This is Saturday Lab’s ranking, not the AP poll or ESPN FPI. Each point uses only results available at that time. A bye week can still change a team’s rank as other teams play.{data.season<2023?' This archived season uses the exploratory scoring model.':''}</p>
     {explanation&&<details className="rank-values"><summary>Why did this ranking change?</summary><p className="subcopy">Previous rank #{explanation.previousRank}; now #{last.rank}. Rank is relative to the whole FBS field.</p><dl className="stat-list"><div><dt>This team’s update, holding the previous field fixed</dt><dd>{signed(explanation.ownIndexChange*100,2)} percentage points</dd></div><div><dt>Then updating the rest of the field</dt><dd>{signed(explanation.fieldIndexChange*100,2)} percentage points</dd></div></dl><p className="fine-print">These two steps add up to the change in the strength index. A team can improve while its rank falls if other teams improve more. This decomposition is descriptive, not a causal estimate.</p><details><summary>Strength components</summary><dl className="stat-list">{explanation.drivers.map(d=><div key={d.label}><dt>{d.label}</dt><dd>{signed(d.logOddsChange,3)}</dd></div>)}</dl><p className="fine-print">Changes in model log odds, not points scored. Opponent adjustment can revise a team’s strength even during a bye.</p></details></details>}
-    <details className="rank-values"><summary>View exact weekly rankings</summary><table><thead><tr><th>Week completed</th><th>Rank</th><th>Results through</th></tr></thead><tbody>{points.map(p=><tr key={p.label}><td>{p.label}</td><td>#{p.rank}</td><td>{dateLabel(p.through)}</td></tr>)}</tbody></table></details>
+    <details className="rank-values"><summary>View exact weekly rankings</summary><table><thead><tr><th>Week completed</th><th>Rank</th><th>What happened</th><th>Results through</th></tr></thead><tbody>{points.map(p=><tr key={p.label}><td>{p.label}</td><td>#{p.rank}</td><td>{p.result}</td><td>{dateLabel(p.through)}</td></tr>)}</tbody></table></details>
   </section>;
 }

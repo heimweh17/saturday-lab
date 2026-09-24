@@ -9,14 +9,14 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 ## What you can do
 
 - Scan a Top 25 or search and filter the complete 138-team FBS ranking by model-average neutral win probability against the entire field.
-- Start with a weekly matchup board that pairs the next major games with team identity, kickoff time and v6 win probabilities, then jump directly into a matchup or team report.
+- Start with a weekly matchup board ranked by a documented marquee score: 60% team quality and 40% projected closeness, limited to games with a Top 25 team or two Top 50 teams. Close projections are flagged, and each game opens with its actual opponents and venue already selected.
 - See the latest movement around the rankings: biggest riser, biggest slide and the leading opponent-adjusted offense and defense.
 - Select historical seasons and before-week snapshots, filter conferences, compare scoring offense/defense and export rankings.
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
 - Select among 30 raw and derived box metrics, switch team/opponent views, filter home/away/FBS games, compare against FBS team averages and inspect complete past-game box scores.
 - Compare two teams and venues, inspect probability contributions and scoring-component margin decomposition.
-- Compare as many as 12 teams on one season-long ranking chart, expand it for a full-field view, or follow one team week by week and separate its own strength update from movement elsewhere in the field.
-- Explore every team on a large, expandable offense-versus-defense map with hover details and direct links to team reports.
+- Compare as many as 12 teams on one season-long ranking chart, switch between a fitted view and all FBS ranks, zoom the scale, or follow one team week by week with the game result behind every ranking point.
+- Explore every team on a large, expandable offense-versus-defense map with hover details, range controls, wheel/pinch zoom, panning and direct links to team reports.
 - Audit every annual candidate, reconstructed prediction, calibration bin and benchmark result; export CSVs.
 
 Results cover 2018–2026. Current results end September 20, 2026; schedules were retrieved September 22. This is a versioned snapshot, **not an automatically updated live service**.
