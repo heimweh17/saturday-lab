@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import {SiteHeader} from './site-header';
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://heimweh17.github.io/saturday-lab/"),
   title: "Saturday Lab | College Football Analytics",
   description: "Explore opponent-adjusted NCAA football rankings, team data, matchup probabilities and transparent historical validation.",
   icons: {
@@ -17,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased"><div className="site-shell"><SiteHeader/>{children}<footer><span>Saturday Lab</span><p>Independent college football analytics. Not affiliated with the NCAA, ESPN or any university.</p><span>MODEL v6 · DATED SNAPSHOTS</span></footer></div></body>
     </html>
   );
 }

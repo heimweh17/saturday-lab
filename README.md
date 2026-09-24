@@ -9,7 +9,7 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 ## What you can do
 
 - Scan a Top 25 or search and filter the complete 138-team FBS ranking by model-average neutral win probability against the entire field.
-- Start with a weekly matchup board ranked by a documented marquee score: 60% team quality and 40% projected closeness, limited to games with a Top 25 team or two Top 50 teams. Close projections are flagged, and each game opens with its actual opponents and venue already selected.
+- Start with a weekly matchup board ranked by a documented marquee score: 60% team quality and 40% projected closeness, limited to games with a Top 25 team or two Top 50 teams. Close projections are flagged, and every matchup opens its own game center.
 - See the latest movement around the rankings: biggest riser, biggest slide and the leading opponent-adjusted offense and defense.
 - Select historical seasons and before-week snapshots, filter conferences, compare scoring offense/defense and export rankings.
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
@@ -18,6 +18,18 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 - Compare as many as 12 teams on one season-long ranking chart, switch between a fitted view and all FBS ranks, zoom the scale, or follow one team week by week with the game result behind every ranking point.
 - Explore every team on a large, expandable offense-versus-defense map with hover details, range controls, wheel/pinch zoom, panning and direct links to team reports.
 - Audit every annual candidate, reconstructed prediction, calibration bin and benchmark result; export CSVs.
+
+## Site architecture
+
+Saturday Lab is statically exported as a browsable sports data publication rather than a single tabbed dashboard:
+
+- `/teams/florida-gators/` is a permanent team report with rankings, weekly movement, forecast schedule, past results and box-score-derived splits.
+- `/games/2026/ole-miss-rebels-at-florida-gators-401856699/` is a permanent game center. Upcoming games show the v6 probability, projected score, venue and available event details; completed games preserve the score and the model prediction that existed before kickoff.
+- `/matchup/` is reserved for hypothetical simulations. `/rank-trends/` provides multi-team season charts. `/model/`, `/methodology/` and `/legal/` keep model documentation and source terms outside the main data workflow.
+- Team and opponent references link back to team reports. The home marquee board and schedule rows link to game centers instead of sending readers to an external site.
+- `sitemap.xml` enumerates the complete generated archive and `robots.txt` exposes it to crawlers.
+
+The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Game weather, television and stadium detail are shown only when the published source includes them; the interface labels unavailable fields instead of inventing values.
 
 Results cover 2018–2026. Current results end September 20, 2026; schedules were retrieved September 22. This is a versioned snapshot, **not an automatically updated live service**.
 
