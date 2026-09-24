@@ -7,4 +7,4 @@ export type Season={scoringConfig?:Config;model?:Model;season:number;weeks:numbe
 export type Config={elo:{k:number;home:number;carry:number};scoring:{shrinkage:number;home:number;decay:number;scale:number};eloWeight:number};
 export type Metric={season:number;model:string;n:number;accuracy:number;brier:number;logLoss:number;mae?:number};
 export type Report={config:Config;candidates:Array<{family:string;params:Record<string,number>;n:number;accuracy:number;brier:number;logLoss:number}>;evaluation:Metric[];calibration:Array<{season:number;bin:number;n:number;predicted:number|null;actual:number|null}>;holdout:Metric;residual80:number};
-export type Manifest={generatedAt:string;seasons:number[];latestSeason:number;audit:Array<{season:number;teams:number;games:number;modelGames:number;lastGame:string;sourceRows:number;sha256:string}>;config:Config};
+export type Manifest={version:string;generatedAt:string;seasons:number[];latestSeason:number;audit:Array<{season:number;teams:number;games:number;modelGames:number;lastGame:string;sourceRows:number;sha256:string}>;config:Config};

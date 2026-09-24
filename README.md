@@ -1,6 +1,6 @@
 # Saturday Lab
 
-NCAA football analytics: one opponent-adjusted model, transparent temporal validation and an inspectable game-data workbench.
+College football rankings, team reports, schedule forecasts and matchup analysis powered by one opponent-adjusted model.
 
 **Website:** https://heimweh17.github.io/saturday-lab/
 
@@ -8,19 +8,20 @@ NCAA football analytics: one opponent-adjusted model, transparent temporal valid
 
 ## What you can do
 
-- Rank 138 current FBS teams by model-average neutral win probability against the entire field.
+- Scan a Top 25 or search and filter the complete 138-team FBS ranking by model-average neutral win probability against the entire field.
 - Select historical seasons and before-week snapshots, filter conferences, compare scoring offense/defense and export rankings.
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
 - Select among 30 raw and derived box metrics, switch team/opponent views, filter home/away/FBS games, compare against FBS team averages and inspect complete past-game box scores.
 - Compare two teams and venues, inspect probability contributions and scoring-component margin decomposition.
-- Follow weekly ranking history and separate a team’s own strength update from movement elsewhere in the field.
+- Compare as many as 12 teams on one season-long ranking chart, or follow one team week by week and separate its own strength update from movement elsewhere in the field.
+- Explore every team on a large interactive offense-versus-defense map with hover details and direct links to team reports.
 - Audit every annual candidate, reconstructed prediction, calibration bin and benchmark result; export CSVs.
 
 Results cover 2018–2026. Current results end September 20, 2026; schedules were retrieved September 22. This is a versioned snapshot, **not an automatically updated live service**.
 
-## One production model
+## Current production model: v6
 
-Version 6 publishes one scalar neutral-field strength per team:
+Every ranking and forecast on the main site uses version 6. It publishes one scalar neutral-field strength per team:
 
 `P(A wins) = logistic(S(A) - S(B) + venue + rest)`.
 

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Saturday Lab | College Football Analytics",
-  description: "Explore NCAA football power ratings, compare teams and inspect honest, week-forward historical backtests.",
+  description: "Explore opponent-adjusted NCAA football rankings, team data, matchup probabilities and transparent historical validation.",
   icons: {
     icon: `${process.env.NEXT_PUBLIC_BASE_PATH??''}/favicon.svg`,
     shortcut: `${process.env.NEXT_PUBLIC_BASE_PATH??''}/favicon.svg`,
