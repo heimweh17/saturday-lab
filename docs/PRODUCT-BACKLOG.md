@@ -16,7 +16,7 @@ This document collects requested site changes before the next grouped implementa
 
 - Status: Published
 - Source commit: `53dfd4d`
-- Pages artifact: Pending this release
+- Pages artifact: `2dcad875d6bdecd306610c8ca41fd56083961ef0`
 - Priority: High
 - Area: Games / Data / Mobile
 - User problem: A completed game currently jumps from the matchup header to summary facts and aggregate box-score statistics. It does not show how the score developed by quarter.
@@ -30,7 +30,7 @@ This document collects requested site changes before the next grouped implementa
 
 - Status: Published
 - Source commit: `53dfd4d`
-- Pages artifact: Pending this release
+- Pages artifact: `2dcad875d6bdecd306610c8ca41fd56083961ef0`
 - Priority: Medium
 - Area: Games / Navigation / Historical data
 - User problem: “Recent meetings in the archive” currently searches only the selected season, when most college teams play each other only once per year. The section is therefore usually empty.
@@ -61,7 +61,7 @@ Use this format for new entries:
 
 - Status: Published
 - Source commit: `53dfd4d`
-- Pages artifact: Pending this release
+- Pages artifact: `2dcad875d6bdecd306610c8ca41fd56083961ef0`
 - Added a scores and schedule center, complete period scoring, linked five-season meeting history, a more direct team-report opening, a full navigation footer and clearer game facts.
 
 ### Context-aware Matchup Lab defaults
