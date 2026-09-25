@@ -12,6 +12,20 @@ This document collects requested site changes before the next grouped implementa
 
 ## Request ledger
 
+### Context-aware back navigation on game pages
+
+- Status: Recorded; include in the next grouped front-end pass
+- Priority: Medium
+- Area: Games / Navigation / Teams / Scores / Mobile
+- User problem: A reader can open a permanent game center from a team schedule, completed results, the scores page or a previous-meetings link, but the game page has no clear way to return to the exact place they came from. This interrupts browsing through one team’s season or a chain of historical meetings.
+- Desired behavior: Add a compact back control at the upper-left of every game page, above or beside the season/week line. Its label should describe the actual destination when known, such as “Back to Notre Dame,” “Back to scores,” or “Back to Wisconsin vs. Notre Dame.”
+- Navigation logic: Prefer the real same-tab browser history entry so filters, scroll position and client-side state can be restored. Internal game links should also record a safe same-origin return path and human-readable label for new-tab navigation or cases where browser history is unavailable. A directly opened or externally linked game page falls back to `/games/` with “Back to scores & schedule.” Never accept an external or unvalidated return URL.
+- Source contexts to preserve: Team upcoming-games and results views return to that team; scores and schedule returns to the selected week or recent-results view; previous-meetings links return to the game page that contained the link; other internal game links return to their immediate Saturday Lab source.
+- Visual treatment: Use a quiet left-arrow text control rather than another large card or primary button. Keep it visible above the game hero, keyboard accessible and large enough to tap on mobile.
+- Routes affected: Every `/games/{season}/{game}/` page plus each internal component that links to a game center.
+- Acceptance checks: Same-tab return restores the correct origin; team A and team B links return to their respective team pages; previous-meeting chains return one step at a time; score-page filters survive when possible; direct entry has a useful fallback; repeated forward/back navigation does not loop; open-in-new-tab remains useful; malicious or external return values are rejected.
+- Notes and dependencies: During implementation, consider making team report sections and score-page filters URL-backed so the return path can restore “Upcoming games,” “Results,” a selected week or “Latest results” reliably after a reload.
+
 ### Completed-game scoring by period
 
 - Status: Published
