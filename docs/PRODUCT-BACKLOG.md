@@ -12,6 +12,28 @@ This document collects requested site changes before the next grouped implementa
 
 ## Request ledger
 
+### Completed-game box-score contrast
+
+- Status: Recorded; include in the next grouped front-end pass
+- Priority: High
+- Area: Games / Accessibility / Visual design / Mobile
+- User problem: In the completed-game “Scoring by quarter” table, team names are rendered with dark text on a dark navy background and are effectively invisible. The column labels are also too muted against the same background, so readers have to strain to identify the teams and periods.
+- Desired behavior: Restore clear, restrained contrast for every label in the scoring table. Team names should use a light foreground with normal or medium emphasis; column headings should be brighter than the current muted blue-gray while remaining visually secondary to the scores. Preserve the existing sports-site palette rather than introducing loud accent colors.
+- Scope: Audit the period-score table in light and responsive layouts, including team names, Q1–Q4, overtime labels and FINAL. Check the related completed-game tables for the same foreground/background token mismatch instead of fixing only the captured example.
+- Routes affected: Every completed `/games/{season}/{game}/` page.
+- Acceptance checks: Both team names are immediately legible; all period headings meet WCAG AA contrast for normal text; the winner/final emphasis still has a clear hierarchy; long team names wrap or truncate gracefully; mobile and desktop use the same readable treatment.
+
+### Reader-facing copy restraint pass
+
+- Status: Recorded; include in the next grouped front-end pass
+- Priority: Medium
+- Area: Site-wide content / Games / Teams / Rankings / Trends / Matchup / Mobile
+- User problem: Several public-facing pages add explanatory sentences that repeat what a heading already says without adding context. This makes data pages feel busier and more self-conscious than a finished sports product.
+- Desired behavior: Review ordinary reader-facing routes and remove or tighten copy that provides no new information. Prefer short, familiar labels: for example, consider “Score” in place of “Scoring by quarter,” remove “How the final score developed,” and remove “What each side produced in this game. Source totals and clearly labeled calculated rates.” when the surrounding heading and table already communicate that information.
+- Editorial rule: Keep all data, technical definitions, source attribution, caveats, missing-data behavior and explanations that help a reader interpret a metric. Keep useful implementation notes such as how play volume, possession and missing values are calculated. Do not trim the Methodology page merely because its explanations are long; detailed explanation is that page’s purpose. Do not delete broadly or chase minimalism—the pass should target only sentences and labels that add no meaning.
+- Review scope: Inspect home/rankings, team reports, scores and schedules, completed and future game centers, team finder, trends and Matchup Lab. Evaluate copy in context on desktop and mobile rather than using a global text search-and-delete rule.
+- Acceptance checks: Every remaining subtitle or helper sentence answers a real reader question; headings remain understandable without redundant prose; technical and provenance information remains intact; Methodology retains its full explanatory role; no page becomes ambiguous after copy is shortened.
+
 ### Context-aware back navigation on game pages
 
 - Status: Recorded; include in the next grouped front-end pass
