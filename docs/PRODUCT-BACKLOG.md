@@ -10,11 +10,13 @@ This document collects requested site changes before the next grouped implementa
 4. Before implementation, check data availability, affected routes, mobile behavior and interactions with the production v6 model.
 5. After implementation, verify locally, run model and build checks, publish, and mark completed items with the release commit.
 
-## Pending requests
+## Request ledger
 
 ### Completed-game scoring by period
 
-- Status: Recorded; defer until the next grouped game-page rebuild
+- Status: Published
+- Source commit: `53dfd4d`
+- Pages artifact: Pending this release
 - Priority: High
 - Area: Games / Data / Mobile
 - User problem: A completed game currently jumps from the matchup header to summary facts and aggregate box-score statistics. It does not show how the score developed by quarter.
@@ -22,11 +24,13 @@ This document collects requested site changes before the next grouped implementa
 - Data needed: Period-by-period scoring is not part of the current normalized `box-YYYY.json` team-stat rows. Investigate the ESPN/SportsDataverse event or summary source, archive the source provenance, normalize regulation and overtime periods, and preserve missing periods as unavailable rather than zero unless the source explicitly reports zero.
 - Routes affected: Every completed `/games/{season}/{game}/` page for 2018–2026.
 - Acceptance checks: Quarter totals add to the published final score; overtime games label every available overtime period; abandoned, shortened or incomplete records do not fabricate quarters; table remains readable on mobile; non-available period data has a clear fallback.
-- Notes and dependencies: Implement in one batch because adding the normalized period-score dataset changes thousands of generated game pages.
+- Delivery: Published validated period scores for all 7,146 completed archive games from 2018–2026. All period totals match the stored final score; 282 overtime games retain their extra periods. Missing-source fallback remains in the interface even though the current archive has complete coverage.
 
 ### Cross-season recent meetings
 
-- Status: Recorded; defer until the next grouped game-page rebuild
+- Status: Published
+- Source commit: `53dfd4d`
+- Pages artifact: Pending this release
 - Priority: Medium
 - Area: Games / Navigation / Historical data
 - User problem: “Recent meetings in the archive” currently searches only the selected season, when most college teams play each other only once per year. The section is therefore usually empty.
@@ -34,7 +38,7 @@ This document collects requested site changes before the next grouped implementa
 - Data needed: Reuse the existing 2018–2026 game catalog. Match teams by stable ESPN team IDs, not display names, so renamed teams still connect correctly.
 - Routes affected: All `/games/{season}/{game}/` pages and their static generation data.
 - Acceptance checks: Current game is excluded; meetings are ordered newest first; both home/away orientations match; each listed result links to the correct permanent game route; no same-season-only wording remains; mobile links remain easy to select.
-- Notes and dependencies: Default window should be the current season plus the previous four seasons, capped to a small number of meetings. Final window and cap can be chosen during the grouped design pass.
+- Delivery: Each game now searches its season plus the previous four, only before the selected game date, matches by stable ESPN team IDs and links the four latest meetings to their permanent game centers.
 
 <!--
 Use this format for new entries:
@@ -52,6 +56,20 @@ Use this format for new entries:
 -->
 
 ## Completed batches
+
+### Reader-first scores and game archive
+
+- Status: Published
+- Source commit: `53dfd4d`
+- Pages artifact: Pending this release
+- Added a scores and schedule center, complete period scoring, linked five-season meeting history, a more direct team-report opening, a full navigation footer and clearer game facts.
+
+### Context-aware Matchup Lab defaults
+
+- Status: Published
+- Source commit: `3b9f2c3`
+- Pages artifact: `01011afbeefcd814270a067057239c8308f64e43`
+- Direct visits feature the current top two, team-page links leave the opponent open and completed user selections persist locally.
 
 ### Permanent route system and game archive
 
