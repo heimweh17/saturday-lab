@@ -11,6 +11,11 @@
 <priority>0.7</priority>
 </url>
 <url>
+<loc>https://heimweh17.github.io/saturday-lab/games/</loc>
+<changefreq>weekly</changefreq>
+<priority>0.7</priority>
+</url>
+<url>
 <loc>https://heimweh17.github.io/saturday-lab/matchup/</loc>
 <changefreq>weekly</changefreq>
 <priority>0.7</priority>

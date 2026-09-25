@@ -1,0 +1,97 @@
+{
+  "releaseTag": "espn_cfb_linescores",
+  "releasePublishedAt": "2026-06-04T02:21:59Z",
+  "releaseUrl": "https://github.com/sportsdataverse/sportsdataverse-data/releases/tag/espn_cfb_linescores",
+  "assets": [
+    {
+      "season": 2018,
+      "asset": "linescores_2018.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2018.csv",
+      "sha256": "03b5d2615b95f7aa8f7c64ef9f1920d60e6cf07cbf63463fd4f4a7e8f78c94b5",
+      "bytes": 168551,
+      "archiveGames": 884,
+      "gamesWithValidatedPeriods": 884,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2019,
+      "asset": "linescores_2019.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2019.csv",
+      "sha256": "9f626b5fc3981a609ea27dc250f03e8fd2cec3571d3a7dea9744ef67500c274e",
+      "bytes": 169204,
+      "archiveGames": 888,
+      "gamesWithValidatedPeriods": 888,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2020,
+      "asset": "linescores_2020.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2020.csv",
+      "sha256": "b6d721ee21484c5bfadf978d54b105ab788c6d956c811cf584a02475f0e10581",
+      "bytes": 108459,
+      "archiveGames": 568,
+      "gamesWithValidatedPeriods": 568,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2021,
+      "asset": "linescores_2021.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2021.csv",
+      "sha256": "08534c2fc95f828d2194d5df4b15a882a88bf2f4db43d25828f8a7e90c644a8a",
+      "bytes": 169261,
+      "archiveGames": 887,
+      "gamesWithValidatedPeriods": 887,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2022,
+      "asset": "linescores_2022.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2022.csv",
+      "sha256": "6954613e466045122dfd43f5d1f18d0ca0efe8e5229158e3882d8f2e6b5e8db6",
+      "bytes": 171961,
+      "archiveGames": 896,
+      "gamesWithValidatedPeriods": 896,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2023,
+      "asset": "linescores_2023.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2023.csv",
+      "sha256": "9086db3e70fae663f4609f6c2724e5f21f783f39fa9d62ec86777e0da6d08130",
+      "bytes": 172849,
+      "archiveGames": 910,
+      "gamesWithValidatedPeriods": 910,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2024,
+      "asset": "linescores_2024.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2024.csv",
+      "sha256": "ff0e09aa2e741d8783dc1b98f3676d42f540cc27cfb4258533a9ec6b881e56be",
+      "bytes": 183761,
+      "archiveGames": 919,
+      "gamesWithValidatedPeriods": 919,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2025,
+      "asset": "linescores_2025.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2025.csv",
+      "sha256": "2004587e9dbd74a98f19584015594e80d7b83b12a25988a76d58e3c09159aeca",
+      "bytes": 181980,
+      "archiveGames": 934,
+      "gamesWithValidatedPeriods": 934,
+      "rejectedTotalMismatches": 0
+    },
+    {
+      "season": 2026,
+      "asset": "linescores_2026.csv",
+      "url": "https://github.com/sportsdataverse/sportsdataverse-data/releases/download/espn_cfb_linescores/linescores_2026.csv",
+      "sha256": "f8587f0dacb58e685ed08770c104d5344390553d737e92ad0fda1edf3f6a8b89",
+      "bytes": 49295,
+      "archiveGames": 260,
+      "gamesWithValidatedPeriods": 260,
+      "rejectedTotalMismatches": 0
+    }
+  ]
+}
