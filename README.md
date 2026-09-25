@@ -11,11 +11,12 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 - Scan a Top 25 or search and filter the complete 138-team FBS ranking by model-average neutral win probability against the entire field.
 - Open the dedicated team directory to search by school, nickname, abbreviation or conference, or use large quick-access cards for frequently followed programs.
 - Start with a weekly matchup board ranked by a documented marquee score: 60% team quality and 40% projected closeness, limited to games with a Top 25 team or two Top 50 teams. Close projections are flagged, and every matchup opens its own game center.
+- Open a dedicated scores and schedule center for recent finals or any upcoming week, search the slate by team and see current one-decimal win probabilities before opening a game.
 - See the latest movement around the rankings: biggest riser, biggest slide and the leading opponent-adjusted offense and defense.
 - Select historical seasons and before-week snapshots, filter conferences, compare scoring offense/defense and export rankings.
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
 - Select among 30 raw and derived box metrics, switch team/opponent views, filter home/away/FBS games, compare against FBS team averages and inspect complete past-game box scores.
-- Open any completed game for a side-by-side team box score including first downs, total/passing/rushing yards, attempts, down conversions, turnovers, penalties and possession. Upcoming game centers show one-decimal probabilities and a broader current-form comparison.
+- Open any completed game for quarter-by-quarter scoring, a side-by-side team box score including first downs, total/passing/rushing yards, attempts, down conversions, turnovers, penalties and possession, plus linked meetings from the current and previous four seasons. Upcoming game centers show one-decimal probabilities and a broader current-form comparison.
 - Compare two teams and venues, inspect probability contributions and scoring-component margin decomposition.
 - Compare as many as 12 teams on one season-long ranking chart, switch between a fitted view and all FBS ranks, zoom the scale, or follow one team week by week with the game result behind every ranking point.
 - Explore every team on a large, expandable offense-versus-defense map with hover details, range controls, wheel/pinch zoom, panning and direct links to team reports.
@@ -26,12 +27,13 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 Saturday Lab is statically exported as a browsable sports data publication rather than a single tabbed dashboard:
 
 - `/teams/florida-gators/` is a permanent team report with rankings, weekly movement, forecast schedule, past results and box-score-derived splits.
+- `/games/` is the current scores and schedule center. It joins recent finals with the published future slate and links every card to a permanent game center.
 - `/games/2026/ole-miss-rebels-at-florida-gators-401856699/` is a permanent game center. Upcoming games show the v6 probability, projected score, venue and available event details; completed games preserve the score and the model prediction that existed before kickoff.
 - `/matchup/` is reserved for hypothetical simulations. `/rank-trends/` provides multi-team season charts. `/model/`, `/methodology/` and `/legal/` keep model documentation and source terms outside the main data workflow.
 - Team and opponent references link back to team reports. The home marquee board and schedule rows link to game centers instead of sending readers to an external site.
 - `sitemap.xml` enumerates the complete generated archive and `robots.txt` exposes it to crawlers.
 
-The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Game weather, television and stadium detail are shown only when the published source includes them; the interface labels unavailable fields instead of inventing values.
+The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Completed game centers include validated period scores for every game in that archive. Game weather, television and stadium detail are shown only when the published source includes them; the interface omits unavailable secondary facts instead of inventing values.
 
 Results cover 2018–2026. Current results end September 20, 2026; schedules were retrieved September 22. This is a versioned snapshot, **not an automatically updated live service**.
 
@@ -66,7 +68,7 @@ Stage 7 froze v6, then evaluated 1,215 combinations of efficiency carryover/shri
 
 ## Data and boundaries
 
-- Historical schedules, membership and box scores: [SportsDataverse releases](https://github.com/sportsdataverse/sportsdataverse-data/releases).
+- Historical schedules, membership, box scores and scoring by period: [SportsDataverse releases](https://github.com/sportsdataverse/sportsdataverse-data/releases), derived from ESPN records. Every period-score asset is SHA-256 recorded and totals are checked against the final score before publication.
 - Published future schedules: public ESPN team schedule endpoint, queried for all 138 FBS teams with event-ID deduplication and coverage logging.
 - Both have ESPN upstream; they are not independent sources corroborating one another.
 - FCS games appear in records and box views but not in scoring/EPA/Elo fits or backtest metrics; they can establish observed passer identity; no FCS probability is fabricated.
@@ -99,6 +101,7 @@ python -m pip install -r analytics/requirements.txt
 python analytics/pipeline.py --data analytics/raw
 python analytics/final_model.py --data analytics/raw
 python analytics/box_export.py --data analytics/raw
+python analytics/linescore_export.py
 python analytics/fixtures.py
 python analytics/fetch_redesign.py
 python analytics/redesign.py --data analytics/raw
@@ -131,13 +134,13 @@ Schedules are separately refreshed by `fixtures.py`. No API key is required for 
 - Python unit tests: future-score/box perturbations, frozen-week boundaries, ridge vs independent least squares, logistic Newton fit vs SciPy BFGS, missing denominators, fixture coverage, all exported probabilities, ranks and record counts.
 - Shared-formula test: 2,555 published Python predictions reproduced by the TypeScript implementation; complementary probabilities; exact win-count distribution compared with exhaustive outcome enumeration.
 - Optional API checks: `python analytics/check_api.py http://localhost:3000`.
-- UI checked on desktop and 390px mobile: schedule, metric selection, past game details, before-week empty states, matchup swapping and audit navigation.
+- UI checked on desktop and 390px mobile: rankings, score center, team report, period scoring, schedule, metric selection, past game details, before-week empty states, matchup swapping and audit navigation.
 
 Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analytics/qb_review.py`, `analytics/stability_review.py`, `analytics/opponent_stability_review.py`, `analytics/durability_review.py`, `lib/model.ts`, `app/forecast.tsx`, `app/model-audit.tsx`.
 
 ### Data endpoints on Pages
 
-`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`.
+`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`.
 
 ### Portfolio description
 

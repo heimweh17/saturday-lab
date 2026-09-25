@@ -1,0 +1,33 @@
+"use client";
+import {useEffect,useMemo,useState} from 'react';
+import Link from 'next/link';
+import {CalendarDays,ChevronRight,Search} from 'lucide-react';
+import type {CatalogGame} from '@/lib/server-catalog';
+import type {Season,Team} from '@/app/types';
+import {asset} from '@/lib/paths';
+import {gamePath} from '@/lib/routes';
+import {modelPredict} from '@/lib/model';
+import {Logo,Picker,dateLabel,pct} from '@/app/ui';
+
+type FixtureFeed={games:CatalogGame[];fetchedAt:string};
+type HubGame=CatalogGame&{awayProbability?:number|null};
+const kickoff=(date:string,timeValid:boolean)=>timeValid?new Date(date).toLocaleString('en-US',{weekday:'short',month:'short',day:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/New_York'}).replace(',',' ·'):`${dateLabel(date)} · time TBD`;
+const dayLabel=(date:string)=>new Date(date).toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric',year:'numeric',timeZone:'America/New_York'});
+
+function TeamLine({team,name,value,winner}:{team?:Team;name:string;value:string;winner?:boolean}){return <div className={`scores-team-line${winner?' winner':''}`}>{team?<Logo team={team} size={34}/>:<span className="score-logo-fallback">{name.slice(0,2).toUpperCase()}</span>}<span><strong>{team?.short??name}</strong>{team&&<small>#{team.modelRank??team.rank} · {team.wins}–{team.losses}</small>}</span><b>{value}</b></div>}
+
+export function GamesPageClient(){
+  const [data,setData]=useState<Season|null>(null),[fixtures,setFixtures]=useState<FixtureFeed|null>(null),[view,setView]=useState('recent'),[query,setQuery]=useState(''),[error,setError]=useState('');
+  useEffect(()=>{const c=new AbortController();Promise.all([fetch(asset('/data/2026.json'),{signal:c.signal}).then(r=>r.json()),fetch(asset('/data/fixtures.json'),{signal:c.signal}).then(r=>r.json())]).then(([season,schedule])=>{setData(season as Season);setFixtures(schedule as FixtureFeed);const future=(schedule as FixtureFeed).games.filter(g=>!g.completed&&g.status==='STATUS_SCHEDULED');if(future.length)setView(`week-${Math.min(...future.map(g=>g.week))}`)}).catch(e=>{if(e.name!=='AbortError')setError('Scores and schedule could not load. Refresh the page to try again.')});return()=>c.abort()},[]);
+  const model=useMemo(()=>{
+    if(!data||!fixtures)return {teams:new Map<string,Team>(),games:[] as HubGame[],weeks:[] as number[]};
+    const snapshot=data.snapshots['99'],teams=new Map(snapshot.teams.map(team=>[team.id,team])),schedule=fixtures.games;
+    const scheduledState=(team:Team,date:string)=>{const prior=schedule.filter(f=>f.date<date&&(f.completed||f.status==='STATUS_SCHEDULED')&&(f.home===team.id||f.away===team.id)).map(f=>f.date).sort().at(-1);return {...team.modelState!,lastDate:prior??team.modelState!.lastDate}};
+    const future=schedule.filter(g=>!g.completed&&g.status==='STATUS_SCHEDULED').map(game=>{const away=teams.get(game.away),home=teams.get(game.home);const awayProbability=data.model&&away?.modelState&&home?.modelState?modelPredict(scheduledState(away,game.date),scheduledState(home,game.date),game.neutral?0:-1,data.model,game.date).probability:null;return {...game,season:2026,awayProbability}});
+    const completed=data.games.map(game=>({...game,completed:true,status:'STATUS_FINAL',timeValid:true} as HubGame));
+    return {teams,games:[...completed,...future],weeks:[...new Set(future.map(g=>g.week))].sort((a,b)=>a-b)};
+  },[data,fixtures]);
+  const games=useMemo(()=>{const q=query.trim().toLowerCase();let selected=view==='recent'?model.games.filter(g=>g.completed).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,24):model.games.filter(g=>!g.completed&&g.week===Number(view.replace('week-',''))).sort((a,b)=>a.date.localeCompare(b.date));if(q)selected=selected.filter(g=>`${g.awayName} ${g.homeName}`.toLowerCase().includes(q));return selected},[model.games,query,view]);
+  const groups=useMemo(()=>Object.entries(games.reduce<Record<string,HubGame[]>>((acc,game)=>{const key=dayLabel(game.date);(acc[key]??=[]).push(game);return acc},{})),[games]);
+  return <main className="scores-page"><header className="route-intro scores-intro"><span className="scoreline">2026 college football</span><h1>Scores &amp; schedule</h1><p>Catch up on the latest finals or look ahead with Saturday Lab’s current win probabilities. Select any game for the full matchup page.</p></header><section className="scores-toolbar"><Picker label="Show" value={view} onChange={setView} options={[{value:'recent',label:'Latest results'},...model.weeks.map(week=>({value:`week-${week}`,label:`Upcoming week ${week}`}))]}/><label className="scores-search"><Search size={17}/><input aria-label="Find games by team" placeholder="Find a team…" value={query} onChange={event=>setQuery(event.target.value)}/></label><span>{games.length} {games.length===1?'game':'games'}</span></section>{error?<div className="notice" role="alert">{error}</div>:!data||!fixtures?<div className="loading" role="status">Loading scores and schedule…</div>:groups.length?<div className="scores-groups">{groups.map(([date,dateGames])=><section className="score-day" key={date}><div className="score-day-heading"><CalendarDays size={17}/><h2>{date}</h2><span>{dateGames.length} {dateGames.length===1?'game':'games'}</span></div><div className="score-card-grid">{dateGames.map(game=>{const away=model.teams.get(game.away),home=model.teams.get(game.home),awayWon=game.completed&&game.as!>game.hs!,homeWon=game.completed&&game.hs!>game.as!,awayValue=game.completed?String(game.as):game.awayProbability==null?'—':pct(game.awayProbability),homeValue=game.completed?String(game.hs):game.awayProbability==null?'—':pct(1-game.awayProbability);return <Link href={gamePath(game)} className="score-card" key={game.id}><div className="score-card-top"><span>{game.completed?'Final':kickoff(game.date,game.timeValid)}</span>{!game.completed&&game.awayProbability!=null&&Math.abs(game.awayProbability-.5)<=.1&&<em>Close game</em>}</div><TeamLine team={away} name={game.awayName} value={awayValue} winner={awayWon}/><TeamLine team={home} name={game.homeName} value={homeValue} winner={homeWon}/><div className="score-card-bottom"><span>{game.neutral?'Neutral site':`${home?.abbr??game.homeName} home`}</span><strong>{game.completed?'Box score':'Game forecast'} <ChevronRight size={15}/></strong></div></Link>})}</div></section>)}</div>:<section className="surface empty-state"><h2>No games found</h2><p>Try another team name or schedule window.</p></section>}<p className="scores-note">Probabilities use the current v6 snapshot and published rest intervals. They can change as new results enter the model.</p></main>
+}

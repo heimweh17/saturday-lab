@@ -31,3 +31,4 @@ export const teamBySlug=(slug:string)=>allTeamAliases().find(team=>teamSlug(team
 export const teamParams=()=>allTeamAliases().map(team=>({team:teamSlug(team)}));
 export const gameBySlug=(season:number,slug:string)=>allGames().find(game=>game.season===season&&gameSlug(game)===slug);
 export const gameParams=()=>allGames().map(game=>({season:String(game.season),game:gameSlug(game)}));
+export const recentMeetings=(game:CatalogGame,limit=4)=>allGames().filter(other=>other.completed&&other.id!==game.id&&other.date<game.date&&other.season>=game.season-4&&((other.home===game.home&&other.away===game.away)||(other.home===game.away&&other.away===game.home))).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,limit);

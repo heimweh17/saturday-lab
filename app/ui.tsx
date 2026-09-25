@@ -1,7 +1,7 @@
 "use client";
 import type {Team} from './types';
 import {Select,SelectContent,SelectItem,SelectTrigger,SelectValue} from '@/components/ui/select';
-export const signed=(n:number|null,d=1)=>n==null?'—':`${n>0?'+':''}${n.toFixed(d)}`;
+export const signed=(n:number|null,d=1)=>{if(n==null)return '—';const value=Math.abs(n)<.5*10**-d?0:n;return `${value>0?'+':''}${value.toFixed(d)}`};
 export const fixed=(n:number|null|undefined,d=1)=>n==null?'—':n.toFixed(d);
 export const pct=(n:number|null|undefined)=>n==null?'—':`${(n*100).toFixed(1)}%`;
 export const weekName=(w:number)=>w===99?'Latest available':w>=30?`Before postseason ${w-30}`:`Before week ${w}`;
