@@ -23,6 +23,19 @@ This document collects requested site changes before the next grouped implementa
 - Desired behavior: Give Team A and Team B compact searchable inputs with alphabetized browser suggestions. Typing or choosing an exact team should immediately update the comparison; incomplete text should safely return to the current selection on blur.
 - Acceptance checks: Both fields work with typing, pointer selection and keyboard-native suggestions; swapping teams keeps the labels synchronized; the layout remains usable on mobile; selecting a team still updates the URL-backed matchup and expected score.
 
+- Follow-up: The published input-first control does not meet the intended browsing behavior. It is superseded by the redesign request below; leave the current production page unchanged until the next grouped implementation pass.
+
+### Matchup Lab searchable full-list dropdowns
+
+- Status: Recorded; include in the next grouped front-end pass
+- Priority: High
+- Area: Matchup / Navigation / Mobile / Accessibility
+- User problem: The current Team A and Team B controls feel like text fields that require the reader to know and type a team name. They removed the useful behavior of opening a long, alphabetized list and browsing every FBS team.
+- Desired behavior: Restore the previous dropdown interaction and visual style for both team selectors. Opening either selector must immediately show the complete A–Z team list. Add a small search field at the top of that open panel so typing filters the same list in place; search is optional and never required to choose a team.
+- Interaction details: A click or tap opens the full list without changing the current selection. The search field stays at the top while the result list scrolls. Clearing the search restores all teams. Selecting a row closes the panel and updates the matchup. Reopening starts with a useful full-list view rather than forcing text entry.
+- Acceptance checks: A reader can select any team using only pointer or touch; all teams appear alphabetically before anything is typed; keyboard users can open, search, move through results and select; Team A and Team B share exactly the same component and behavior; the panel fits mobile screens and keeps a large scrollable result area; swapping teams remains synchronized.
+- Implementation note: Use a searchable popover/combobox whose open content contains a dedicated filter field plus the complete option list. Do not use a native datalist or a standalone search input as the team picker.
+
 ### Full-model projected score layer
 
 - Status: Published
