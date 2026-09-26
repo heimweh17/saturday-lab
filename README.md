@@ -45,7 +45,7 @@ Every ranking and forecast on the main site uses version 6. It publishes one sca
 
 Opponent-adjusted offense and defense are fitted jointly, with regularization toward `carry × last season final rating + recruiting weight × standardized recruiting proxy`. Recruiting affects that prior, not a separate opponent-dependent weekly bonus. The ranking averages neutral win probabilities across all FBS opponents and has the same order as scalar strength.
 
-Seven documented, retrospective research stages tested recruiting placement, prior strength, roster cohorts, passer history, raw pregame play features, opponent-adjusted replication, and the durability of preseason decay and returning-production inputs. Stage 6 compares scoring strength with opponent-adjusted non-explosive EPA, first-down creation, passing EPA, rushing EPA, yards per play and explosive-play rate. The raw success-rate result was not promoted until its signal survived explicit schedule-strength adjustment.
+Eight documented, retrospective research stages tested recruiting placement, prior strength, roster cohorts, passer history, raw pregame play features, opponent-adjusted replication, the durability of preseason inputs, and the final model's home-field coefficient. Stage 6 compares scoring strength with opponent-adjusted non-explosive EPA, first-down creation, passing EPA, rushing EPA, yards per play and explosive-play rate. The raw success-rate result was not promoted until its signal survived explicit schedule-strength adjustment.
 
 For each outer season, choose by pooled previous-three-year log loss. Each inner-year coefficient fit trains only on preceding years. Refit through outerYear-1. FPI ranks never enter selection. Current selection is the broad opponent-adjusted bundle; its fitted nonzero terms are scoring strength, first-down creation, rushing EPA, yards per play, prior observed-passer efficiency, venue and rest. It retains 65% carry, rating penalty 2, the published recruiting prior at 4 points per standard deviation, uniform game weights and regression penalty 1.
 
@@ -65,6 +65,8 @@ Recruiting-age ablations do **not** establish that ignoring freshmen is better: 
 Current whole-field FPI mean rank gap changes **7.59 → 7.57** from v5 to v6, with Spearman **.967 → .968**. Model cutoff is September 20; FPI reference September 22. This is diagnostic, not a tuning target. Archived v3/v4/v5, all preliminary experiments and final predictions remain downloadable.
 
 Stage 7 froze v6, then evaluated 1,215 combinations of efficiency carryover/shrinkage, component bundles, preseason fade, returning production, staff continuity and ridge strength. The best rolling candidate improved pooled 2023–25 log loss by **.00131**, below the **.0015** gate; the week-block bootstrap favored it only **73.1%** of the time, 2024 breached the regression guard, and FPI mean rank gap worsened **7.57 → 9.75**. Returning production showed signal, but no architecture was stable enough to promote. Production remains v6; the full rejected experiment is published as `public/data/research-stage7.json`.
+
+Stage 8 audited the fitted home-field logit coefficient instead of changing it by intuition. The freely fitted value stayed between **.320 and .327** across four successive target-season fits. In 566 completed 2023–25 games where neutralized v6 strength was between 40% and 60%, home teams actually won **57.6%**; v6 predicted **57.9%**. A predeclared comparison selected .30 from fixed alternatives, but it slightly worsened pooled log loss (**.534297 → .534372**) and the week-block bootstrap favored it only **17.9%** of the time. Adding the efficiency inputs moved the coefficient gradually rather than causing a collapse or jump. The audit therefore retained v6's .327 coefficient; full results are in `analytics/HOME-FIELD-AUDIT-RESULTS.md` and `public/data/research-stage8-home-field.json`.
 
 Projected scores use a separate, frozen score layer without changing v6 probabilities. A positive robust fit maps the v6 probability logit to expected margin, while a historical calibration of the opponent-adjusted scoring total estimates game pace. The two expected scores are derived from that margin and total, so the displayed score leader always agrees with the probability leader. Rolling 2023–24 evaluation selected the method; the untouched 2025 test improved margin MAE **12.36 → 12.18**, total MAE **13.19 → 12.94**, and team-score MAE **9.02 → 8.95**. Decimal points are expected values, not literal score picks.
 
@@ -117,6 +119,7 @@ python analytics/qb_review.py --data analytics/raw
 python analytics/export_ranking_review.py
 python analytics/stability_review.py
 python analytics/opponent_stability_review.py
+python analytics/home_field_audit.py
 python analytics/full_score_layer.py
 python analytics/export_opponent_stability.py
 python analytics/service_index.py
@@ -139,11 +142,11 @@ Schedules are separately refreshed by `fixtures.py`. No API key is required for 
 - Optional API checks: `python analytics/check_api.py http://localhost:3000`.
 - UI checked on desktop and 390px mobile: rankings, score center, team report, period scoring, schedule, metric selection, past game details, before-week empty states, matchup swapping and audit navigation.
 
-Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analytics/qb_review.py`, `analytics/stability_review.py`, `analytics/opponent_stability_review.py`, `analytics/durability_review.py`, `lib/model.ts`, `app/forecast.tsx`, `app/model-audit.tsx`.
+Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analytics/qb_review.py`, `analytics/stability_review.py`, `analytics/opponent_stability_review.py`, `analytics/durability_review.py`, `analytics/home_field_audit.py`, `lib/model.ts`, `app/forecast.tsx`, `app/model-audit.tsx`.
 
 ### Data endpoints on Pages
 
-`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/score-layer.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`.
+`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/score-layer.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`, `/saturday-lab/data/research-stage8-home-field.json`.
 
 ### Portfolio description
 
