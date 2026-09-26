@@ -1,0 +1,815 @@
+{
+  "protocol": {
+    "version": "6-home-field-audit-1",
+    "blueprintSha256": "3a2860c78294b5a5c7a2914402709d225c66f5df3f0200d03c680fa0d74d3d77",
+    "features": [
+      "Scoring strength",
+      "Opponent-adjusted EPA",
+      "Special teams",
+      "Results-based Elo",
+      "Recruiting composite",
+      "Blue-chip share",
+      "Non-explosive EPA",
+      "Turnover control",
+      "First-down rate",
+      "Pass EPA",
+      "Rush EPA",
+      "Yards per play",
+      "Explosive rate",
+      "Observed passer prior efficiency",
+      "Observed passer prior experience",
+      "Home field",
+      "Rest days"
+    ],
+    "indices": [
+      0,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      15,
+      16
+    ],
+    "ridge": 1.0,
+    "fixedHomeCoefficients": [
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "selectionYears": [
+      2023,
+      2024
+    ],
+    "confirmationYear": 2025,
+    "partialDiagnosticYear": 2026
+  },
+  "integrity": {
+    "publishedCoefficient": 0.327009556451412,
+    "reconstructedCoefficient": 0.327009556451412,
+    "maximumCoefficientError": 0.0
+  },
+  "annual": {
+    "2023": {
+      "freeCoefficient": 0.322438456725474,
+      "equalTeamHomeWinProbability": 0.5799184075175512,
+      "variants": {
+        "free": {
+          "all": {
+            "n": 792,
+            "accuracy": 0.7386363636363636,
+            "brier": 0.1778829644855428,
+            "logLoss": 0.5282065003713236
+          },
+          "nearEven": {
+            "n": 198,
+            "accuracy": 0.601010101010101,
+            "brier": 0.24070893050521736,
+            "logLoss": 0.6745512148857546,
+            "actualHomeWinRate": 0.601010101010101,
+            "actualHomeWinRateWilson95": [
+              0.531504196824087,
+              0.666671144524065
+            ],
+            "predictedHomeWinRate": 0.5794886552488538,
+            "calibrationError": -0.02152144576124715
+          }
+        },
+        "fixed_0.15": {
+          "all": {
+            "n": 792,
+            "accuracy": 0.7323232323232324,
+            "brier": 0.17867158451827717,
+            "logLoss": 0.5302730870065067
+          },
+          "nearEven": {
+            "n": 198,
+            "accuracy": 0.5757575757575758,
+            "brier": 0.24414385927824148,
+            "logLoss": 0.6814028803486358,
+            "actualHomeWinRate": 0.601010101010101,
+            "actualHomeWinRateWilson95": [
+              0.531504196824087,
+              0.666671144524065
+            ],
+            "predictedHomeWinRate": 0.5379379950181641,
+            "calibrationError": -0.06307210599193691
+          }
+        },
+        "fixed_0.20": {
+          "all": {
+            "n": 792,
+            "accuracy": 0.7323232323232324,
+            "brier": 0.1782214031791493,
+            "logLoss": 0.5291781668199804
+          },
+          "nearEven": {
+            "n": 198,
+            "accuracy": 0.5757575757575758,
+            "brier": 0.2427817050346911,
+            "logLoss": 0.6786722251795385,
+            "actualHomeWinRate": 0.601010101010101,
+            "actualHomeWinRateWilson95": [
+              0.531504196824087,
+              0.666671144524065
+            ],
+            "predictedHomeWinRate": 0.5500644472278945,
+            "calibrationError": -0.0509456537822065
+          }
+        },
+        "fixed_0.25": {
+          "all": {
+            "n": 792,
+            "accuracy": 0.7348484848484849,
+            "brier": 0.17795335800921286,
+            "logLoss": 0.5284891701513474
+          },
+          "nearEven": {
+            "n": 198,
+            "accuracy": 0.5858585858585859,
+            "brier": 0.24172034925687635,
+            "logLoss": 0.676550791253074,
+            "actualHomeWinRate": 0.601010101010101,
+            "actualHomeWinRateWilson95": [
+              0.531504196824087,
+              0.666671144524065
+            ],
+            "predictedHomeWinRate": 0.5621339858077853,
+            "calibrationError": -0.03887611520231571
+          }
+        },
+        "fixed_0.30": {
+          "all": {
+            "n": 792,
+            "accuracy": 0.73989898989899,
+            "brier": 0.17786504786875731,
+            "logLoss": 0.528203961277703
+          },
+          "nearEven": {
+            "n": 198,
+            "accuracy": 0.6060606060606061,
+            "brier": 0.24095636059667203,
+            "logLoss": 0.6750353426075218,
+            "actualHomeWinRate": 0.601010101010101,
+            "actualHomeWinRateWilson95": [
+              0.531504196824087,
+              0.666671144524065
+            ],
+            "predictedHomeWinRate": 0.574131685767764,
+            "calibrationError": -0.026878415242337028
+          }
+        }
+      }
+    },
+    "2024": {
+      "freeCoefficient": 0.3198750513223168,
+      "equalTeamHomeWinProbability": 0.5792938008967369,
+      "variants": {
+        "free": {
+          "all": {
+            "n": 798,
+            "accuracy": 0.706766917293233,
+            "brier": 0.18567594376392377,
+            "logLoss": 0.5444391500821545
+          },
+          "nearEven": {
+            "n": 187,
+            "accuracy": 0.5187165775401069,
+            "brier": 0.25536924853214327,
+            "logLoss": 0.7044574584615962,
+            "actualHomeWinRate": 0.5240641711229946,
+            "actualHomeWinRateWilson95": [
+              0.45272187670313324,
+              0.594437687343461
+            ],
+            "predictedHomeWinRate": 0.5768118567080437,
+            "calibrationError": 0.05274768558504905
+          }
+        },
+        "fixed_0.15": {
+          "all": {
+            "n": 798,
+            "accuracy": 0.7017543859649122,
+            "brier": 0.18625507154730553,
+            "logLoss": 0.546953853234231
+          },
+          "nearEven": {
+            "n": 187,
+            "accuracy": 0.49732620320855614,
+            "brier": 0.2529174194076689,
+            "logLoss": 0.6991561478532284,
+            "actualHomeWinRate": 0.5240641711229946,
+            "actualHomeWinRateWilson95": [
+              0.45272187670313324,
+              0.594437687343461
+            ],
+            "predictedHomeWinRate": 0.5359392148861187,
+            "calibrationError": 0.011875043763124093
+          }
+        },
+        "fixed_0.20": {
+          "all": {
+            "n": 798,
+            "accuracy": 0.7030075187969925,
+            "brier": 0.18587520113185385,
+            "logLoss": 0.5457041279540964
+          },
+          "nearEven": {
+            "n": 187,
+            "accuracy": 0.5026737967914439,
+            "brier": 0.2532945841513245,
+            "logLoss": 0.6999830101975403,
+            "actualHomeWinRate": 0.5240641711229946,
+            "actualHomeWinRateWilson95": [
+              0.45272187670313324,
+              0.594437687343461
+            ],
+            "predictedHomeWinRate": 0.5480492829078717,
+            "calibrationError": 0.023985111784877056
+          }
+        },
+        "fixed_0.25": {
+          "all": {
+            "n": 798,
+            "accuracy": 0.7042606516290727,
+            "brier": 0.1856710227249395,
+            "logLoss": 0.5448805805573499
+          },
+          "nearEven": {
+            "n": 187,
+            "accuracy": 0.5080213903743316,
+            "brier": 0.2539618095316314,
+            "logLoss": 0.701423491118104,
+            "actualHomeWinRate": 0.5240641711229946,
+            "actualHomeWinRateWilson95": [
+              0.45272187670313324,
+              0.594437687343461
+            ],
+            "predictedHomeWinRate": 0.5600997436375553,
+            "calibrationError": 0.03603557251456069
+          }
+        },
+        "fixed_0.30": {
+          "all": {
+            "n": 798,
+            "accuracy": 0.7030075187969925,
+            "brier": 0.18564049574532457,
+            "logLoss": 0.5444809150788045
+          },
+          "nearEven": {
+            "n": 187,
+            "accuracy": 0.5026737967914439,
+            "brier": 0.2549134758249444,
+            "logLoss": 0.7034739467435623,
+            "actualHomeWinRate": 0.5240641711229946,
+            "actualHomeWinRateWilson95": [
+              0.45272187670313324,
+              0.594437687343461
+            ],
+            "predictedHomeWinRate": 0.5720754659410409,
+            "calibrationError": 0.048011294818046224
+          }
+        }
+      }
+    },
+    "2025": {
+      "freeCoefficient": 0.3203655510097742,
+      "equalTeamHomeWinProbability": 0.5794133371468614,
+      "variants": {
+        "free": {
+          "all": {
+            "n": 808,
+            "accuracy": 0.7301980198019802,
+            "brier": 0.1789214636817853,
+            "logLoss": 0.5302504436585042
+          },
+          "nearEven": {
+            "n": 181,
+            "accuracy": 0.580110497237569,
+            "brier": 0.2404896465026705,
+            "logLoss": 0.6738621919416455,
+            "actualHomeWinRate": 0.6022099447513812,
+            "actualHomeWinRateWilson95": [
+              0.5294953076567925,
+              0.6706762352214313
+            ],
+            "predictedHomeWinRate": 0.5819414402924186,
+            "calibrationError": -0.020268504458962666
+          }
+        },
+        "fixed_0.15": {
+          "all": {
+            "n": 808,
+            "accuracy": 0.724009900990099,
+            "brier": 0.1800123287858377,
+            "logLoss": 0.5338906419588312
+          },
+          "nearEven": {
+            "n": 181,
+            "accuracy": 0.5524861878453039,
+            "brier": 0.24366653157306634,
+            "logLoss": 0.68030546254259,
+            "actualHomeWinRate": 0.6022099447513812,
+            "actualHomeWinRateWilson95": [
+              0.5294953076567925,
+              0.6706762352214313
+            ],
+            "predictedHomeWinRate": 0.5409519752380154,
+            "calibrationError": -0.06125796951336582
+          }
+        },
+        "fixed_0.20": {
+          "all": {
+            "n": 808,
+            "accuracy": 0.7277227722772277,
+            "brier": 0.1794754898494262,
+            "logLoss": 0.5323248749136039
+          },
+          "nearEven": {
+            "n": 181,
+            "accuracy": 0.569060773480663,
+            "brier": 0.24237714934382318,
+            "logLoss": 0.6776844905568759,
+            "actualHomeWinRate": 0.6022099447513812,
+            "actualHomeWinRateWilson95": [
+              0.5294953076567925,
+              0.6706762352214313
+            ],
+            "predictedHomeWinRate": 0.5530634293000892,
+            "calibrationError": -0.049146515451292005
+          }
+        },
+        "fixed_0.25": {
+          "all": {
+            "n": 808,
+            "accuracy": 0.7289603960396039,
+            "brier": 0.17911972423233846,
+            "logLoss": 0.5311735273773832
+          },
+          "nearEven": {
+            "n": 181,
+            "accuracy": 0.574585635359116,
+            "brier": 0.24138622323205508,
+            "logLoss": 0.6756714854320235,
+            "actualHomeWinRate": 0.6022099447513812,
+            "actualHomeWinRateWilson95": [
+              0.5294953076567925,
+              0.6706762352214313
+            ],
+            "predictedHomeWinRate": 0.5651140255939364,
+            "calibrationError": -0.03709591915744481
+          }
+        },
+        "fixed_0.30": {
+          "all": {
+            "n": 808,
+            "accuracy": 0.7289603960396039,
+            "brier": 0.17894290136648983,
+            "logLoss": 0.5304341989988273
+          },
+          "nearEven": {
+            "n": 181,
+            "accuracy": 0.574585635359116,
+            "brier": 0.24068995786249095,
+            "logLoss": 0.674263308888263,
+            "actualHomeWinRate": 0.6022099447513812,
+            "actualHomeWinRateWilson95": [
+              0.5294953076567925,
+              0.6706762352214313
+            ],
+            "predictedHomeWinRate": 0.5770889458897469,
+            "calibrationError": -0.025120998861634325
+          }
+        }
+      }
+    },
+    "2026": {
+      "freeCoefficient": 0.327009556451412,
+      "equalTeamHomeWinProbability": 0.5810315784587801,
+      "variants": {
+        "free": {
+          "all": {
+            "n": 157,
+            "accuracy": 0.8152866242038217,
+            "brier": 0.13468156259299136,
+            "logLoss": 0.42687821231459366
+          },
+          "nearEven": {
+            "n": 38,
+            "accuracy": 0.631578947368421,
+            "brier": 0.2367676583925288,
+            "logLoss": 0.6665629682978023,
+            "actualHomeWinRate": 0.6052631578947368,
+            "actualHomeWinRateWilson95": [
+              0.4471786799604255,
+              0.744019242518399
+            ],
+            "predictedHomeWinRate": 0.5821511000567557,
+            "calibrationError": -0.023112057837981093
+          }
+        },
+        "fixed_0.15": {
+          "all": {
+            "n": 157,
+            "accuracy": 0.8152866242038217,
+            "brier": 0.13919496441457413,
+            "logLoss": 0.4394054614740137
+          },
+          "nearEven": {
+            "n": 38,
+            "accuracy": 0.631578947368421,
+            "brier": 0.24045605021132155,
+            "logLoss": 0.6740110002724858,
+            "actualHomeWinRate": 0.6052631578947368,
+            "actualHomeWinRateWilson95": [
+              0.4471786799604255,
+              0.744019242518399
+            ],
+            "predictedHomeWinRate": 0.539419225579497,
+            "calibrationError": -0.06584393231523988
+          }
+        },
+        "fixed_0.20": {
+          "all": {
+            "n": 157,
+            "accuracy": 0.8152866242038217,
+            "brier": 0.13771911447337024,
+            "logLoss": 0.43542352045239485
+          },
+          "nearEven": {
+            "n": 38,
+            "accuracy": 0.631578947368421,
+            "brier": 0.23903121059013424,
+            "logLoss": 0.6711389626338591,
+            "actualHomeWinRate": 0.6052631578947368,
+            "actualHomeWinRateWilson95": [
+              0.4471786799604255,
+              0.744019242518399
+            ],
+            "predictedHomeWinRate": 0.5515765192018737,
+            "calibrationError": -0.053686638692863164
+          }
+        },
+        "fixed_0.25": {
+          "all": {
+            "n": 157,
+            "accuracy": 0.802547770700637,
+            "brier": 0.13640170742109498,
+            "logLoss": 0.43178952898307404
+          },
+          "nearEven": {
+            "n": 38,
+            "accuracy": 0.5789473684210527,
+            "brier": 0.23790987449539516,
+            "logLoss": 0.6688734223280899,
+            "actualHomeWinRate": 0.6052631578947368,
+            "actualHomeWinRateWilson95": [
+              0.4471786799604255,
+              0.744019242518399
+            ],
+            "predictedHomeWinRate": 0.5636731029524014,
+            "calibrationError": -0.041590054942335475
+          }
+        },
+        "fixed_0.30": {
+          "all": {
+            "n": 157,
+            "accuracy": 0.8089171974522293,
+            "brier": 0.13524242522853688,
+            "logLoss": 0.4285057837452484
+          },
+          "nearEven": {
+            "n": 38,
+            "accuracy": 0.6052631578947368,
+            "brier": 0.2370884065206967,
+            "logLoss": 0.6672112376086545,
+            "actualHomeWinRate": 0.6052631578947368,
+            "actualHomeWinRateWilson95": [
+              0.4471786799604255,
+              0.744019242518399
+            ],
+            "predictedHomeWinRate": 0.5756940804082393,
+            "calibrationError": -0.029569077486497508
+          }
+        }
+      }
+    }
+  },
+  "bundleCoefficientDiagnostics": {
+    "2023": {
+      "score_only": {
+        "coefficient": 0.306882339990547,
+        "equalTeamHomeWinProbability": 0.5761240938516734
+      },
+      "baseline": {
+        "coefficient": 0.30789073812474754,
+        "equalTeamHomeWinProbability": 0.5763703309185396
+      },
+      "stable_pair": {
+        "coefficient": 0.3173402038345855,
+        "equalTeamHomeWinProbability": 0.578675903030585
+      },
+      "broad": {
+        "coefficient": 0.322438456725474,
+        "equalTeamHomeWinProbability": 0.5799184075175512
+      }
+    },
+    "2024": {
+      "score_only": {
+        "coefficient": 0.30311711487519355,
+        "equalTeamHomeWinProbability": 0.5752043440556726
+      },
+      "baseline": {
+        "coefficient": 0.3040881715752748,
+        "equalTeamHomeWinProbability": 0.5754415988869437
+      },
+      "stable_pair": {
+        "coefficient": 0.31247905061892384,
+        "equalTeamHomeWinProbability": 0.577490253644415
+      },
+      "broad": {
+        "coefficient": 0.3198750513223168,
+        "equalTeamHomeWinProbability": 0.5792938008967369
+      }
+    },
+    "2025": {
+      "score_only": {
+        "coefficient": 0.30352938790481737,
+        "equalTeamHomeWinProbability": 0.5753050774986012
+      },
+      "baseline": {
+        "coefficient": 0.3043924630757113,
+        "equalTeamHomeWinProbability": 0.5755159381996804
+      },
+      "stable_pair": {
+        "coefficient": 0.3128760416073584,
+        "equalTeamHomeWinProbability": 0.5775871145830913
+      },
+      "broad": {
+        "coefficient": 0.3203655510097742,
+        "equalTeamHomeWinProbability": 0.5794133371468614
+      }
+    },
+    "2026": {
+      "score_only": {
+        "coefficient": 0.3117755738483913,
+        "equalTeamHomeWinProbability": 0.5773185992962252
+      },
+      "baseline": {
+        "coefficient": 0.31266027097907034,
+        "equalTeamHomeWinProbability": 0.5775344699323711
+      },
+      "stable_pair": {
+        "coefficient": 0.32063521344073825,
+        "equalTeamHomeWinProbability": 0.5794790507267417
+      },
+      "broad": {
+        "coefficient": 0.327009556451412,
+        "equalTeamHomeWinProbability": 0.5810315784587801
+      }
+    }
+  },
+  "selection": {
+    "free": {
+      "n": 1590,
+      "accuracy": 0.7226415094339622,
+      "brier": 0.1817941578592208,
+      "logLoss": 0.5363534528677029
+    },
+    "fixed_0.15": {
+      "n": 1590,
+      "accuracy": 0.7169811320754716,
+      "brier": 0.18247763649888388,
+      "logLoss": 0.5386449432641947
+    },
+    "fixed_0.20": {
+      "n": 1590,
+      "accuracy": 0.7176100628930817,
+      "brier": 0.18206274328371422,
+      "logLoss": 0.537472328445782
+    },
+    "fixed_0.25": {
+      "n": 1590,
+      "accuracy": 0.7194968553459119,
+      "brier": 0.18182675199861528,
+      "logLoss": 0.5367158025437939
+    },
+    "fixed_0.30": {
+      "n": 1590,
+      "accuracy": 0.7213836477987421,
+      "brier": 0.1817674424634118,
+      "logLoss": 0.5363731494118408
+    }
+  },
+  "pooled2023To2025": {
+    "free": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18082621086365455,
+      "logLoss": 0.5342970594394157
+    },
+    "candidate": {
+      "n": 2398,
+      "accuracy": 0.7239366138448707,
+      "brier": 0.18081572052583342,
+      "logLoss": 0.5343720351775976
+    },
+    "freeNearEven": {
+      "n": 566,
+      "accuracy": 0.5671378091872792,
+      "brier": 0.24548240942142616,
+      "logLoss": 0.6842115583412292,
+      "actualHomeWinRate": 0.5759717314487632,
+      "actualHomeWinRateWilson95": [
+        0.5348803691353343,
+        0.6160388008702666
+      ],
+      "predictedHomeWinRate": 0.5793886424674999,
+      "calibrationError": 0.003416911018736646
+    },
+    "candidateNearEven": {
+      "n": 566,
+      "accuracy": 0.5618374558303887,
+      "brier": 0.24548244125532956,
+      "logLoss": 0.6841842487387121,
+      "actualHomeWinRate": 0.5759717314487632,
+      "actualHomeWinRateWilson95": [
+        0.5348803691353343,
+        0.6160388008702666
+      ],
+      "predictedHomeWinRate": 0.574398030245647,
+      "calibrationError": -0.0015737012031162845
+    }
+  },
+  "promotionGate": {
+    "selectedCandidate": "fixed_0.30",
+    "pooledLogLossImprovement": -7.497573818182612e-05,
+    "pooledBrierImprovement": 1.0490337821134066e-05,
+    "maximumSeasonLogLossRegression": 0.0001837553403231107,
+    "bootstrap": {
+      "blocks": 50,
+      "repetitions": 10000,
+      "probabilityLowerLogLoss": 0.1795,
+      "meanDelta": 0.00014392679056828017,
+      "p05": -0.00011582342848834884,
+      "p95": 0.00039713306054843506
+    },
+    "nearEvenAbsoluteCalibrationImprovement": 0.0018432098156203613,
+    "confirmationLogLossImprovement": -0.0001837553403231107,
+    "confirmationAccuracyDelta": -0.0012376237623762387,
+    "passed": false
+  },
+  "decision": "retain-v6",
+  "coverage": [
+    {
+      "year": 2018,
+      "games": 772,
+      "epaPairedGames": 770,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2019,
+      "games": 774,
+      "epaPairedGames": 773,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2020,
+      "games": 534,
+      "epaPairedGames": 529,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2021,
+      "games": 770,
+      "epaPairedGames": 742,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2022,
+      "games": 776,
+      "epaPairedGames": 747,
+      "talentTeams": 130,
+      "teams": 131
+    },
+    {
+      "year": 2023,
+      "games": 792,
+      "epaPairedGames": 787,
+      "talentTeams": 132,
+      "teams": 133
+    },
+    {
+      "year": 2024,
+      "games": 798,
+      "epaPairedGames": 783,
+      "talentTeams": 133,
+      "teams": 134
+    },
+    {
+      "year": 2025,
+      "games": 808,
+      "epaPairedGames": 807,
+      "talentTeams": 135,
+      "teams": 136
+    },
+    {
+      "year": 2026,
+      "games": 157,
+      "epaPairedGames": 157,
+      "talentTeams": 137,
+      "teams": 138
+    }
+  ],
+  "passerCoverage": [
+    {
+      "season": 2018,
+      "passingRows": 2935,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1765,
+      "rejectedTeamGameGroups": 9,
+      "observedFbsTeamGames": 1649,
+      "priorPerformanceFbsAttempts": 47856.0
+    },
+    {
+      "season": 2019,
+      "passingRows": 2925,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1780,
+      "rejectedTeamGameGroups": 2,
+      "observedFbsTeamGames": 1660,
+      "priorPerformanceFbsAttempts": 48282.0
+    },
+    {
+      "season": 2020,
+      "passingRows": 1833,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1141,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 1101,
+      "priorPerformanceFbsAttempts": 33808.0
+    },
+    {
+      "season": 2021,
+      "passingRows": 2868,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1769,
+      "rejectedTeamGameGroups": 9,
+      "observedFbsTeamGames": 1644,
+      "priorPerformanceFbsAttempts": 47706.0
+    },
+    {
+      "season": 2022,
+      "passingRows": 2825,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1798,
+      "rejectedTeamGameGroups": 2,
+      "observedFbsTeamGames": 1672,
+      "priorPerformanceFbsAttempts": 49570.0
+    },
+    {
+      "season": 2023,
+      "passingRows": 2868,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1821,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 1701,
+      "priorPerformanceFbsAttempts": 49196.0
+    },
+    {
+      "season": 2024,
+      "passingRows": 3023,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1930,
+      "rejectedTeamGameGroups": 0,
+      "observedFbsTeamGames": 1717,
+      "priorPerformanceFbsAttempts": 49111.0
+    },
+    {
+      "season": 2025,
+      "passingRows": 3123,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1914,
+      "rejectedTeamGameGroups": 0,
+      "observedFbsTeamGames": 1740,
+      "priorPerformanceFbsAttempts": 49852.0
+    },
+    {
+      "season": 2026,
+      "passingRows": 936,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 519,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 417,
+      "priorPerformanceFbsAttempts": 9511.0
+    }
+  ],
+  "scope": "Retrospective audit of inspected seasons. Every target-season fit uses only earlier seasons; 2026 is partial."
+}
