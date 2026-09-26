@@ -35,7 +35,7 @@ Saturday Lab is statically exported as a browsable sports data publication rathe
 
 The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Completed game centers include validated period scores for every game in that archive. Game weather, television and stadium detail are shown only when the published source includes them; the interface omits unavailable secondary facts instead of inventing values.
 
-Results cover 2018–2026. Current results end September 20, 2026; schedules were retrieved September 22. This is a versioned snapshot, **not an automatically updated live service**.
+Results cover 2018–2026. Rankings are frozen weekly snapshots; current scores, status and available game detail refresh independently every two hours.
 
 ## Current production model: v6
 
@@ -45,7 +45,7 @@ Every ranking and forecast on the main site uses version 6. It publishes one sca
 
 Opponent-adjusted offense and defense are fitted jointly, with regularization toward `carry × last season final rating + recruiting weight × standardized recruiting proxy`. Recruiting affects that prior, not a separate opponent-dependent weekly bonus. The ranking averages neutral win probabilities across all FBS opponents and has the same order as scalar strength.
 
-Eight documented, retrospective research stages tested recruiting placement, prior strength, roster cohorts, passer history, raw pregame play features, opponent-adjusted replication, the durability of preseason inputs, and the final model's home-field coefficient. Stage 6 compares scoring strength with opponent-adjusted non-explosive EPA, first-down creation, passing EPA, rushing EPA, yards per play and explosive-play rate. The raw success-rate result was not promoted until its signal survived explicit schedule-strength adjustment.
+Nine documented, retrospective research stages tested recruiting placement, prior strength, roster cohorts, passer history, raw pregame play features, opponent-adjusted replication, durability, home field, feature overlap, forecast confidence and nonlinear rest. Stage 6 compares scoring strength with opponent-adjusted non-explosive EPA, first-down creation, passing EPA, rushing EPA, yards per play and explosive-play rate. The raw success-rate result was not promoted until its signal survived explicit schedule-strength adjustment.
 
 For each outer season, choose by pooled previous-three-year log loss. Each inner-year coefficient fit trains only on preceding years. Refit through outerYear-1. FPI ranks never enter selection. Current selection is the broad opponent-adjusted bundle; its fitted nonzero terms are scoring strength, first-down creation, rushing EPA, yards per play, prior observed-passer efficiency, venue and rest. It retains 65% carry, rating penalty 2, the published recruiting prior at 4 points per standard deviation, uniform game weights and regression penalty 1.
 
@@ -67,6 +67,8 @@ Current whole-field FPI mean rank gap changes **7.59 → 7.57** from v5 to v6, w
 Stage 7 froze v6, then evaluated 1,215 combinations of efficiency carryover/shrinkage, component bundles, preseason fade, returning production, staff continuity and ridge strength. The best rolling candidate improved pooled 2023–25 log loss by **.00131**, below the **.0015** gate; the week-block bootstrap favored it only **73.1%** of the time, 2024 breached the regression guard, and FPI mean rank gap worsened **7.57 → 9.75**. Returning production showed signal, but no architecture was stable enough to promote. Production remains v6; the full rejected experiment is published as `public/data/research-stage7.json`.
 
 Stage 8 audited the fitted home-field logit coefficient instead of changing it by intuition. The freely fitted value stayed between **.320 and .327** across four successive target-season fits. In 566 completed 2023–25 games where neutralized v6 strength was between 40% and 60%, home teams actually won **57.6%**; v6 predicted **57.9%**. A predeclared comparison selected .30 from fixed alternatives, but it slightly worsened pooled log loss (**.534297 → .534372**) and the week-block bootstrap favored it only **17.9%** of the time. Adding the efficiency inputs moved the coefficient gradually rather than causing a collapse or jump. The audit therefore retained v6's .327 coefficient; full results are in `analytics/HOME-FIELD-AUDIT-RESULTS.md` and `public/data/research-stage8-home-field.json`.
+
+Stage 9 tested whether correlated scoring, first-down, rushing-EPA and yards-per-play ratings make v6 too confident. Compact bundles, ridge penalties 10 and 50, three confidence reductions and categorical rest effects all lost to released v6 in time-ordered validation. The best alternative worsened pooled 2023–25 log loss **.534297 → .534658**, and only **31.3%** of week-block bootstrap draws favored it. In released v6, 90–95% favorites won **95.0%** and 95%+ favorites won **99.1%** in 2023–25. Production remains v6; see `analytics/FEATURE-OVERLAP-AUDIT-RESULTS.md` and `public/data/research-stage9-feature-overlap.json`.
 
 Projected scores use a separate, frozen score layer without changing v6 probabilities. A positive robust fit maps the v6 probability logit to expected margin, while a historical calibration of the opponent-adjusted scoring total estimates game pace. The two expected scores are derived from that margin and total, so the displayed score leader always agrees with the probability leader. Rolling 2023–24 evaluation selected the method; the untouched 2025 test improved margin MAE **12.36 → 12.18**, total MAE **13.19 → 12.94**, and team-score MAE **9.02 → 8.95**. Decimal points are expected values, not literal score picks.
 
@@ -133,7 +135,7 @@ The first pipeline regenerates the original benchmark; `final_model.py` recreate
 
 `fetch_redesign.py` verifies 36 pinned source files; `fetch_extended.py` restores and verifies 32 recruiting/player-box/roster investigation files. The research scripts additionally verify 27 normalized core CSV hashes. A mismatch stops reproduction rather than silently mixing revised inputs with cached research. Fresh source revisions require a new research version. Core data default to the original local research directory; pass `--data analytics/raw` when reproducing elsewhere. Set `OPENBLAS_NUM_THREADS=1` to avoid excessive small-matrix threading. Final research caches are generated locally and ignored by Git; selected states, predictions, protocols, source hashes and reports are published.
 
-Schedules are separately refreshed by `fixtures.py`. No API key is required for these endpoints; availability and schemas can change. The site is a dated snapshot, not scheduled live ingestion.
+Scores and game detail are refreshed by `.github/workflows/live-game-refresh.yml`; the formal ranking snapshot is rebuilt and published by `.github/workflows/weekly-model-refresh.yml`. No API key is required for the public endpoints, but availability and schemas can change. Operational design and failure behavior are documented in `docs/AUTOMATION.md`.
 
 ## Tests and implementation
 
@@ -146,11 +148,11 @@ Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analyti
 
 ### Data endpoints on Pages
 
-`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/score-layer.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`, `/saturday-lab/data/research-stage8-home-field.json`.
+`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/live-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/score-layer.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`, `/saturday-lab/data/research-stage8-home-field.json`, `/saturday-lab/data/research-stage9-feature-overlap.json`.
 
 ### Portfolio description
 
-Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, seven-stage retrospective research with nested temporal selection, recruiting-age ablations, observed-passer context, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests, promotion gates and calibration diagnostics, including unfavorable comparisons.
+Built a reproducible NCAA football analytics application spanning nine seasons, with opponent-adjusted ratings, nine-stage retrospective research with nested temporal selection, recruiting-age ablations, observed-passer context, game-level data exploration and remaining-schedule probability forecasts. Published complete backtests, promotion gates and calibration diagnostics, including unfavorable comparisons.
 
 Independent personal project, not affiliated with the NCAA, ESPN or universities. Team names and marks belong to their respective owners.
 
