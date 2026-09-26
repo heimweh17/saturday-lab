@@ -1,0 +1,976 @@
+{
+  "protocol": {
+    "version": "6-feature-overlap-audit-1",
+    "blueprintSha256": "5b223583ce5834d4a3dd3b429e091558c3fc1e9c6ef770901dd7b02da6f5d203",
+    "selectionYears": [
+      2023,
+      2024
+    ],
+    "confirmationYear": 2025,
+    "partialDiagnosticYear": 2026,
+    "variants": {
+      "broad_ridge_1": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "ridge": 1.0,
+        "signed": [
+          16
+        ]
+      },
+      "compact_ridge_1": {
+        "kind": "fit",
+        "indices": [
+          0,
+          8,
+          13,
+          15,
+          16
+        ],
+        "ridge": 1.0,
+        "signed": [
+          16
+        ]
+      },
+      "compact_ridge_10": {
+        "kind": "fit",
+        "indices": [
+          0,
+          8,
+          13,
+          15,
+          16
+        ],
+        "ridge": 10.0,
+        "signed": [
+          16
+        ]
+      },
+      "stable_pair_ridge_1": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          13,
+          15,
+          16
+        ],
+        "ridge": 1.0,
+        "signed": [
+          16
+        ]
+      },
+      "stable_pair_ridge_10": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          13,
+          15,
+          16
+        ],
+        "ridge": 10.0,
+        "signed": [
+          16
+        ]
+      },
+      "broad_ridge_10": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "ridge": 10.0,
+        "signed": [
+          16
+        ]
+      },
+      "broad_ridge_50": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "ridge": 50.0,
+        "signed": [
+          16
+        ]
+      },
+      "compact_nonlinear_rest": {
+        "kind": "fit",
+        "indices": [
+          0,
+          8,
+          13,
+          15,
+          16,
+          17,
+          18
+        ],
+        "ridge": 1.0,
+        "signed": [
+          16,
+          17,
+          18
+        ]
+      },
+      "broad_nonlinear_rest": {
+        "kind": "fit",
+        "indices": [
+          0,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16,
+          17,
+          18
+        ],
+        "ridge": 1.0,
+        "signed": [
+          16,
+          17,
+          18
+        ]
+      },
+      "temperature_0.85": {
+        "kind": "temperature",
+        "value": 0.85
+      },
+      "temperature_0.90": {
+        "kind": "temperature",
+        "value": 0.9
+      },
+      "temperature_0.95": {
+        "kind": "temperature",
+        "value": 0.95
+      }
+    }
+  },
+  "integrity": {
+    "maximumProductionCoefficientError": 0.0
+  },
+  "featureCorrelation": {
+    "names": [
+      "Scoring strength",
+      "First-down rate",
+      "Rush EPA",
+      "Yards per play"
+    ],
+    "matrix": [
+      [
+        1.0,
+        0.7682855793555531,
+        0.6636440007974965,
+        0.8541920451213912
+      ],
+      [
+        0.7682855793555532,
+        1.0,
+        0.6244233694921356,
+        0.7528208327998845
+      ],
+      [
+        0.6636440007974964,
+        0.6244233694921356,
+        0.9999999999999999,
+        0.6380094986601551
+      ],
+      [
+        0.8541920451213911,
+        0.7528208327998845,
+        0.638009498660155,
+        0.9999999999999999
+      ]
+    ]
+  },
+  "selection": {
+    "broad_ridge_1": {
+      "n": 1590,
+      "accuracy": 0.7226415094339622,
+      "brier": 0.1817941578592208,
+      "logLoss": 0.5363534528677029
+    },
+    "compact_ridge_1": {
+      "n": 1590,
+      "accuracy": 0.7220125786163522,
+      "brier": 0.18280728072893335,
+      "logLoss": 0.5386097872041709
+    },
+    "compact_ridge_10": {
+      "n": 1590,
+      "accuracy": 0.7213836477987421,
+      "brier": 0.1829026874221782,
+      "logLoss": 0.5389921210427187
+    },
+    "stable_pair_ridge_1": {
+      "n": 1590,
+      "accuracy": 0.7220125786163522,
+      "brier": 0.18280728090458392,
+      "logLoss": 0.5386097876357578
+    },
+    "stable_pair_ridge_10": {
+      "n": 1590,
+      "accuracy": 0.7213836477987421,
+      "brier": 0.18290268790196917,
+      "logLoss": 0.5389921220700847
+    },
+    "broad_ridge_10": {
+      "n": 1590,
+      "accuracy": 0.7238993710691823,
+      "brier": 0.1818112771032132,
+      "logLoss": 0.5365256628338902
+    },
+    "broad_ridge_50": {
+      "n": 1590,
+      "accuracy": 0.7213836477987421,
+      "brier": 0.18233656373365031,
+      "logLoss": 0.5383886464702147
+    },
+    "compact_nonlinear_rest": {
+      "n": 1590,
+      "accuracy": 0.720125786163522,
+      "brier": 0.18306776172332367,
+      "logLoss": 0.539200111391366
+    },
+    "broad_nonlinear_rest": {
+      "n": 1590,
+      "accuracy": 0.7213836477987421,
+      "brier": 0.18205702691147543,
+      "logLoss": 0.536955624483657
+    },
+    "temperature_0.85": {
+      "n": 1590,
+      "accuracy": 0.7226415094339622,
+      "brier": 0.182573188087069,
+      "logLoss": 0.5399953590417931
+    },
+    "temperature_0.90": {
+      "n": 1590,
+      "accuracy": 0.7226415094339622,
+      "brier": 0.1821432321169002,
+      "logLoss": 0.5382546232204112
+    },
+    "temperature_0.95": {
+      "n": 1590,
+      "accuracy": 0.7226415094339622,
+      "brier": 0.18189068194715755,
+      "logLoss": 0.5370516752217986
+    }
+  },
+  "annual": {
+    "2023": {
+      "broad_ridge_1": {
+        "n": 792,
+        "accuracy": 0.7386363636363636,
+        "brier": 0.1778829644855428,
+        "logLoss": 0.5282065003713236
+      },
+      "compact_ridge_1": {
+        "n": 792,
+        "accuracy": 0.7424242424242424,
+        "brier": 0.17932284946848334,
+        "logLoss": 0.5315824339103237
+      },
+      "compact_ridge_10": {
+        "n": 792,
+        "accuracy": 0.7411616161616161,
+        "brier": 0.17959484556537747,
+        "logLoss": 0.5323772533530634
+      },
+      "stable_pair_ridge_1": {
+        "n": 792,
+        "accuracy": 0.7424242424242424,
+        "brier": 0.17932284988908004,
+        "logLoss": 0.5315824349889613
+      },
+      "stable_pair_ridge_10": {
+        "n": 792,
+        "accuracy": 0.7411616161616161,
+        "brier": 0.17959484655363017,
+        "logLoss": 0.5323772554564724
+      },
+      "broad_ridge_10": {
+        "n": 792,
+        "accuracy": 0.73989898989899,
+        "brier": 0.17796002984278178,
+        "logLoss": 0.528497670594922
+      },
+      "broad_ridge_50": {
+        "n": 792,
+        "accuracy": 0.7335858585858586,
+        "brier": 0.17892686642050687,
+        "logLoss": 0.5314776066244292
+      },
+      "compact_nonlinear_rest": {
+        "n": 792,
+        "accuracy": 0.73989898989899,
+        "brier": 0.1797959180893005,
+        "logLoss": 0.5326797150006632
+      },
+      "broad_nonlinear_rest": {
+        "n": 792,
+        "accuracy": 0.7361111111111112,
+        "brier": 0.17834695163955094,
+        "logLoss": 0.5293080727957239
+      },
+      "temperature_0.85": {
+        "n": 792,
+        "accuracy": 0.7386363636363636,
+        "brier": 0.17934842744721505,
+        "logLoss": 0.5336584769254736
+      },
+      "temperature_0.90": {
+        "n": 792,
+        "accuracy": 0.7386363636363636,
+        "brier": 0.17868381474746675,
+        "logLoss": 0.5313182045176917
+      },
+      "temperature_0.95": {
+        "n": 792,
+        "accuracy": 0.7386363636363636,
+        "brier": 0.17820246272874984,
+        "logLoss": 0.5295114828311609
+      }
+    },
+    "2024": {
+      "broad_ridge_1": {
+        "n": 798,
+        "accuracy": 0.706766917293233,
+        "brier": 0.18567594376392377,
+        "logLoss": 0.5444391500821545
+      },
+      "compact_ridge_1": {
+        "n": 798,
+        "accuracy": 0.7017543859649122,
+        "brier": 0.18626551325810178,
+        "logLoss": 0.5455843032552072
+      },
+      "compact_ridge_10": {
+        "n": 798,
+        "accuracy": 0.7017543859649122,
+        "brier": 0.1861856582875744,
+        "logLoss": 0.5455572528850832
+      },
+      "stable_pair_ridge_1": {
+        "n": 798,
+        "accuracy": 0.7017543859649122,
+        "brier": 0.18626551319064796,
+        "logLoss": 0.5455843030446085
+      },
+      "stable_pair_ridge_10": {
+        "n": 798,
+        "accuracy": 0.7017543859649122,
+        "brier": 0.18618565826272668,
+        "logLoss": 0.5455572528444969
+      },
+      "broad_ridge_10": {
+        "n": 798,
+        "accuracy": 0.7080200501253133,
+        "brier": 0.18563356761732563,
+        "logLoss": 0.5444932942289564
+      },
+      "broad_ridge_50": {
+        "n": 798,
+        "accuracy": 0.7092731829573935,
+        "brier": 0.18572062422489044,
+        "logLoss": 0.5452477236103929
+      },
+      "compact_nonlinear_rest": {
+        "n": 798,
+        "accuracy": 0.7005012531328321,
+        "brier": 0.18631500502927142,
+        "logLoss": 0.5456714822452967
+      },
+      "broad_nonlinear_rest": {
+        "n": 798,
+        "accuracy": 0.706766917293233,
+        "brier": 0.18573920688060352,
+        "logLoss": 0.5445456757829591
+      },
+      "temperature_0.85": {
+        "n": 798,
+        "accuracy": 0.706766917293233,
+        "brier": 0.1857737024063225,
+        "logLoss": 0.5462845954279149
+      },
+      "temperature_0.90": {
+        "n": 798,
+        "accuracy": 0.706766917293233,
+        "brier": 0.18557663882942063,
+        "logLoss": 0.5451388883990502
+      },
+      "temperature_0.95": {
+        "n": 798,
+        "accuracy": 0.706766917293233,
+        "brier": 0.18555117019399833,
+        "logLoss": 0.5445351744365671
+      }
+    },
+    "2025": {
+      "broad_ridge_1": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.1789214636817853,
+        "logLoss": 0.5302504436585042
+      },
+      "compact_ridge_1": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.17752538421784478,
+        "logLoss": 0.5267560227203116
+      },
+      "compact_ridge_10": {
+        "n": 808,
+        "accuracy": 0.7326732673267327,
+        "brier": 0.17762145349058797,
+        "logLoss": 0.5271008344346422
+      },
+      "stable_pair_ridge_1": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.17752538505003965,
+        "logLoss": 0.5267560246356197
+      },
+      "stable_pair_ridge_10": {
+        "n": 808,
+        "accuracy": 0.7326732673267327,
+        "brier": 0.17762145377055905,
+        "logLoss": 0.5271008346375317
+      },
+      "broad_ridge_10": {
+        "n": 808,
+        "accuracy": 0.7289603960396039,
+        "brier": 0.17919759476234706,
+        "logLoss": 0.5309831358329561
+      },
+      "broad_ridge_50": {
+        "n": 808,
+        "accuracy": 0.7289603960396039,
+        "brier": 0.18002037624004297,
+        "logLoss": 0.5333468820194952
+      },
+      "compact_nonlinear_rest": {
+        "n": 808,
+        "accuracy": 0.7314356435643564,
+        "brier": 0.17746472625774642,
+        "logLoss": 0.5266159927114958
+      },
+      "broad_nonlinear_rest": {
+        "n": 808,
+        "accuracy": 0.7314356435643564,
+        "brier": 0.17885738323475203,
+        "logLoss": 0.5301068406719608
+      },
+      "temperature_0.85": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.18016612375995705,
+        "logLoss": 0.5346816591565321
+      },
+      "temperature_0.90": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.1795860444278543,
+        "logLoss": 0.5326861597099722
+      },
+      "temperature_0.95": {
+        "n": 808,
+        "accuracy": 0.7301980198019802,
+        "brier": 0.1791779039157993,
+        "logLoss": 0.5312201714427746
+      }
+    },
+    "2026": {
+      "broad_ridge_1": {
+        "n": 157,
+        "accuracy": 0.8152866242038217,
+        "brier": 0.13468156259299136,
+        "logLoss": 0.42687821231459366
+      },
+      "compact_ridge_1": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.13476207321061778,
+        "logLoss": 0.4275324089323499
+      },
+      "compact_ridge_10": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.13497912897243364,
+        "logLoss": 0.4280138541809942
+      },
+      "stable_pair_ridge_1": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.1347620734310371,
+        "logLoss": 0.4275324093839226
+      },
+      "stable_pair_ridge_10": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.1349791317144699,
+        "logLoss": 0.4280138618761168
+      },
+      "broad_ridge_10": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.13494660144641202,
+        "logLoss": 0.427450267372635
+      },
+      "broad_ridge_50": {
+        "n": 157,
+        "accuracy": 0.802547770700637,
+        "brier": 0.13609237681541236,
+        "logLoss": 0.430322161708919
+      },
+      "compact_nonlinear_rest": {
+        "n": 157,
+        "accuracy": 0.8089171974522293,
+        "brier": 0.13495872188819713,
+        "logLoss": 0.42796487800601146
+      },
+      "broad_nonlinear_rest": {
+        "n": 157,
+        "accuracy": 0.8152866242038217,
+        "brier": 0.13486269837232068,
+        "logLoss": 0.42729374779289253
+      },
+      "temperature_0.85": {
+        "n": 157,
+        "accuracy": 0.8152866242038217,
+        "brier": 0.1377554732327192,
+        "logLoss": 0.43584269619061566
+      },
+      "temperature_0.90": {
+        "n": 157,
+        "accuracy": 0.8152866242038217,
+        "brier": 0.1365284367636236,
+        "logLoss": 0.4321642911747748
+      },
+      "temperature_0.95": {
+        "n": 157,
+        "accuracy": 0.8152866242038217,
+        "brier": 0.1355131689997153,
+        "logLoss": 0.4291956938152177
+      }
+    }
+  },
+  "pooled2023To2025": {
+    "broad_ridge_1": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18082621086365455,
+      "logLoss": 0.5342970594394157
+    },
+    "compact_ridge_1": {
+      "n": 2398,
+      "accuracy": 0.7247706422018348,
+      "brier": 0.18102755913553906,
+      "logLoss": 0.5346156914147804
+    },
+    "compact_ridge_10": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.1811231890832604,
+      "logLoss": 0.5349853822690215
+    },
+    "stable_pair_ridge_1": {
+      "n": 2398,
+      "accuracy": 0.7247706422018348,
+      "brier": 0.18102755953241056,
+      "logLoss": 0.5346156923463035
+    },
+    "stable_pair_ridge_10": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18112318949572254,
+      "logLoss": 0.5349853830185822
+    },
+    "broad_ridge_10": {
+      "n": 2398,
+      "accuracy": 0.725604670558799,
+      "brier": 0.1809306034871082,
+      "logLoss": 0.5346581224599307
+    },
+    "broad_ridge_50": {
+      "n": 2398,
+      "accuracy": 0.7239366138448707,
+      "brier": 0.1815561302495658,
+      "logLoss": 0.5366898367637172
+    },
+    "compact_nonlinear_rest": {
+      "n": 2398,
+      "accuracy": 0.7239366138448707,
+      "brier": 0.18117983317612332,
+      "logLoss": 0.5349599246134948
+    },
+    "broad_nonlinear_rest": {
+      "n": 2398,
+      "accuracy": 0.7247706422018348,
+      "brier": 0.18097891511381387,
+      "logLoss": 0.5346479442001497
+    },
+    "temperature_0.85": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18176213388510631,
+      "logLoss": 0.5382049213823724
+    },
+    "temperature_0.90": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18128159423001566,
+      "logLoss": 0.5363783436055511
+    },
+    "temperature_0.95": {
+      "n": 2398,
+      "accuracy": 0.7251876563803169,
+      "brier": 0.18097661829021952,
+      "logLoss": 0.535086764857557
+    }
+  },
+  "favoriteCalibration": {
+    "broad_ridge_1": [
+      {
+        "band": "50-60",
+        "n": 584,
+        "share": 0.24353628023352794,
+        "predictedFavoriteWinRate": 0.55013663007859,
+        "actualFavoriteWinRate": 0.565068493150685,
+        "upsetRate": 0.43493150684931503
+      },
+      {
+        "band": "60-70",
+        "n": 582,
+        "share": 0.2427022518765638,
+        "predictedFavoriteWinRate": 0.6496051879486356,
+        "actualFavoriteWinRate": 0.654639175257732,
+        "upsetRate": 0.34536082474226804
+      },
+      {
+        "band": "70-80",
+        "n": 521,
+        "share": 0.21726438698915762,
+        "predictedFavoriteWinRate": 0.7488292248613874,
+        "actualFavoriteWinRate": 0.7389635316698656,
+        "upsetRate": 0.2610364683301344
+      },
+      {
+        "band": "80-85",
+        "n": 218,
+        "share": 0.09090909090909091,
+        "predictedFavoriteWinRate": 0.8257766093897275,
+        "actualFavoriteWinRate": 0.8440366972477065,
+        "upsetRate": 0.15596330275229353
+      },
+      {
+        "band": "85-90",
+        "n": 198,
+        "share": 0.08256880733944955,
+        "predictedFavoriteWinRate": 0.8750097215202082,
+        "actualFavoriteWinRate": 0.8787878787878788,
+        "upsetRate": 0.12121212121212122
+      },
+      {
+        "band": "90-95",
+        "n": 179,
+        "share": 0.07464553794829024,
+        "predictedFavoriteWinRate": 0.9245575481292636,
+        "actualFavoriteWinRate": 0.9497206703910615,
+        "upsetRate": 0.05027932960893855
+      },
+      {
+        "band": "95-100",
+        "n": 116,
+        "share": 0.04837364470391994,
+        "predictedFavoriteWinRate": 0.9692341644289265,
+        "actualFavoriteWinRate": 0.9913793103448276,
+        "upsetRate": 0.008620689655172376
+      }
+    ],
+    "broad_ridge_10": [
+      {
+        "band": "50-60",
+        "n": 592,
+        "share": 0.2468723936613845,
+        "predictedFavoriteWinRate": 0.5503801229229335,
+        "actualFavoriteWinRate": 0.5726351351351351,
+        "upsetRate": 0.4273648648648649
+      },
+      {
+        "band": "60-70",
+        "n": 583,
+        "share": 0.24311926605504589,
+        "predictedFavoriteWinRate": 0.6492884344603145,
+        "actualFavoriteWinRate": 0.6569468267581475,
+        "upsetRate": 0.34305317324185247
+      },
+      {
+        "band": "70-80",
+        "n": 524,
+        "share": 0.21851542952460384,
+        "predictedFavoriteWinRate": 0.7483423944553212,
+        "actualFavoriteWinRate": 0.7309160305343512,
+        "upsetRate": 0.26908396946564883
+      },
+      {
+        "band": "80-85",
+        "n": 214,
+        "share": 0.08924103419516263,
+        "predictedFavoriteWinRate": 0.8251860252489136,
+        "actualFavoriteWinRate": 0.8598130841121495,
+        "upsetRate": 0.14018691588785048
+      },
+      {
+        "band": "85-90",
+        "n": 202,
+        "share": 0.08423686405337781,
+        "predictedFavoriteWinRate": 0.8747424829810508,
+        "actualFavoriteWinRate": 0.8811881188118812,
+        "upsetRate": 0.1188118811881188
+      },
+      {
+        "band": "90-95",
+        "n": 176,
+        "share": 0.07339449541284404,
+        "predictedFavoriteWinRate": 0.9250755662687776,
+        "actualFavoriteWinRate": 0.9488636363636364,
+        "upsetRate": 0.051136363636363646
+      },
+      {
+        "band": "95-100",
+        "n": 107,
+        "share": 0.044620517097581316,
+        "predictedFavoriteWinRate": 0.969293669423256,
+        "actualFavoriteWinRate": 0.9906542056074766,
+        "upsetRate": 0.009345794392523366
+      }
+    ]
+  },
+  "gapDistribution": {
+    "broad_ridge_1": {
+      "neutralAbsoluteLogitQuantiles": {
+        "0.5": 0.8571869426194525,
+        "0.75": 1.4730285728977408,
+        "0.9": 2.243337891953296,
+        "0.95": 2.7619918478196612,
+        "0.99": 3.773529246155393
+      },
+      "shareAtLeast90Percent": 0.12301918265221018,
+      "shareAtLeast95Percent": 0.04837364470391994
+    },
+    "broad_ridge_10": {
+      "neutralAbsoluteLogitQuantiles": {
+        "0.5": 0.8466945398658676,
+        "0.75": 1.455360550878687,
+        "0.9": 2.213897034377057,
+        "0.95": 2.7252180241736044,
+        "0.99": 3.7002633242539797
+      },
+      "shareAtLeast90Percent": 0.11801501251042536,
+      "shareAtLeast95Percent": 0.044620517097581316
+    }
+  },
+  "promotionGate": {
+    "selectedCandidate": "broad_ridge_10",
+    "pooledLogLossImprovement": -0.0003610630205149734,
+    "pooledBrierImprovement": -0.00010439262345365852,
+    "confirmationLogLossImprovement": -0.0007326921744519321,
+    "confirmationAccuracyDelta": -0.0012376237623762387,
+    "maximumSeasonLogLossRegression": 0.0007326921744519321,
+    "bootstrap": {
+      "blocks": 50,
+      "repetitions": 10000,
+      "probabilityLowerLogLoss": 0.3133,
+      "meanDelta": 0.00018928935858998663,
+      "p05": -0.0005051570255944161,
+      "p95": 0.000836102559415402
+    },
+    "baselineExtremeCalibrationError": 0.0239763925800215,
+    "candidateExtremeCalibrationError": 0.022870239252320648,
+    "passed": false
+  },
+  "decision": "retain-v6",
+  "coverage": [
+    {
+      "year": 2018,
+      "games": 772,
+      "epaPairedGames": 770,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2019,
+      "games": 774,
+      "epaPairedGames": 773,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2020,
+      "games": 534,
+      "epaPairedGames": 529,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2021,
+      "games": 770,
+      "epaPairedGames": 742,
+      "talentTeams": 129,
+      "teams": 130
+    },
+    {
+      "year": 2022,
+      "games": 776,
+      "epaPairedGames": 747,
+      "talentTeams": 130,
+      "teams": 131
+    },
+    {
+      "year": 2023,
+      "games": 792,
+      "epaPairedGames": 787,
+      "talentTeams": 132,
+      "teams": 133
+    },
+    {
+      "year": 2024,
+      "games": 798,
+      "epaPairedGames": 783,
+      "talentTeams": 133,
+      "teams": 134
+    },
+    {
+      "year": 2025,
+      "games": 808,
+      "epaPairedGames": 807,
+      "talentTeams": 135,
+      "teams": 136
+    },
+    {
+      "year": 2026,
+      "games": 157,
+      "epaPairedGames": 157,
+      "talentTeams": 137,
+      "teams": 138
+    }
+  ],
+  "passerCoverage": [
+    {
+      "season": 2018,
+      "passingRows": 2935,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1765,
+      "rejectedTeamGameGroups": 9,
+      "observedFbsTeamGames": 1649,
+      "priorPerformanceFbsAttempts": 47856.0
+    },
+    {
+      "season": 2019,
+      "passingRows": 2925,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1780,
+      "rejectedTeamGameGroups": 2,
+      "observedFbsTeamGames": 1660,
+      "priorPerformanceFbsAttempts": 48282.0
+    },
+    {
+      "season": 2020,
+      "passingRows": 1833,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1141,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 1101,
+      "priorPerformanceFbsAttempts": 33808.0
+    },
+    {
+      "season": 2021,
+      "passingRows": 2868,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1769,
+      "rejectedTeamGameGroups": 9,
+      "observedFbsTeamGames": 1644,
+      "priorPerformanceFbsAttempts": 47706.0
+    },
+    {
+      "season": 2022,
+      "passingRows": 2825,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1798,
+      "rejectedTeamGameGroups": 2,
+      "observedFbsTeamGames": 1672,
+      "priorPerformanceFbsAttempts": 49570.0
+    },
+    {
+      "season": 2023,
+      "passingRows": 2868,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1821,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 1701,
+      "priorPerformanceFbsAttempts": 49196.0
+    },
+    {
+      "season": 2024,
+      "passingRows": 3023,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1930,
+      "rejectedTeamGameGroups": 0,
+      "observedFbsTeamGames": 1717,
+      "priorPerformanceFbsAttempts": 49111.0
+    },
+    {
+      "season": 2025,
+      "passingRows": 3123,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 1914,
+      "rejectedTeamGameGroups": 0,
+      "observedFbsTeamGames": 1740,
+      "priorPerformanceFbsAttempts": 49852.0
+    },
+    {
+      "season": 2026,
+      "passingRows": 936,
+      "unusableOrZeroAttemptRows": 0,
+      "validatedTeamGameGroups": 519,
+      "rejectedTeamGameGroups": 1,
+      "observedFbsTeamGames": 417,
+      "priorPerformanceFbsAttempts": 9511.0
+    }
+  ],
+  "scope": "Retrospective week-forward audit; 2026 is partial and excluded from promotion."
+}
