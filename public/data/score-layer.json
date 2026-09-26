@@ -1,0 +1,87 @@
+{
+  "version": "1.0.0",
+  "probabilityModel": "6.0.0",
+  "trainingThrough": 2025,
+  "margin": {
+    "method": "positive Huber scale of v6 probability logit",
+    "scale": 8.627187918489867
+  },
+  "total": {
+    "method": "linear calibration of opponent-adjusted scoring total",
+    "intercept": 20.246507273633927,
+    "slope": 0.6308864175440995
+  },
+  "probabilityUnchanged": true,
+  "validation": {
+    "2023": {
+      "trainingThrough": 2022,
+      "parameters": {
+        "marginScale": 8.155223856598807,
+        "totalIntercept": 18.865234288463455,
+        "totalSlope": 0.6615800345309857
+      },
+      "n": 792,
+      "candidate": {
+        "marginMAE": 12.62065060181311,
+        "marginRMSE": 15.971477424007137,
+        "totalMAE": 13.133754221275616,
+        "teamScoreMAE": 9.251117931633667,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.595430995936121,
+        "marginRMSE": 15.849585222957252,
+        "totalMAE": 13.223296706043024,
+        "teamScoreMAE": 9.209026650046738,
+        "directionAgreementWithProbability": 0.928030303030303
+      }
+    },
+    "2024": {
+      "trainingThrough": 2023,
+      "parameters": {
+        "marginScale": 8.377312812189231,
+        "totalIntercept": 18.75384087573289,
+        "totalSlope": 0.6611115365029208
+      },
+      "n": 798,
+      "candidate": {
+        "marginMAE": 12.627227835637257,
+        "marginRMSE": 15.950187893868065,
+        "totalMAE": 12.934550917326613,
+        "teamScoreMAE": 9.114079846520456,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.865827130928416,
+        "marginRMSE": 16.09773413935372,
+        "totalMAE": 13.272575486928066,
+        "teamScoreMAE": 9.242716355152927,
+        "directionAgreementWithProbability": 0.9160401002506265
+      }
+    },
+    "2025": {
+      "trainingThrough": 2024,
+      "parameters": {
+        "marginScale": 8.481313835891068,
+        "totalIntercept": 19.902168300853592,
+        "totalSlope": 0.6395248243713793
+      },
+      "n": 808,
+      "candidate": {
+        "marginMAE": 12.184083023980342,
+        "marginRMSE": 15.58063134424074,
+        "totalMAE": 12.935098782278988,
+        "teamScoreMAE": 8.945281098608469,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.35622990186668,
+        "marginRMSE": 15.706714991632612,
+        "totalMAE": 13.190236331135353,
+        "teamScoreMAE": 9.020329368566323,
+        "directionAgreementWithProbability": 0.9306930693069307
+      }
+    }
+  },
+  "decision": "promote"
+}

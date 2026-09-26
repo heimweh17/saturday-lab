@@ -1,0 +1,382 @@
+{
+  "version": "1.0.0",
+  "protocol": {
+    "selectionYears": [
+      2023,
+      2024
+    ],
+    "finalTestSeason": 2025,
+    "partialDiagnosticSeason": 2026,
+    "trainingRule": "Each evaluation season uses only earlier seasons; production parameters use completed seasons through 2025.",
+    "marginCandidates": [
+      "OLS probability-logit scale through zero",
+      "Huber probability-logit scale through zero"
+    ],
+    "totalCandidates": [
+      "raw scoring total",
+      "mean-offset scoring total",
+      "linear scoring-total calibration"
+    ]
+  },
+  "selected": {
+    "marginMethod": "huber",
+    "totalMethod": "linear"
+  },
+  "candidateSearch": [
+    {
+      "marginMethod": "ols",
+      "totalMethod": "raw",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.624887117303377,
+            "marginRMSE": 15.979051509497927,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.283302159135436,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.62852238484167,
+            "marginRMSE": 15.953535875988713,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.208303182706098,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.245661163418072
+    },
+    {
+      "marginMethod": "ols",
+      "totalMethod": "offset",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.624887117303377,
+            "marginRMSE": 15.979051509497927,
+            "totalMAE": 13.223263730716148,
+            "teamScoreMAE": 9.283313700499843,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.62852238484167,
+            "marginRMSE": 15.953535875988713,
+            "totalMAE": 13.272451693079065,
+            "teamScoreMAE": 9.208546823224598,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.245789192282457
+    },
+    {
+      "marginMethod": "ols",
+      "totalMethod": "linear",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.624887117303377,
+            "marginRMSE": 15.979051509497927,
+            "totalMAE": 13.133754221275616,
+            "teamScoreMAE": 9.253757953668451,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.62852238484167,
+            "marginRMSE": 15.953535875988713,
+            "totalMAE": 12.934550917326613,
+            "teamScoreMAE": 9.115691744086213,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.184464346595101
+    },
+    {
+      "marginMethod": "huber",
+      "totalMethod": "raw",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.62065060181311,
+            "marginRMSE": 15.971477424007137,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.280824424433492,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.627227835637257,
+            "marginRMSE": 15.950187893868065,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.206985246965239,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.243765516496595
+    },
+    {
+      "marginMethod": "huber",
+      "totalMethod": "offset",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.62065060181311,
+            "marginRMSE": 15.971477424007137,
+            "totalMAE": 13.223263730716148,
+            "teamScoreMAE": 9.280835965797896,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.627227835637257,
+            "marginRMSE": 15.950187893868065,
+            "totalMAE": 13.272451693079065,
+            "teamScoreMAE": 9.207212202355075,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.243885171315274
+    },
+    {
+      "marginMethod": "huber",
+      "totalMethod": "linear",
+      "validation": {
+        "2023": {
+          "n": 792,
+          "candidate": {
+            "marginMAE": 12.62065060181311,
+            "marginRMSE": 15.971477424007137,
+            "totalMAE": 13.133754221275616,
+            "teamScoreMAE": 9.251117931633667,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.595430995936121,
+            "marginRMSE": 15.849585222957252,
+            "totalMAE": 13.223296706043024,
+            "teamScoreMAE": 9.209026650046738,
+            "directionAgreementWithProbability": 0.928030303030303
+          }
+        },
+        "2024": {
+          "n": 798,
+          "candidate": {
+            "marginMAE": 12.627227835637257,
+            "marginRMSE": 15.950187893868065,
+            "totalMAE": 12.934550917326613,
+            "teamScoreMAE": 9.114079846520456,
+            "directionAgreementWithProbability": 1.0
+          },
+          "baseline": {
+            "marginMAE": 12.865827130928416,
+            "marginRMSE": 16.09773413935372,
+            "totalMAE": 13.272575486928066,
+            "teamScoreMAE": 9.242716355152927,
+            "directionAgreementWithProbability": 0.9160401002506265
+          }
+        }
+      },
+      "pooledTeamScoreMAE": 9.18234032665232
+    }
+  ],
+  "evaluation": {
+    "2023": {
+      "trainingThrough": 2022,
+      "parameters": {
+        "marginScale": 8.155223856598807,
+        "totalIntercept": 18.865234288463455,
+        "totalSlope": 0.6615800345309857
+      },
+      "n": 792,
+      "candidate": {
+        "marginMAE": 12.62065060181311,
+        "marginRMSE": 15.971477424007137,
+        "totalMAE": 13.133754221275616,
+        "teamScoreMAE": 9.251117931633667,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.595430995936121,
+        "marginRMSE": 15.849585222957252,
+        "totalMAE": 13.223296706043024,
+        "teamScoreMAE": 9.209026650046738,
+        "directionAgreementWithProbability": 0.928030303030303
+      }
+    },
+    "2024": {
+      "trainingThrough": 2023,
+      "parameters": {
+        "marginScale": 8.377312812189231,
+        "totalIntercept": 18.75384087573289,
+        "totalSlope": 0.6611115365029208
+      },
+      "n": 798,
+      "candidate": {
+        "marginMAE": 12.627227835637257,
+        "marginRMSE": 15.950187893868065,
+        "totalMAE": 12.934550917326613,
+        "teamScoreMAE": 9.114079846520456,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.865827130928416,
+        "marginRMSE": 16.09773413935372,
+        "totalMAE": 13.272575486928066,
+        "teamScoreMAE": 9.242716355152927,
+        "directionAgreementWithProbability": 0.9160401002506265
+      }
+    },
+    "2025": {
+      "trainingThrough": 2024,
+      "parameters": {
+        "marginScale": 8.481313835891068,
+        "totalIntercept": 19.902168300853592,
+        "totalSlope": 0.6395248243713793
+      },
+      "n": 808,
+      "candidate": {
+        "marginMAE": 12.184083023980342,
+        "marginRMSE": 15.58063134424074,
+        "totalMAE": 12.935098782278988,
+        "teamScoreMAE": 8.945281098608469,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.35622990186668,
+        "marginRMSE": 15.706714991632612,
+        "totalMAE": 13.190236331135353,
+        "teamScoreMAE": 9.020329368566323,
+        "directionAgreementWithProbability": 0.9306930693069307
+      }
+    },
+    "2026": {
+      "trainingThrough": 2025,
+      "parameters": {
+        "marginScale": 8.627187918489867,
+        "totalIntercept": 20.246507273633927,
+        "totalSlope": 0.6308864175440995
+      },
+      "n": 157,
+      "candidate": {
+        "marginMAE": 12.385809398250684,
+        "marginRMSE": 15.514384359454604,
+        "totalMAE": 12.406928067186831,
+        "teamScoreMAE": 8.895093096239433,
+        "directionAgreementWithProbability": 1.0
+      },
+      "baseline": {
+        "marginMAE": 12.35589475039486,
+        "marginRMSE": 15.524896914751096,
+        "totalMAE": 12.884287109760187,
+        "teamScoreMAE": 9.026404288022421,
+        "directionAgreementWithProbability": 0.9745222929936306
+      }
+    }
+  },
+  "production": {
+    "trainingThrough": 2025,
+    "marginScale": 8.627187918489867,
+    "totalIntercept": 20.246507273633927,
+    "totalSlope": 0.6308864175440995
+  },
+  "promotionGate": {
+    "completeSeasonNoMaterialRegression": true,
+    "finalTestMarginImproved": true,
+    "finalTestTotalImproved": true,
+    "finalTestTeamScoreImproved": true,
+    "probabilityChanged": false,
+    "passed": true
+  },
+  "decision": "promote"
+}

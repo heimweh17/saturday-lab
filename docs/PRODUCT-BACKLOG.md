@@ -12,9 +12,31 @@ This document collects requested site changes before the next grouped implementa
 
 ## Request ledger
 
+### Searchable Matchup Lab team selectors
+
+- Status: Implemented; publish pending
+- Priority: Medium
+- Area: Matchup / Navigation / Mobile
+- User problem: Choosing from the complete FBS list requires scrolling through more than 130 teams for both sides of a hypothetical matchup.
+- Desired behavior: Give Team A and Team B compact searchable inputs with alphabetized browser suggestions. Typing or choosing an exact team should immediately update the comparison; incomplete text should safely return to the current selection on blur.
+- Acceptance checks: Both fields work with typing, pointer selection and keyboard-native suggestions; swapping teams keeps the labels synchronized; the layout remains usable on mobile; selecting a team still updates the URL-backed matchup and expected score.
+
+### Full-model projected score layer
+
+- Status: Implemented; publish pending
+- Priority: Medium
+- Area: Games / Matchup / Model / Validation / Data
+- User problem: The current projected score uses only the opponent-adjusted scoring component, while the published win probability uses the complete v6 model. In very close games the two can name different leaders, which is mathematically possible but confusing when both appear as the main forecast.
+- Desired behavior: Preserve the validated v6 probability model, then add a historically fitted score layer that turns the complete model signal into an expected margin and combines it with a separately estimated game total to produce two team scores. The displayed projected score, expected margin and favored team must agree with the published probability direction.
+- Research protocol: Fit and evaluate the score layer only on historical pregame features. Use season-based out-of-sample evaluation and compare it with the current scoring-component baseline. Measure margin MAE/RMSE, team-score and total-score MAE, directional agreement, and confirm that the underlying v6 probability, log loss, Brier score and calibration are unchanged. Do not promote a layer that merely improves visual consistency while worsening historical score accuracy.
+- Implementation preference: Start with the conservative approach: retain v6 probabilities, fit an out-of-sample mapping from the complete-model logit to expected margin, and retain or independently calibrate the scoring component for expected total points. Derive the two projected scores from total and margin. Treat decimal scores as expectations rather than literal football scores.
+- Routes affected: Upcoming `/games/{season}/{game}/` pages and Matchup Lab wherever projected points are shown. Historical frozen pregame records and the v6 ranking model must remain unchanged.
+- Acceptance checks: Probability values exactly match the existing v6 output; projected-score leader always matches the probability leader except an exact 50% tie; no future information enters training; the selected layer beats or credibly matches the current score baseline on held-out seasons; documentation distinguishes expected points from a predicted exact final score; Iowa–Michigan and other close games no longer present contradictory leaders.
+- Fallback: If no candidate passes the validation gate, keep the current scoring component and revise its presentation so it is clearly a component estimate rather than the complete-model projected score.
+
 ### Completed-game box-score contrast
 
-- Status: Recorded; include in the next grouped front-end pass
+- Status: Implemented; publish pending
 - Priority: High
 - Area: Games / Accessibility / Visual design / Mobile
 - User problem: In the completed-game “Scoring by quarter” table, team names are rendered with dark text on a dark navy background and are effectively invisible. The column labels are also too muted against the same background, so readers have to strain to identify the teams and periods.
@@ -25,7 +47,7 @@ This document collects requested site changes before the next grouped implementa
 
 ### Reader-facing copy restraint pass
 
-- Status: Recorded; include in the next grouped front-end pass
+- Status: Implemented; publish pending
 - Priority: Medium
 - Area: Site-wide content / Games / Teams / Rankings / Trends / Matchup / Mobile
 - User problem: Several public-facing pages add explanatory sentences that repeat what a heading already says without adding context. This makes data pages feel busier and more self-conscious than a finished sports product.
@@ -36,7 +58,7 @@ This document collects requested site changes before the next grouped implementa
 
 ### Context-aware back navigation on game pages
 
-- Status: Recorded; include in the next grouped front-end pass
+- Status: Implemented; publish pending
 - Priority: Medium
 - Area: Games / Navigation / Teams / Scores / Mobile
 - User problem: A reader can open a permanent game center from a team schedule, completed results, the scores page or a previous-meetings link, but the game page has no clear way to return to the exact place they came from. This interrupts browsing through one team’s season or a chain of historical meetings.

@@ -2,10 +2,10 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import assert from 'node:assert/strict';
 import ts from 'typescript';
-const module={exports:{}};
+const modelModule={exports:{}};
 const code=ts.transpileModule(fs.readFileSync('lib/model.ts','utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText;
-vm.runInNewContext(code,{module,exports:module.exports,Math,Date,Array});
-const {modelPredict,winDistribution}=module.exports;
+vm.runInNewContext(code,{module:modelModule,exports:modelModule.exports,Math,Date,Array});
+const {modelPredict,winDistribution}=modelModule.exports;
 let checked=0;
 for(const year of [2023,2024,2025,2026]){
  const data=JSON.parse(fs.readFileSync(`public/data/${year}.json`,'utf8'));

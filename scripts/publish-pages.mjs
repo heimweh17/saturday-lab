@@ -1,5 +1,5 @@
 import {spawnSync} from 'node:child_process';
-import {existsSync,readFileSync} from 'node:fs';
+import {existsSync} from 'node:fs';
 import {resolve} from 'node:path';
 const root=process.cwd(),out=resolve(root,'out');
 if(!existsSync(resolve(out,'index.html'))||!existsSync(resolve(out,'.nojekyll')))throw Error('Run npm run build:pages successfully first.');

@@ -17,7 +17,7 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 - Open a team’s remaining schedule: projected win/loss, win chance, expected remaining wins and an exact remaining-win distribution under fixed-strength/independence assumptions.
 - Select among 30 raw and derived box metrics, switch team/opponent views, filter home/away/FBS games, compare against FBS team averages and inspect complete past-game box scores.
 - Open any completed game for quarter-by-quarter scoring, a side-by-side team box score including first downs, total/passing/rushing yards, attempts, down conversions, turnovers, penalties and possession, plus linked meetings from the current and previous four seasons. Upcoming game centers show one-decimal probabilities and a broader current-form comparison.
-- Compare two teams and venues, inspect probability contributions and scoring-component margin decomposition.
+- Search for any two teams, compare venues, inspect probability contributions and see a full-model expected score whose favored team agrees with the published win probability.
 - Compare as many as 12 teams on one season-long ranking chart, switch between a fitted view and all FBS ranks, zoom the scale, or follow one team week by week with the game result behind every ranking point.
 - Explore every team on a large, expandable offense-versus-defense map with hover details, range controls, wheel/pinch zoom, panning and direct links to team reports.
 - Audit every annual candidate, reconstructed prediction, calibration bin and benchmark result; export CSVs.
@@ -65,6 +65,8 @@ Recruiting-age ablations do **not** establish that ignoring freshmen is better: 
 Current whole-field FPI mean rank gap changes **7.59 → 7.57** from v5 to v6, with Spearman **.967 → .968**. Model cutoff is September 20; FPI reference September 22. This is diagnostic, not a tuning target. Archived v3/v4/v5, all preliminary experiments and final predictions remain downloadable.
 
 Stage 7 froze v6, then evaluated 1,215 combinations of efficiency carryover/shrinkage, component bundles, preseason fade, returning production, staff continuity and ridge strength. The best rolling candidate improved pooled 2023–25 log loss by **.00131**, below the **.0015** gate; the week-block bootstrap favored it only **73.1%** of the time, 2024 breached the regression guard, and FPI mean rank gap worsened **7.57 → 9.75**. Returning production showed signal, but no architecture was stable enough to promote. Production remains v6; the full rejected experiment is published as `public/data/research-stage7.json`.
+
+Projected scores use a separate, frozen score layer without changing v6 probabilities. A positive robust fit maps the v6 probability logit to expected margin, while a historical calibration of the opponent-adjusted scoring total estimates game pace. The two expected scores are derived from that margin and total, so the displayed score leader always agrees with the probability leader. Rolling 2023–24 evaluation selected the method; the untouched 2025 test improved margin MAE **12.36 → 12.18**, total MAE **13.19 → 12.94**, and team-score MAE **9.02 → 8.95**. Decimal points are expected values, not literal score picks.
 
 ## Data and boundaries
 
@@ -115,6 +117,7 @@ python analytics/qb_review.py --data analytics/raw
 python analytics/export_ranking_review.py
 python analytics/stability_review.py
 python analytics/opponent_stability_review.py
+python analytics/full_score_layer.py
 python analytics/export_opponent_stability.py
 python analytics/service_index.py
 python analytics/provenance.py --data analytics/raw
@@ -140,7 +143,7 @@ Key files: `analytics/ranking_review.py`, `analytics/cohort_review.py`, `analyti
 
 ### Data endpoints on Pages
 
-`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`.
+`/saturday-lab/data/2026.json`, `/saturday-lab/data/box-2026.json`, `/saturday-lab/data/periods-2026.json`, `/saturday-lab/data/linescore-sources.json`, `/saturday-lab/data/model.json`, `/saturday-lab/data/score-layer.json`, `/saturday-lab/data/fixtures.json`, `/saturday-lab/data/model-predictions.csv`, `/saturday-lab/data/research-stage7.json`.
 
 ### Portfolio description
 

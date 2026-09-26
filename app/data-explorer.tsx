@@ -17,7 +17,7 @@ function aggregate(rows:BoxRow[],side:'own'|'opponent',def:Definition,ratios:Box
 }
 export function DataExplorer({data,snapshot,week,teamId}:{data:Season;snapshot:Snapshot;week:string;teamId:string}){
  const [box,setBox]=useState<BoxData|null>(null),[error,setError]=useState(false),[side,setSide]=useState<'own'|'opponent'>('own'),[split,setSplit]=useState('all'),[group,setGroup]=useState('all'),[selected,setSelected]=useState(['totalYards','yardsPerPlay','passYpa','rushYpa','thirdRate','turnovers']),[expanded,setExpanded]=useState<string|null>(null);
- useEffect(()=>{setBox(null);setError(false);const c=new AbortController();fetch(asset(`/data/box-${data.season}.json`),{signal:c.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>setBox(d as BoxData)).catch(e=>{if(e.name!=='AbortError')setError(true)});return()=>c.abort()},[data.season]);
+ useEffect(()=>{let active=true;const c=new AbortController();queueMicrotask(()=>{if(active){setBox(null);setError(false)}});fetch(asset(`/data/box-${data.season}.json`),{signal:c.signal}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(d=>setBox(d as BoxData)).catch(e=>{if(e.name!=='AbortError')setError(true)});return()=>{active=false;c.abort()}},[data.season]);
  const before=useMemo(()=>new Set(data.weeks.slice(0,data.weeks.indexOf(Number(week)))),[data.weeks,week]);
  const rows=useMemo(()=>box?.rows.filter(r=>r.teamId===teamId&&before.has(r.week)&&(split==='all'||split==='fbs'&&r.fbs||split==='home'&&r.home&&!r.neutral||split==='away'&&!r.home&&!r.neutral||split==='neutral'&&r.neutral))??[],[box,teamId,before,split]);
  const defs=box?.definitions.filter(d=>selected.includes(d.key))??[];
