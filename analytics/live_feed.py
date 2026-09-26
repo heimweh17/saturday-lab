@@ -170,6 +170,9 @@ def canonical(payload):
 
 def pregame_prediction(game, season_data):
     snapshot = season_data["snapshots"]["99"]
+    through = snapshot.get("through")
+    if through and datetime.fromisoformat(through.replace("Z", "+00:00")) >= datetime.fromisoformat(game["date"].replace("Z", "+00:00")):
+        return None
     teams = {team["id"]: team for team in snapshot["teams"]}
     home, away = teams.get(game["home"]), teams.get(game["away"])
     model = season_data.get("model")
@@ -261,6 +264,14 @@ def main():
                 "calculatedAt": archived.get("cutoff"),
                 "frozenAt": archived.get("cutoff"),
             }
+        else:
+            # A feed may first discover a game after it ends (for example after a
+            # temporary upstream outage). Reconstruct its pregame probability only
+            # when the formal snapshot is provably older than kickoff.
+            reconstructed = pregame_prediction(game, season_data)
+            if reconstructed:
+                reconstructed["frozenAt"] = now.isoformat()
+                game["pregame"] = reconstructed
         changed = not prior or any(prior.get(key) != game.get(key) for key in ("status", "state", "hs", "as", "date"))
         kickoff = datetime.fromisoformat(game["date"].replace("Z", "+00:00"))
         near_kickoff = now - timedelta(days=2) <= kickoff <= now + timedelta(days=2)

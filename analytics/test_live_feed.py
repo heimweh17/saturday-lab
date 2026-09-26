@@ -37,6 +37,14 @@ class LiveFeedTest(unittest.TestCase):
         self.assertAlmostEqual(ab["homeWinProbability"] + ba["homeWinProbability"], 1)
         self.assertEqual(ab["snapshotThrough"], "2026-09-20T00:00Z")
 
+    def test_pregame_probability_cannot_use_a_post_kickoff_snapshot(self):
+        season = {
+            "snapshots": {"99": {"through": "2026-10-02T00:00Z", "teams": []}},
+            "model": {"version": "test", "coefficients": []},
+        }
+        game = {"date": "2026-10-01T00:00Z", "home": "a", "away": "b", "neutral": True}
+        self.assertIsNone(live_feed.pregame_prediction(game, season))
+
 
 if __name__ == "__main__":
     unittest.main()
