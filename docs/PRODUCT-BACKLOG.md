@@ -14,7 +14,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Searchable Matchup Lab team selectors
 
-- Status: Implemented; publish pending
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
 - Priority: Medium
 - Area: Matchup / Navigation / Mobile
 - User problem: Choosing from the complete FBS list requires scrolling through more than 130 teams for both sides of a hypothetical matchup.
@@ -23,7 +25,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Full-model projected score layer
 
-- Status: Implemented; publish pending
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
 - Priority: Medium
 - Area: Games / Matchup / Model / Validation / Data
 - User problem: The current projected score uses only the opponent-adjusted scoring component, while the published win probability uses the complete v6 model. In very close games the two can name different leaders, which is mathematically possible but confusing when both appear as the main forecast.
@@ -36,7 +40,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Completed-game box-score contrast
 
-- Status: Implemented; publish pending
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
 - Priority: High
 - Area: Games / Accessibility / Visual design / Mobile
 - User problem: In the completed-game “Scoring by quarter” table, team names are rendered with dark text on a dark navy background and are effectively invisible. The column labels are also too muted against the same background, so readers have to strain to identify the teams and periods.
@@ -47,7 +53,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Reader-facing copy restraint pass
 
-- Status: Implemented; publish pending
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
 - Priority: Medium
 - Area: Site-wide content / Games / Teams / Rankings / Trends / Matchup / Mobile
 - User problem: Several public-facing pages add explanatory sentences that repeat what a heading already says without adding context. This makes data pages feel busier and more self-conscious than a finished sports product.
@@ -58,7 +66,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Context-aware back navigation on game pages
 
-- Status: Implemented; publish pending
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
 - Priority: Medium
 - Area: Games / Navigation / Teams / Scores / Mobile
 - User problem: A reader can open a permanent game center from a team schedule, completed results, the scores page or a previous-meetings link, but the game page has no clear way to return to the exact place they came from. This interrupts browsing through one team’s season or a chain of historical meetings.
@@ -114,6 +124,13 @@ Use this format for new entries:
 -->
 
 ## Completed batches
+
+### Forecast clarity and game-navigation finish
+
+- Status: Published
+- Source commit: `b0e2af8`
+- Pages artifact: `4c2b65cf7350540430be980b03316623c4902767`
+- Added searchable Matchup Lab team inputs, a validated full-model expected-score layer, context-aware game return paths, readable period-score tables and a restrained reader-facing copy pass.
 
 ### Reader-first scores and game archive
 
