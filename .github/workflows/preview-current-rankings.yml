@@ -1,0 +1,70 @@
+name: Preview current rankings
+run-name: Unofficial ranking preview
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: saturday-lab-unofficial-preview
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: analytics/requirements.txt
+      - name: Install analytics dependencies
+        run: python -m pip install -r analytics/requirements.txt
+      - name: Calculate an unofficial v6 ranking
+        run: |
+          python analytics/production_sources.py
+          python analytics/weekly_refresh.py
+      - name: Write the preview
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          data = json.loads(Path('public/data/2026.json').read_text())
+          snapshot = data['snapshots']['99']
+          teams = sorted(snapshot['teams'], key=lambda row: row['modelRank'])
+          preview = {
+              'status': 'unofficial',
+              'season': 2026,
+              'modelVersion': data['model']['version'],
+              'calculatedAt': datetime.now(timezone.utc).isoformat(),
+              'resultsThrough': snapshot['through'],
+              'teams': [
+                  {
+                      'rank': team['modelRank'], 'team': team['name'],
+                      'record': f"{team['wins']}-{team['losses']}",
+                      'strength': round(team['winIndex'] * 100, 1),
+                  }
+                  for team in teams
+              ],
+          }
+          Path('unofficial-rankings.json').write_text(json.dumps(preview, indent=2) + '\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              summary.write('# Unofficial current ranking\n\n')
+              summary.write(f"**Model:** v{preview['modelVersion']} · **Results through:** {preview['resultsThrough']}\n\n")
+              summary.write('This is a research preview. It does not update the website or create a formal weekly snapshot.\n\n')
+              summary.write('| Rank | Team | Record | Strength |\n|---:|---|:---:|---:|\n')
+              for team in teams[:30]:
+                  summary.write(f"| {team['modelRank']} | {team['name']} | {team['wins']}-{team['losses']} | {team['winIndex'] * 100:.1f}% |\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: unofficial-rankings
+          path: unofficial-rankings.json
+          retention-days: 1

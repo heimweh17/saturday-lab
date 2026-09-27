@@ -173,6 +173,10 @@ The live feed also drives current team-page schedule placement. A completed game
 6. commits the current data files if they changed;
 7. publishes the static artifact to `gh-pages`.
 
+The shared publication concurrency group prevents a weekly write from racing a live-feed write. Before the expensive job begins, a same-day guard skips a second formal publication unless a manual operator deliberately selects the `force` input. The independent QStash schedules target only `live-game-refresh.yml`; they never invoke the weekly workflow.
+
+`preview-current-rankings.yml` is an intentionally nonpublishing research path linked by the current rankings page. It calculates with the same frozen v6 pipeline, shows the Top 30 in the Actions summary, retains a complete JSON artifact for one day, and has only `contents: read`. Do not add commit, Pages publication or dated-snapshot writes to this workflow.
+
 The homepage `UP NEXT` board is computed in `app/game-strip.tsx` from the refreshed `fixtures.json` plus the latest `99` snapshot. It finds the earliest remaining scheduled FBS week, scores games by 60% team quality and 40% projected closeness, applies the published eligibility rule, and shows up to 10 games. Therefore it advances automatically after the Monday fixture/model update; it is not a hard-coded Week 4 list. Exact historical ranking snapshot pages omit this current-week board so their context stays frozen.
 
 The frequent feed and weekly workflow share one concurrency group so they cannot push competing commits. Both must remain idempotent: game ID is the unique key, and no-change refreshes exit without a commit.

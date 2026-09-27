@@ -5,6 +5,12 @@ on:
     # 14:30 UTC is Monday morning in Eastern time throughout the football season.
     - cron: "30 14 * * 1"
   workflow_dispatch:
+    inputs:
+      force:
+        description: Run again even if a formal snapshot was already published today
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: write
@@ -14,7 +20,44 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  guard:
+    runs-on: ubuntu-latest
+    outputs:
+      proceed: ${{ steps.gate.outputs.proceed }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prevent a duplicate formal publication
+        id: gate
+        env:
+          FORCE_REFRESH: ${{ inputs.force || 'false' }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          manifest = json.loads(Path('public/data/manifest.json').read_text())
+          raw = manifest.get('generatedAt')
+          published = datetime.fromisoformat(raw.replace('Z', '+00:00')) if raw else None
+          now = datetime.now(timezone.utc)
+          eastern = ZoneInfo('America/New_York')
+          already_today = bool(published and published.astimezone(eastern).date() == now.astimezone(eastern).date())
+          forced = os.environ.get('FORCE_REFRESH', 'false').lower() == 'true'
+          proceed = forced or not already_today
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f"proceed={'true' if proceed else 'false'}\n")
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              if proceed:
+                  summary.write('Formal weekly refresh will run.\n')
+              else:
+                  summary.write('Formal weekly refresh skipped: a snapshot was already published today. Use the force input only for an intentional correction.\n')
+          PY
+
   refresh:
+    needs: guard
+    if: needs.guard.outputs.proceed == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:

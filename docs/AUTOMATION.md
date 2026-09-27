@@ -14,6 +14,10 @@ The feed also carries the current weekly pregame probability. A scheduled game r
 
 `.github/workflows/weekly-model-refresh.yml` runs Monday at 14:30 UTC and can also be started manually. It downloads a separate rolling operational source cache, rebuilds only the current season with the frozen v6 feature set and coefficients, updates current box and period archives, refreshes the future schedule, runs model/application checks, creates a complete static export and publishes `gh-pages`.
 
+The workflow-level publication lock serializes it with live-feed writes. A same-day guard then skips a second formal weekly run after one has already published, so a scheduled run and an accidental manual run cannot create redundant formal releases. Manual dispatch exposes an explicit `force` input for a deliberate corrected republication.
+
+`.github/workflows/preview-current-rankings.yml` is the separate research button behind **Unofficial preview** on the current rankings page. It runs the same frozen v6 source and ranking calculation in an ephemeral Actions workspace, writes the Top 30 to the run summary, and keeps a full JSON artifact for one day. It has read-only repository permission and never commits, updates a dated snapshot, rebuilds Pages or changes the live site.
+
 Research source files and their checksums remain separate. The weekly job follows current upstream releases but cannot overwrite a frozen research manifest or refit/select a model. If a just-finished game has conflicting score and advanced-stat releases, the job quarantines that game from the formal model snapshot; the live feed can still show its final score, and a later weekly run includes it after the upstream files agree.
 
 Rankings and future probabilities therefore identify one stable weekly cutoff. A Friday final can appear quickly in Scores and its game center while the ranking remains Monday's published snapshot. It enters the rating at the next successful formal refresh.
