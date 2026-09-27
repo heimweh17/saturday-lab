@@ -4,7 +4,7 @@ Saturday Lab separates changing game facts from the formal model publication cyc
 
 ## Current-game feed
 
-`.github/workflows/live-game-refresh.yml` runs every two hours. It queries every current FBS team schedule, deduplicates events by ESPN game ID, and requests summaries only for active, newly final or nearby games that still need detail. The output is `public/data/live-2026.json`.
+`.github/workflows/live-game-refresh.yml` has an hourly scheduling opportunity. GitHub scheduled events are best-effort and may be delayed or dropped, so the extra opportunity limits the gap after a missed trigger. It queries every current FBS team schedule, deduplicates events by ESPN game ID, and requests summaries only for active, newly final or nearby games that still need detail. The output is `public/data/live-2026.json`.
 
 The browser reads that file directly from the `main` branch with a five-minute cache window and falls back to the copy bundled into the latest Pages artifact. Scores, status, kickoff, period scoring and available box-score details can therefore change without rebuilding the historical static archive. Current-season team reports use the same feed, so a final moves from Upcoming Games to Results promptly while rankings and season summaries remain on the weekly snapshot. A semantic comparison excludes the retrieval timestamp; an unchanged feed produces no commit.
 

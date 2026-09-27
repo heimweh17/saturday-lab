@@ -2,7 +2,9 @@ name: Refresh current games
 
 on:
   schedule:
-    - cron: "17 */2 * * *"
+    # GitHub schedules are best-effort and occasionally drop a queued run.
+    # An hourly opportunity keeps a missed trigger from creating a 4–6 hour gap.
+    - cron: "23 * * * *"
   workflow_dispatch:
 
 permissions:

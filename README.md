@@ -35,7 +35,7 @@ Saturday Lab is statically exported as a browsable sports data publication rathe
 
 The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Completed game centers include validated period scores for every game in that archive. Game weather, television and stadium detail are shown only when the published source includes them; the interface omits unavailable secondary facts instead of inventing values.
 
-Results cover 2018–2026. Rankings are frozen weekly snapshots; current scores, status and available game detail refresh independently every two hours.
+Results cover 2018–2026. Rankings are frozen weekly snapshots; current scores, status and available game detail have an independent hourly refresh opportunity.
 
 ## Current production model: v6
 
