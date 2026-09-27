@@ -27,13 +27,15 @@ College football rankings, team reports, schedule forecasts and matchup analysis
 Saturday Lab is statically exported as a browsable sports data publication rather than a single tabbed dashboard:
 
 - `/teams/florida-gators/` is a permanent team report with rankings, weekly movement, forecast schedule, past results and box-score-derived splits.
+- `/teams/florida-gators/2025/` is the permanent report for that team and season. The undated team URL remains the current-season shortcut.
+- `/rankings/2025/` opens the final or latest published snapshot for that season; `/rankings/2025/week-5/` preserves an exact weekly ranking board. `/` and `/rankings/` remain current-season shortcuts.
 - `/games/` is the current scores and schedule center. It joins recent finals with the published future slate and links every card to a permanent game center.
 - `/games/2026/ole-miss-rebels-at-florida-gators-401856699/` is a permanent game center. Upcoming games show the v6 probability, projected score, venue and available event details; completed games preserve the score and the model prediction that existed before kickoff.
 - `/matchup/` is reserved for hypothetical simulations. `/rank-trends/` provides multi-team season charts. `/model/`, `/methodology/` and `/legal/` keep model documentation and source terms outside the main data workflow.
 - Team and opponent references link back to team reports. The home marquee board and schedule rows link to game centers instead of sending readers to an external site.
 - `sitemap.xml` enumerates the complete generated archive and `robots.txt` exposes it to crawlers.
 
-The Pages build currently generates the complete 2018–2026 game archive plus current and historical team-name routes. Completed game centers include validated period scores for every game in that archive. Game weather, television and stadium detail are shown only when the published source includes them; the interface omits unavailable secondary facts instead of inventing values.
+The Pages build currently generates the complete 2018–2026 game archive, dated team-season reports and dated ranking snapshots. Completed game centers include validated period scores for every game in that archive. Game weather, television and stadium detail are shown only when the published source includes them; the interface omits unavailable secondary facts instead of inventing values.
 
 Results cover 2018–2026. Rankings are frozen weekly snapshots; current scores, status and available game detail have an independent hourly refresh opportunity.
 
@@ -136,6 +138,8 @@ The first pipeline regenerates the original benchmark; `final_model.py` recreate
 `fetch_redesign.py` verifies 36 pinned source files; `fetch_extended.py` restores and verifies 32 recruiting/player-box/roster investigation files. The research scripts additionally verify 27 normalized core CSV hashes. A mismatch stops reproduction rather than silently mixing revised inputs with cached research. Fresh source revisions require a new research version. Core data default to the original local research directory; pass `--data analytics/raw` when reproducing elsewhere. Set `OPENBLAS_NUM_THREADS=1` to avoid excessive small-matrix threading. Final research caches are generated locally and ignored by Git; selected states, predictions, protocols, source hashes and reports are published.
 
 Scores and game detail are refreshed by `.github/workflows/live-game-refresh.yml`, using an independent external dispatch schedule with GitHub's native schedule retained as a fallback. The formal ranking snapshot is rebuilt and published by `.github/workflows/weekly-model-refresh.yml`. No API key is required for the public data endpoints, but availability and schemas can change. Operational design and failure behavior are documented in `docs/AUTOMATION.md`.
+
+Agents and maintainers should begin with `docs/AGENT-HANDBOOK.md`. It records the route contract, data ownership, model invariants, automation, change boundaries and verification matrix needed to modify the project safely.
 
 ## Tests and implementation
 

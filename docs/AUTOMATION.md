@@ -18,6 +18,8 @@ Research source files and their checksums remain separate. The weekly job follow
 
 Rankings and future probabilities therefore identify one stable weekly cutoff. A Friday final can appear quickly in Scores and its game center while the ranking remains Monday's published snapshot. It enters the rating at the next successful formal refresh.
 
+Historical team-season and ranking-snapshot URLs are immutable views of the committed season JSON. The current build still performs one complete Next.js static export, even though those historical inputs do not change. Reusing frozen HTML safely is a separate build optimization: old pages reference hashed framework assets, so copying only their HTML into a new artifact could leave broken script references. The route structure keeps that optimization possible without coupling it to the weekly model update.
+
 ## Failure behavior
 
 Both workflows share one concurrency group, so they do not push competing commits. A failed fetch, incomplete team-schedule coverage, model assertion, test, lint or build stops publication. Generated operational caches are ignored by Git. The weekly data commit occurs only after verification, and the Pages artifact is pushed only after a successful static build.

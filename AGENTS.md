@@ -7,3 +7,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+# Saturday Lab agent entry point
+
+Before changing this repository, read `docs/AGENT-HANDBOOK.md`. It describes the product, data contracts, model boundaries, permanent URL scheme, automation, verification commands, and files that must stay synchronized. Treat the published v6 coefficients and frozen pregame forecasts as controlled research outputs: do not tune or rewrite them as part of an unrelated UI task.
