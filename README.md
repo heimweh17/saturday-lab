@@ -135,7 +135,7 @@ The first pipeline regenerates the original benchmark; `final_model.py` recreate
 
 `fetch_redesign.py` verifies 36 pinned source files; `fetch_extended.py` restores and verifies 32 recruiting/player-box/roster investigation files. The research scripts additionally verify 27 normalized core CSV hashes. A mismatch stops reproduction rather than silently mixing revised inputs with cached research. Fresh source revisions require a new research version. Core data default to the original local research directory; pass `--data analytics/raw` when reproducing elsewhere. Set `OPENBLAS_NUM_THREADS=1` to avoid excessive small-matrix threading. Final research caches are generated locally and ignored by Git; selected states, predictions, protocols, source hashes and reports are published.
 
-Scores and game detail are refreshed by `.github/workflows/live-game-refresh.yml`; the formal ranking snapshot is rebuilt and published by `.github/workflows/weekly-model-refresh.yml`. No API key is required for the public endpoints, but availability and schemas can change. Operational design and failure behavior are documented in `docs/AUTOMATION.md`.
+Scores and game detail are refreshed by `.github/workflows/live-game-refresh.yml`, using an independent external dispatch schedule with GitHub's native schedule retained as a fallback. The formal ranking snapshot is rebuilt and published by `.github/workflows/weekly-model-refresh.yml`. No API key is required for the public data endpoints, but availability and schemas can change. Operational design and failure behavior are documented in `docs/AUTOMATION.md`.
 
 ## Tests and implementation
 
