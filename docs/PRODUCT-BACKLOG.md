@@ -27,7 +27,9 @@ This document collects requested site changes before the next grouped implementa
 
 ### Matchup Lab searchable full-list dropdowns
 
-- Status: Completed; publishing in this release
+- Status: Published
+- Source commit: `2df301b`
+- Pages artifact: `897c01014a5c259defc4da23389409bed4767d21`
 - Priority: High
 - Area: Matchup / Navigation / Mobile / Accessibility
 - User problem: The current Team A and Team B controls feel like text fields that require the reader to know and type a team name. They removed the useful behavior of opening a long, alphabetized list and browsing every FBS team.
@@ -138,6 +140,13 @@ Use this format for new entries:
 -->
 
 ## Completed batches
+
+### Reliable refresh, historical views and agent handoff
+
+- Status: Published
+- Source commits: `861508e`, `f5a22a2`
+- Pages artifact: `897c01014a5c259defc4da23389409bed4767d21`
+- Added an independent hourly QStash trigger with GitHub cron fallback and full-run retries; published dated team-season and exact ranking-week permalinks; preserved historical navigation context; verified automatic `:37` dispatch; and added `docs/AGENT-HANDBOOK.md` as the safe starting point for future agents.
 
 ### Forecast clarity and game-navigation finish
 
