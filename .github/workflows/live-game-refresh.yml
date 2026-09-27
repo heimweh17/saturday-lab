@@ -4,8 +4,10 @@ run-name: Refresh current games · ${{ inputs.trigger || github.event_name }}
 on:
   schedule:
     # GitHub schedules are best-effort and occasionally drop a queued run.
-    # An hourly opportunity keeps a missed trigger from creating a 4–6 hour gap.
-    - cron: "23 * * * *"
+    # These slower, offset runs back up the independent QStash clock.
+    - cron: "53 */4 * * 1-4"
+    - cron: "53 */2 * * 0,5"
+    - cron: "8,38 * * * 6"
   workflow_dispatch:
     inputs:
       trigger:

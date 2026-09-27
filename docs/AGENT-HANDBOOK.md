@@ -145,8 +145,8 @@ The score layer is separate from the probability model but anchored to it. A pos
 
 `.github/workflows/live-game-refresh.yml` has two independent triggers:
 
-- QStash calls `workflow_dispatch` hourly at minute 37 UTC and supplies `trigger=qstash`.
-- GitHub's native schedule at minute 23 is retained as a best-effort fallback.
+- QStash calls `workflow_dispatch` in the `America/New_York` timezone and supplies `trigger=qstash`: every three hours Monday through Thursday, hourly Friday and Sunday, and every 15 minutes Saturday.
+- GitHub's native schedule is retained as a slower best-effort fallback: every four hours Monday through Thursday, every two hours Friday and Sunday, and every 30 minutes Saturday (GitHub cron is UTC).
 
 The QStash credential is a fine-grained GitHub token with no expiration, limited to `heimweh17/saturday-lab`, with `Actions: read and write` plus required metadata read access. The secret lives only in QStash, is forwarded as the GitHub Authorization header, and is redacted in the QStash console. Never commit or print it. If it must be rotated, pause the schedule, revoke the old token, create the replacement with the same minimal scope, update the redacted header, resume, manually trigger once, and verify a GitHub run titled `Refresh current games · qstash`.
 
@@ -157,7 +157,7 @@ The workflow:
 3. commits only when semantic game data changed;
 4. pushes only `public/data/live-2026.json`.
 
-`lib/live-feed.ts` lets the production browser read the raw file from `main` with a five-minute cache bucket and fall back to the copy bundled in the last Pages artifact. This is how current facts update without regenerating more than 9,000 pages.
+`lib/live-feed.ts` lets the production browser read the raw file from `main` with a five-minute cache bucket and fall back to the copy bundled in the last Pages artifact. This is how current facts update without regenerating more than 9,000 pages. The Scores page gets the most recent successful check time from GitHub's public Actions API; that timestamp advances even when the semantic feed is unchanged and no commit is created.
 
 The live feed also drives current team-page schedule placement. A completed game moves from Upcoming to Results as soon as the feed marks it final; the team ranking and season aggregates still remain frozen until Monday.
 

@@ -6,7 +6,7 @@ const origin='https://heimweh17.github.io/saturday-lab';
 export const dynamic='force-static';
 
 export default function sitemap():MetadataRoute.Sitemap{
-  const fixed=['/','/rankings/','/teams/','/games/','/matchup/','/rank-trends/','/model/','/methodology/','/legal/'];
+  const fixed=['/','/rankings/','/teams/','/games/','/matchup/','/rank-trends/','/model/','/introduction/','/methodology/','/legal/'];
   return [
     ...fixed.map(path=>({url:`${origin}${path}`,changeFrequency:'weekly' as const,priority:path==='/'?1:0.7})),
     ...allTeamAliases().map(team=>({url:`${origin}${teamPath(team)}`,changeFrequency:'weekly' as const,priority:0.8})),
