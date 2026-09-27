@@ -63,7 +63,7 @@ jobs:
               for team in teams[:30]:
                   summary.write(f"| {team['modelRank']} | {team['name']} | {team['wins']}-{team['losses']} | {team['winIndex'] * 100:.1f}% |\n")
           PY
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: unofficial-rankings
           path: unofficial-rankings.json
