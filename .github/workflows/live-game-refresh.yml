@@ -2,6 +2,11 @@ name: Refresh current games
 run-name: Refresh current games · ${{ inputs.trigger || github.event_name }}
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/live-game-refresh.yml
   schedule:
     # GitHub schedules are best-effort and occasionally drop a queued run.
     # These slower, offset runs back up the independent QStash clock.
@@ -17,6 +22,7 @@ on:
         type: string
 
 permissions:
+  actions: write
   contents: write
 
 concurrency:
@@ -69,3 +75,39 @@ jobs:
           git add public/data/live-2026.json
           git commit -m "Refresh current game feed"
           git push origin HEAD:main
+      - name: Backstop the Monday model publication
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from zoneinfo import ZoneInfo
+
+          eastern = ZoneInfo("America/New_York")
+          now = datetime.now(timezone.utc).astimezone(eastern)
+          if now.weekday() != 0 or (now.hour, now.minute) < (4, 0):
+              print("Weekly backstop is only active Monday after 4:00 ET.")
+              raise SystemExit(0)
+
+          manifest = json.loads(Path("public/data/manifest.json").read_text())
+          raw = manifest.get("generatedAt")
+          published = datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(eastern) if raw else None
+          if published and published.date() == now.date():
+              print("Today's formal model snapshot is already published.")
+              raise SystemExit(0)
+
+          print("No formal snapshot exists for this Monday; dispatching the weekly workflow.")
+          subprocess.run(
+              [
+                  "gh", "workflow", "run", "weekly-model-refresh.yml",
+                  "--ref", os.environ["GITHUB_REF_NAME"],
+                  "-f", "force=false",
+              ],
+              check=True,
+          )
+          PY

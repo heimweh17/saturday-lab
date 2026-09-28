@@ -2,8 +2,8 @@ name: Publish weekly model snapshot
 
 on:
   schedule:
-    # 14:30 UTC is Monday morning in Eastern time throughout the football season.
-    - cron: "30 14 * * 1"
+    # 08:30 UTC is 4:30 a.m. EDT during most of the football season.
+    - cron: "30 8 * * 1"
   workflow_dispatch:
     inputs:
       force:
