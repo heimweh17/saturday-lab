@@ -140,7 +140,7 @@ def main() -> None:
             "cutoff": archived.get("cutoff", week_cutoffs[game["week"]]),
             "modelVersion": archived.get("modelVersion", "6.0.0"),
         })
-    snapshots, previous_ranks, previous_strength, previous_index = {}, {}, {}, {}
+    snapshots, previous_ranks, previous_strength, previous_index, previous_states = {}, {}, {}, {}, {}
     for week in season["weeks"] + [99]:
         # A published weekly state is part of the pregame archive. Upstream
         # providers occasionally correct old roster or play data; rebuilding
@@ -158,6 +158,7 @@ def main() -> None:
                 for team_id, team in frozen_teams.items()
             }
             previous_index = {team_id: team["winIndex"] for team_id, team in frozen_teams.items()}
+            previous_states = {team_id: team["modelState"] for team_id, team in frozen_teams.items()}
             continue
         prior_weeks = season["weeks"][:season["weeks"].index(week)] if week != 99 else season["weeks"]
         past = [game for game in season["games"] if game["week"] in prior_weeks]
@@ -192,7 +193,15 @@ def main() -> None:
             }
             if previous_ranks:
                 fixed = float(np.mean([sigmoid(strength[team_id] - value) for opponent, value in previous_strength.items() if opponent != team_id]))
-                row["ratingExplanation"] = {"previousRank": previous_ranks[team_id], "ownIndexChange": fixed - previous_index[team_id], "fieldIndexChange": index[team_id] - fixed}
+                before = previous_states[team_id]["q"]
+                drivers = [
+                    {
+                        "label": production["featureNames"][j],
+                        "logOddsChange": float((state["q"][j] - before[j]) * coef[j]),
+                    }
+                    for j in range(len(coef) - 2) if coef[j] != 0
+                ]
+                row["ratingExplanation"] = {"previousRank": previous_ranks[team_id], "ownIndexChange": fixed - previous_index[team_id], "fieldIndexChange": index[team_id] - fixed, "drivers": drivers}
             else:
                 row.pop("ratingExplanation", None)
             rows.append(row)
@@ -200,7 +209,7 @@ def main() -> None:
             "teams": rows, "mu": next(iter(source.values()))["mu"], "gamesUsed": len(past),
             "modelGames": sum(game["fbs"] for game in past), "through": max((game["date"] for game in past), default=None),
         }
-        previous_ranks, previous_strength, previous_index = ranks, strength, index
+        previous_ranks, previous_strength, previous_index, previous_states = ranks, strength, index, source
     payload = {
         "season": SEASON, "weeks": season["weeks"] + [99], "snapshots": snapshots,
         "games": season["games"], "predictions": predictions,
