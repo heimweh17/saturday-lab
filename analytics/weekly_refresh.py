@@ -142,6 +142,23 @@ def main() -> None:
         })
     snapshots, previous_ranks, previous_strength, previous_index = {}, {}, {}, {}
     for week in season["weeks"] + [99]:
+        # A published weekly state is part of the pregame archive. Upstream
+        # providers occasionally correct old roster or play data; rebuilding
+        # that state while retaining its frozen probabilities would make the
+        # archive internally irreproducible. Carry published weeks forward
+        # byte-for-byte and build only newly reached weeks plus the live 99
+        # snapshot.
+        frozen = old.get("snapshots", {}).get(str(week)) if week != 99 else None
+        if frozen is not None:
+            snapshots[str(week)] = frozen
+            frozen_teams = {team["id"]: team for team in frozen["teams"]}
+            previous_ranks = {team_id: team["modelRank"] for team_id, team in frozen_teams.items()}
+            previous_strength = {
+                team_id: float(np.asarray(team["modelState"]["q"]) @ coef[:-2])
+                for team_id, team in frozen_teams.items()
+            }
+            previous_index = {team_id: team["winIndex"] for team_id, team in frozen_teams.items()}
+            continue
         prior_weeks = season["weeks"][:season["weeks"].index(week)] if week != 99 else season["weeks"]
         past = [game for game in season["games"] if game["week"] in prior_weeks]
         source = states[f"{SEASON}:{week}"]
