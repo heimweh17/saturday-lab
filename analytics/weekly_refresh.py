@@ -98,6 +98,26 @@ def probability(game: dict, states: dict, coef: np.ndarray) -> float:
     return float(sigmoid(np.asarray(values) @ coef))
 
 
+def upgrade_frozen_snapshot(snapshot: dict, previous_states: dict, production: dict, coef: np.ndarray) -> dict:
+    """Backfill additive display metadata without changing a frozen rating."""
+    if not previous_states:
+        return snapshot
+    for team in snapshot.get("teams", []):
+        explanation = team.get("ratingExplanation")
+        state = team.get("modelState")
+        before = previous_states.get(team.get("id"))
+        if not explanation or not state or not before or isinstance(explanation.get("drivers"), list):
+            continue
+        explanation["drivers"] = [
+            {
+                "label": production["featureNames"][j],
+                "logOddsChange": float((state["q"][j] - before["q"][j]) * coef[j]),
+            }
+            for j in range(len(coef) - 2) if coef[j] != 0
+        ]
+    return snapshot
+
+
 def archive_live_periods() -> None:
     live_path = DATA / f"live-{SEASON}.json"
     period_path = DATA / f"periods-{SEASON}.json"
@@ -120,6 +140,8 @@ def main() -> None:
     teams, seasons, boxes, audit, coverage, passer_coverage, states, production = build_states()
     coef = np.asarray(production["coefficients"])
     old = json.loads((DATA / f"{SEASON}.json").read_text(encoding="utf-8"))
+    manifest_path = DATA / "manifest.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     old_predictions = {row["id"]: row for row in old.get("predictions", [])}
     season = seasons[SEASON]
     predictions = []
@@ -145,11 +167,12 @@ def main() -> None:
         # A published weekly state is part of the pregame archive. Upstream
         # providers occasionally correct old roster or play data; rebuilding
         # that state while retaining its frozen probabilities would make the
-        # archive internally irreproducible. Carry published weeks forward
-        # byte-for-byte and build only newly reached weeks plus the live 99
-        # snapshot.
+        # archive internally irreproducible. Carry its ratings forward and
+        # build only newly reached weeks plus the live 99 snapshot. Additive
+        # display metadata may be schema-upgraded in place.
         frozen = old.get("snapshots", {}).get(str(week)) if week != 99 else None
         if frozen is not None:
+            frozen = upgrade_frozen_snapshot(frozen, previous_states, production, coef)
             snapshots[str(week)] = frozen
             frozen_teams = {team["id"]: team for team in frozen["teams"]}
             previous_ranks = {team_id: team["modelRank"] for team_id, team in frozen_teams.items()}
@@ -213,6 +236,10 @@ def main() -> None:
     payload = {
         "season": SEASON, "weeks": season["weeks"] + [99], "snapshots": snapshots,
         "games": season["games"], "predictions": predictions,
+        # Game pages use the opponent-adjusted scoring layer to turn the
+        # published win probability into expected points. Keep its stable
+        # configuration in every regenerated season payload.
+        "scoringConfig": old.get("scoringConfig") or manifest["config"],
         "model": {**old.get("model", {}), "version": "6.0.0", "coefficients": coef.tolist(), "weeklySnapshot": True},
     }
     (DATA / f"{SEASON}.json").write_text(json.dumps(payload, separators=(",", ":"), allow_nan=False), encoding="utf-8")
@@ -228,8 +255,6 @@ def main() -> None:
         sys.argv = argv
         box_export.YEARS = original_years
     archive_live_periods()
-    manifest_path = DATA / "manifest.json"
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     manifest["generatedAt"] = datetime.now(timezone.utc).isoformat()
     manifest["weeklySnapshotThrough"] = snapshots["99"]["through"]
     manifest["audit"] = [row for row in manifest["audit"] if row["season"] != SEASON] + [next(row for row in audit if row["season"] == SEASON)]

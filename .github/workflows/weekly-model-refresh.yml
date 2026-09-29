@@ -87,6 +87,7 @@ jobs:
         run: |
           python -m unittest discover -s analytics -p 'test*.py' -v
           node scripts/check-model.mjs
+          npm run check:data
           npm run lint
           npm run build:pages
       - name: Commit weekly snapshot

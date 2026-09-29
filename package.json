@@ -11,6 +11,7 @@
     "build": "next build --webpack",
     "start": "next start",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "check:data": "node scripts/check-published-data.mjs",
     "db:generate": "drizzle-kit generate",
     "build:pages": "node scripts/build-pages.mjs"
   },

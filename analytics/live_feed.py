@@ -168,6 +168,30 @@ def canonical(payload):
     return json.dumps({k: v for k, v in payload.items() if k != "updatedAt"}, sort_keys=True, separators=(",", ":"))
 
 
+def validate_payload(payload):
+    """Reject an incomplete upstream refresh before it can replace the live feed."""
+    games = payload.get("games")
+    if not isinstance(games, list) or not games:
+        raise ValueError("live feed contains no games")
+    seen = set()
+    for game in games:
+        game_id = game.get("id")
+        if not isinstance(game_id, str) or not game_id or game_id in seen:
+            raise ValueError(f"invalid or duplicate live game id: {game_id!r}")
+        seen.add(game_id)
+        if game.get("state") not in ("pre", "in", "post"):
+            raise ValueError(f"game {game_id} has invalid state {game.get('state')!r}")
+        if not all(isinstance(game.get(key), str) and game[key] for key in ("date", "home", "away")):
+            raise ValueError(f"game {game_id} is missing stable identity fields")
+        if game.get("completed") and (numeric(game.get("hs")) is None or numeric(game.get("as")) is None):
+            raise ValueError(f"completed game {game_id} is missing its final score")
+        pregame = game.get("pregame")
+        if pregame:
+            probability = numeric(pregame.get("homeWinProbability"))
+            if probability is None or not 0 <= probability <= 1:
+                raise ValueError(f"game {game_id} has invalid pregame probability")
+
+
 def pregame_prediction(game, season_data):
     snapshot = season_data["snapshots"]["99"]
     through = snapshot.get("through")
@@ -296,6 +320,7 @@ def main():
         "refreshPolicy": "Scores and game facts only. Rankings and model snapshots update weekly.",
         "games": sorted(events.values(), key=lambda row: (row["date"], row["id"])),
     }
+    validate_payload(payload)
     if old and canonical(old) == canonical(payload):
         print(json.dumps({"changed": False, "games": len(events), "detailsFetched": len(details_needed)}))
         return

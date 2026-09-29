@@ -24,6 +24,22 @@ class LiveFeedTest(unittest.TestCase):
         self.assertEqual(live_feed.canonical(first), live_feed.canonical(second))
         self.assertNotEqual(live_feed.canonical(first), live_feed.canonical(changed))
 
+    def test_live_payload_rejects_a_completed_game_without_a_score(self):
+        payload = {"games": [{
+            "id": "1", "date": "2026-09-28T00:00Z", "home": "a", "away": "b",
+            "state": "post", "completed": True, "hs": None, "as": 17,
+        }]}
+        with self.assertRaisesRegex(ValueError, "missing its final score"):
+            live_feed.validate_payload(payload)
+
+    def test_live_payload_accepts_a_valid_upcoming_game(self):
+        payload = {"games": [{
+            "id": "1", "date": "2026-10-03T00:00Z", "home": "a", "away": "b",
+            "state": "pre", "completed": False, "hs": None, "as": None,
+            "pregame": {"homeWinProbability": 0.57},
+        }]}
+        self.assertIsNone(live_feed.validate_payload(payload))
+
     def test_pregame_probability_is_complementary_when_teams_swap(self):
         def team(team_id, strength):
             return {"id": team_id, "modelState": {"q": [strength], "lastDate": None}}
