@@ -1,11 +1,11 @@
 const W = 1080;
 const H = 1350;
 
-const esc = (value = '') => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[char]));
-const pct = (value) => `${(value * 100).toFixed(1)}%`;
-const rank = (team) => `#${team.modelRank ?? team.rank ?? '—'}`;
-const color = (team, fallback) => /^#[0-9a-f]{6}$/i.test(team.color ?? '') ? team.color : fallback;
-const winner = (game) => game.home.probability >= game.away.probability ? game.home : game.away;
+export const esc = (value = '') => String(value).replace(/[&<>"']/g, (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[char]));
+export const pct = (value) => `${(value * 100).toFixed(1)}%`;
+export const rank = (team) => `#${team.modelRank ?? team.rank ?? '—'}`;
+export const color = (team, fallback) => /^#[0-9a-f]{6}$/i.test(team.color ?? '') ? team.color : fallback;
+export const winner = (game) => game.home.probability >= game.away.probability ? game.home : game.away;
 
 function defs(fontCss = '') {
   return `<defs>
@@ -23,7 +23,7 @@ function defs(fontCss = '') {
   </defs>`;
 }
 
-function base(fontCss, accent = '#f4b942') {
+export function base(fontCss, accent = '#f4b942') {
   return `${defs(fontCss)}
     <rect width="${W}" height="${H}" fill="url(#ink)"/>
     <rect width="${W}" height="${H}" fill="url(#yard)"/>
@@ -34,7 +34,7 @@ function base(fontCss, accent = '#f4b942') {
     <rect x="14" y="0" width="1066" height="1350" fill="url(#dots)" opacity=".24"/>`;
 }
 
-function header(season, week, section) {
+export function header(season, week, section) {
   return `<g transform="translate(66 56)">
     <text class="display" x="0" y="38" fill="#f7f4ea" font-size="42">SATURDAY LAB</text>
     <rect x="0" y="57" width="166" height="5" rx="2.5" fill="#f4b942"/>
@@ -43,14 +43,14 @@ function header(season, week, section) {
   </g>`;
 }
 
-function footer(index, total) {
+export function footer(index, total) {
   return `<g transform="translate(66 1293)">
     <text class="body" fill="#8da1b1" font-size="20">saturday-lab · MODEL v6 · INDEPENDENT PROJECT</text>
     <text class="condensed" x="948" text-anchor="end" fill="#f7f4ea" font-size="24">${String(index).padStart(2, '0')} / ${String(total).padStart(2, '0')}</text>
   </g>`;
 }
 
-function logo(team, x, y, size) {
+export function logo(team, x, y, size) {
   if (team.logoData) return `<image href="${team.logoData}" x="${x}" y="${y}" width="${size}" height="${size}" preserveAspectRatio="xMidYMid meet" filter="url(#logoGlow)"/>`;
   return `<circle cx="${x + size / 2}" cy="${y + size / 2}" r="${size * .42}" fill="#fff" opacity=".12"/><text class="display" x="${x + size / 2}" y="${y + size * .65}" text-anchor="middle" fill="#fff" font-size="${size * .36}">${esc(team.abbr)}</text>`;
 }

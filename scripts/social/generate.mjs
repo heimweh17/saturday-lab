@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadSocialWeek } from './data.mjs';
 import { selectGames } from './select.mjs';
-import { hydrateLogos, makeContactSheet, writePng } from './render.mjs';
+import { hydrateLogos, loadFontCss, makeContactSheet, writePng } from './render.mjs';
 import { closingSlide, featureSlide, otherGamesSlide, overviewSlide, upsetSlide } from './templates.mjs';
 
 function argsFrom(argv) {
@@ -23,19 +23,6 @@ function argsFrom(argv) {
   return values;
 }
 
-async function fontFace(name, file, weight) {
-  const bytes = await fs.readFile(path.resolve('scripts/social/assets', file));
-  return `@font-face{font-family:'${name}';src:url(data:font/ttf;base64,${bytes.toString('base64')}) format('truetype');font-weight:${weight};font-style:normal;}`;
-}
-
-async function fontCss() {
-  return [
-    await fontFace('SL Display', 'BarlowCondensed-Black.ttf', 900),
-    await fontFace('SL Condensed', 'BarlowCondensed-Bold.ttf', 700),
-    await fontFace('SL Body', 'Barlow-Medium.ttf', 500),
-  ].join('');
-}
-
 function usage() {
   return `Generate Saturday Lab social graphics\n\nUsage:\n  npm run social:generate -- --season 2026 --week 6\n\nOptions:\n  --featured id,id    Pin games to the front of Featured Games\n  --upset id          Override Upset Watch\n  --featured-count 4  Number of individual featured slides\n  --other-count 6     Number of games on More Predictions\n  --include-started   Include live/final games when upcoming games exist\n  --output path       Output directory\n  --keep-svg          Keep editable SVG source files\n`;
 }
@@ -50,7 +37,7 @@ export async function generateSocialGraphics(options) {
   const selection = selectGames(context.games, options);
   const allSelected = [...selection.featured, ...(selection.upset ? [selection.upset] : []), ...selection.others];
   await hydrateLogos(allSelected);
-  const fonts = await fontCss();
+  const fonts = await loadFontCss();
   const slides = [];
   const provisionalTotal = 1 + selection.featured.length + (selection.upset ? 1 : 0) + (selection.others.length ? 1 : 0) + 1;
   let slideIndex = 1;

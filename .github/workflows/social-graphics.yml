@@ -3,6 +3,14 @@ name: Generate social graphics
 on:
   workflow_dispatch:
     inputs:
+      edition:
+        description: Graphic set to generate
+        type: choice
+        required: true
+        default: weekly-preview
+        options:
+          - weekly-preview
+          - monday-recap
       season:
         description: Season year
         required: true
@@ -43,6 +51,7 @@ jobs:
         env:
           SEASON: ${{ inputs.season }}
           WEEK: ${{ inputs.week }}
+          EDITION: ${{ inputs.edition }}
           FEATURED: ${{ inputs.featured_game_ids }}
           UPSET: ${{ inputs.upset_game_id }}
           INCLUDE_STARTED: ${{ inputs.include_started }}
@@ -50,15 +59,17 @@ jobs:
           args=(--season "$SEASON" --week "$WEEK" --output social-output)
           if [[ -n "$FEATURED" ]]; then args+=(--featured "$FEATURED"); fi
           if [[ -n "$UPSET" ]]; then args+=(--upset "$UPSET"); fi
-          if [[ "$INCLUDE_STARTED" == "true" ]]; then args+=(--include-started); fi
-          node scripts/social/generate.mjs "${args[@]}"
+          if [[ "$EDITION" == "monday-recap" ]]; then
+            node scripts/social/generate-recap.mjs "${args[@]}"
+          else
+            if [[ "$INCLUDE_STARTED" == "true" ]]; then args+=(--include-started); fi
+            node scripts/social/generate.mjs "${args[@]}"
+          fi
       - name: Verify PNG dimensions
-        env:
-          SOCIAL_SAMPLE: social-output/01-weekly-picks.png
-        run: npm run test:social
+        run: SOCIAL_SAMPLE="$(find social-output -name '01-*.png' | head -1)" npm run test:social
       - uses: actions/upload-artifact@v4
         with:
-          name: saturday-lab-${{ inputs.season }}-week-${{ inputs.week }}-social
+          name: saturday-lab-${{ inputs.season }}-week-${{ inputs.week }}-${{ inputs.edition }}
           path: social-output/
           if-no-files-found: error
           retention-days: 30

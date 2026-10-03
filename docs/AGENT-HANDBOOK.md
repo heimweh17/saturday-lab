@@ -177,7 +177,7 @@ The live feed also drives current team-page schedule placement. A completed game
 
 The shared publication concurrency group prevents a weekly write from racing a live-feed write. Before the expensive job begins, a same-day guard skips a second formal publication unless a manual operator deliberately selects the `force` input. The independent QStash schedules target only `live-game-refresh.yml`; they never invoke the weekly workflow.
 
-`social-graphics.yml` is a read-only, manually dispatched presentation workflow. It reads the already published snapshots and frozen pregame forecasts, renders a downloadable carousel artifact, and never commits, deploys, refits the model or creates a new weekly snapshot. See `docs/SOCIAL-GRAPHICS.md`.
+`social-graphics.yml` is a read-only, manually dispatched presentation workflow. It can render either the pregame Weekly Preview or the postgame Monday Recap from already published snapshots, frozen pregame forecasts, final scores and box data. It never commits, deploys, refits the model or creates a new weekly snapshot. See `docs/SOCIAL-GRAPHICS.md`.
 
 `preview-current-rankings.yml` is an intentionally nonpublishing research path linked by the current rankings page. It calculates with the same frozen v6 pipeline, shows the Top 30 in the Actions summary, retains a complete JSON artifact for one day, and has only `contents: read`. Do not add commit, Pages publication or dated-snapshot writes to this workflow.
 

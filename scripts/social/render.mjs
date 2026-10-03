@@ -37,6 +37,26 @@ export async function hydrateLogos(games) {
   }));
 }
 
+export async function hydrateTeams(teams) {
+  const unique = new Map(teams.filter(Boolean).map((team) => [String(team.id), team]));
+  await Promise.all([...unique.values()].map(async (team) => {
+    team.logoData = await logoData(team);
+  }));
+}
+
+async function fontFace(name, file, weight) {
+  const bytes = await fs.readFile(path.resolve('scripts/social/assets', file));
+  return `@font-face{font-family:'${name}';src:url(data:font/ttf;base64,${bytes.toString('base64')}) format('truetype');font-weight:${weight};font-style:normal;}`;
+}
+
+export async function loadFontCss() {
+  return [
+    await fontFace('SL Display', 'BarlowCondensed-Black.ttf', 900),
+    await fontFace('SL Condensed', 'BarlowCondensed-Bold.ttf', 700),
+    await fontFace('SL Body', 'Barlow-Medium.ttf', 500),
+  ].join('');
+}
+
 export async function writePng(svg, file) {
   await fs.mkdir(path.dirname(file), { recursive: true });
   await sharp(Buffer.from(svg)).png({ compressionLevel: 9, palette: false }).toFile(file);

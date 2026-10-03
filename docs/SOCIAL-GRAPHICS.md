@@ -1,6 +1,6 @@
 # Saturday Lab social graphics
 
-The social graphics generator turns the same published weekly predictions used by the site into a deterministic 1080 × 1350 Instagram carousel. It is a presentation layer: it does not fit the model, modify rankings, recalculate archived forecasts, publish the website, or call an AI service.
+The social graphics generator turns the same published rankings, predictions and results used by the site into deterministic 1080 × 1350 Instagram carousels. It supports a pregame **Weekly Preview** and a postgame **Monday Recap**. It is a presentation layer: it does not fit the model, modify rankings, recalculate archived forecasts, publish the website, or call an AI service.
 
 ## Data ownership
 
@@ -40,7 +40,15 @@ The long-form equivalent is:
 node scripts/social/generate.mjs --season 2026 --week 6
 ```
 
-PNG files, a contact sheet and the audit manifest are written to `outputs/social/2026-week-6/`. That directory is intentionally ignored by Git.
+After Week 6 is complete and the next weekly ranking snapshot has been published, generate the seven-slide recap with:
+
+```sh
+npm run social:recap -- 2026 6
+```
+
+The Monday Recap contains the new Top 25, four important final scores with HIT/MISS labels, the complete weekly model scorecard, Upset of the Week, ranking movers, six weekend statistics and the next-week preview. Its scorecard evaluates every completed FBS prediction in the chosen week. Rankings compare the snapshot available before that week with the next published snapshot; old probabilities remain frozen.
+
+Preview PNG files, a contact sheet and the audit manifest are written to `outputs/social/2026-week-6/`; recaps use `outputs/social/2026-week-6-recap/`. Both directories are intentionally ignored by Git.
 
 Optional controls:
 
@@ -60,7 +68,7 @@ An override only changes which published games appear. It cannot override a prob
 
 ## GitHub Actions
 
-Open **Actions → Generate social graphics → Run workflow**, choose season and week, and optionally enter game IDs. The read-only workflow installs the locked dependencies, renders the carousel, checks the 1080 × 1350 output, and uploads a 30-day artifact. It does not commit or deploy anything.
+Open **Actions → Generate social graphics → Run workflow**, choose `weekly-preview` or `monday-recap`, then enter season and week. For a recap, `week` means the week that just finished. The read-only workflow installs the locked dependencies, renders the carousel, checks the 1080 × 1350 output, and uploads a 30-day artifact. It does not commit or deploy anything.
 
 ## Template architecture
 
@@ -69,6 +77,7 @@ Open **Actions → Generate social graphics → Run workflow**, choose season an
 - `scripts/social/templates.mjs` contains reusable SVG slide templates and visual tokens.
 - `scripts/social/render.mjs` caches public team logos locally and uses Sharp to rasterize SVG to PNG.
 - `scripts/social/generate.mjs` is the CLI and carousel orchestrator.
+- `scripts/social/recap-data.mjs`, `recap-templates.mjs` and `generate-recap.mjs` build the postgame edition without changing the pregame generator.
 - `scripts/social/test-social.mjs` protects probability parity, deterministic overrides and output dimensions.
 - `scripts/social/assets/` contains bundled OFL-licensed Barlow font files so local and CI typography match.
 

@@ -4,6 +4,7 @@ import test from 'node:test';
 import sharp from 'sharp';
 import { loadSocialWeek } from './data.mjs';
 import { scoreGame, selectGames } from './select.mjs';
+import { loadRecap } from './recap-data.mjs';
 
 async function currentTestContext() {
   const manifest = JSON.parse(await fs.readFile('public/data/manifest.json', 'utf8'));
@@ -44,5 +45,21 @@ test('generated slide dimensions remain Instagram portrait size', async () => {
   const metadata = await sharp(sample).metadata();
   assert.equal(metadata.width, 1080);
   assert.equal(metadata.height, 1350);
+});
+
+test('Monday recap evaluates frozen Week 4 predictions against final scores', async () => {
+  const recap = await loadRecap({ season: 2026, week: 4 });
+  assert.equal(recap.weekScorecard.games, 58);
+  assert.equal(recap.weekScorecard.correct, 45);
+  assert.equal(recap.top25.length, 25);
+  assert.equal(recap.nextWeek.context.week, 5);
+  assert.ok(recap.upset.winnerProbability < 0.5);
+});
+
+test('historical recap resolves adjacent frozen ranking snapshots', async () => {
+  const recap = await loadRecap({ season: 2025, week: 5 });
+  assert.equal(recap.beforeThrough, '2025-09-21T03:59Z');
+  assert.equal(recap.afterThrough, '2025-09-28T02:15Z');
+  assert.equal(recap.top25.length, 25);
 });
 
