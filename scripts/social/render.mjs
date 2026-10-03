@@ -38,9 +38,15 @@ export async function hydrateLogos(games) {
 }
 
 export async function hydrateTeams(teams) {
-  const unique = new Map(teams.filter(Boolean).map((team) => [String(team.id), team]));
-  await Promise.all([...unique.values()].map(async (team) => {
-    team.logoData = await logoData(team);
+  const groups = new Map();
+  for (const team of teams.filter(Boolean)) {
+    const id = String(team.id);
+    if (!groups.has(id)) groups.set(id, []);
+    groups.get(id).push(team);
+  }
+  await Promise.all([...groups.values()].map(async (copies) => {
+    const data = await logoData(copies[0]);
+    for (const team of copies) team.logoData = data;
   }));
 }
 
