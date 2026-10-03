@@ -1,0 +1,65 @@
+name: Generate social graphics
+
+on:
+  workflow_dispatch:
+    inputs:
+      season:
+        description: Season year
+        required: true
+        default: '2026'
+      week:
+        description: Week number
+        required: true
+        default: '5'
+      featured_game_ids:
+        description: Optional comma-separated game IDs to pin as featured
+        required: false
+        default: ''
+      upset_game_id:
+        description: Optional game ID for Upset Watch
+        required: false
+        default: ''
+      include_started:
+        description: Include games already live or final
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Render carousel
+        env:
+          SEASON: ${{ inputs.season }}
+          WEEK: ${{ inputs.week }}
+          FEATURED: ${{ inputs.featured_game_ids }}
+          UPSET: ${{ inputs.upset_game_id }}
+          INCLUDE_STARTED: ${{ inputs.include_started }}
+        run: |
+          args=(--season "$SEASON" --week "$WEEK" --output social-output)
+          if [[ -n "$FEATURED" ]]; then args+=(--featured "$FEATURED"); fi
+          if [[ -n "$UPSET" ]]; then args+=(--upset "$UPSET"); fi
+          if [[ "$INCLUDE_STARTED" == "true" ]]; then args+=(--include-started); fi
+          node scripts/social/generate.mjs "${args[@]}"
+      - name: Verify PNG dimensions
+        env:
+          SOCIAL_SAMPLE: social-output/01-weekly-picks.png
+        run: npm run test:social
+      - uses: actions/upload-artifact@v4
+        with:
+          name: saturday-lab-${{ inputs.season }}-week-${{ inputs.week }}-social
+          path: social-output/
+          if-no-files-found: error
+          retention-days: 30
+

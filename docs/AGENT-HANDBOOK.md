@@ -39,6 +39,8 @@ Do not collapse these clocks. A Friday final may appear in the game center and m
 | `public/data/` | Published application data. These files are part of the product contract. |
 | `.github/workflows/` | Frequent game refresh and formal weekly publication. |
 | `scripts/` | Static build, verification, installation, and Pages publication. |
+| `scripts/social/` | Deterministic weekly social-carousel selection, SVG templates and PNG rendering. |
+| `docs/SOCIAL-GRAPHICS.md` | Social graphics data ownership, selection rules, CLI and manual Action workflow. |
 | `docs/PRODUCT-BACKLOG.md` | Deferred product changes. Check before implementing a related request. |
 | `analytics/*-RESULTS.md` | Research decisions and evidence. Read the relevant report before changing the model. |
 
@@ -175,6 +177,8 @@ The live feed also drives current team-page schedule placement. A completed game
 
 The shared publication concurrency group prevents a weekly write from racing a live-feed write. Before the expensive job begins, a same-day guard skips a second formal publication unless a manual operator deliberately selects the `force` input. The independent QStash schedules target only `live-game-refresh.yml`; they never invoke the weekly workflow.
 
+`social-graphics.yml` is a read-only, manually dispatched presentation workflow. It reads the already published snapshots and frozen pregame forecasts, renders a downloadable carousel artifact, and never commits, deploys, refits the model or creates a new weekly snapshot. See `docs/SOCIAL-GRAPHICS.md`.
+
 `preview-current-rankings.yml` is an intentionally nonpublishing research path linked by the current rankings page. It calculates with the same frozen v6 pipeline, shows the Top 30 in the Actions summary, retains a complete JSON artifact for one day, and has only `contents: read`. Do not add commit, Pages publication or dated-snapshot writes to this workflow.
 
 The homepage `UP NEXT` board is computed in `app/game-strip.tsx` from the refreshed `fixtures.json` plus the latest `99` snapshot. It finds the earliest remaining scheduled FBS week, scores games by 60% team quality and 40% projected closeness, applies the published eligibility rule, and shows up to 10 games. Therefore it advances automatically after the Monday fixture/model update; it is not a hard-coded Week 4 list. Exact historical ranking snapshot pages omit this current-week board so their context stays frozen.
@@ -223,6 +227,7 @@ Use the smallest meaningful checks first, then the complete publication checks b
 
 ```powershell
 npm run lint
+npm run test:social
 node scripts/check-model.mjs
 python -m unittest discover -s analytics -p 'test*.py' -v
 npm run build:pages
@@ -258,6 +263,7 @@ After an automation change, verify the actual GitHub Actions run, not only the s
 | Research a model idea | relevant audit blueprint/result | causal state construction, nested temporal selection, calibration slices |
 | Change expected scores | `lib/projected-score.ts`, `analytics/full_score_layer.py` | score-layer tests and report |
 | Change deployment | `scripts/build-pages.mjs`, `scripts/publish-pages.mjs` | `next.config.ts`, both workflows, GitHub Pages base path |
+| Change social graphics | `docs/SOCIAL-GRAPHICS.md`, `scripts/social/` | published data contracts, `social-graphics.yml`, visual contact sheet |
 
 ## 12. Current known boundaries
 

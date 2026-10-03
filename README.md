@@ -141,6 +141,16 @@ Scores and game detail are refreshed by `.github/workflows/live-game-refresh.yml
 
 Agents and maintainers should begin with `docs/AGENT-HANDBOOK.md`. It records the route contract, data ownership, model invariants, automation, change boundaries and verification matrix needed to modify the project safely.
 
+## Social graphics
+
+The repository includes a deterministic weekly Instagram carousel generator that reads the same frozen predictions, rankings, team colors and logos as the website. It automatically selects featured games and an Upset Watch, renders 1080 × 1350 PNGs, and can run locally or through the read-only **Generate social graphics** GitHub Action.
+
+```sh
+npm run social:generate -- 2026 6
+```
+
+See [`docs/SOCIAL-GRAPHICS.md`](docs/SOCIAL-GRAPHICS.md) for the data contract, selection formula, overrides and output format.
+
 ## Tests and implementation
 
 - Python unit tests: future-score/box perturbations, frozen-week boundaries, ridge vs independent least squares, logistic Newton fit vs SciPy BFGS, missing denominators, fixture coverage, all exported probabilities, ranks and record counts.
