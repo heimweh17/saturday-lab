@@ -2,12 +2,19 @@ name: Publish weekly model snapshot
 
 on:
   schedule:
-    # 08:30 UTC is 4:30 a.m. EDT during most of the football season.
-    - cron: "30 8 * * 1"
+    # Two UTC clocks plus the Eastern-time gate below produce a 12:15 p.m.
+    # Sunday fallback on both sides of daylight-saving time.
+    - cron: "15 16 * * 0"
+    - cron: "15 17 * * 0"
   workflow_dispatch:
     inputs:
       force:
-        description: Run again even if a formal snapshot was already published today
+        description: Run again even if this weekly publication cycle already has a snapshot
+        required: false
+        default: false
+        type: boolean
+      allow_partial_sources:
+        description: Publish despite missing Saturday model inputs (emergency manual override)
         required: false
         default: false
         type: boolean
@@ -26,15 +33,18 @@ jobs:
       proceed: ${{ steps.gate.outputs.proceed }}
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
       - name: Prevent a duplicate formal publication
         id: gate
         env:
           FORCE_REFRESH: ${{ inputs.force || 'false' }}
+          EVENT_NAME: ${{ github.event_name }}
         shell: bash
         run: |
           python - <<'PY'
           import json, os
-          from datetime import datetime, timezone
+          from datetime import datetime, timedelta, timezone
           from pathlib import Path
           from zoneinfo import ZoneInfo
 
@@ -43,16 +53,23 @@ jobs:
           published = datetime.fromisoformat(raw.replace('Z', '+00:00')) if raw else None
           now = datetime.now(timezone.utc)
           eastern = ZoneInfo('America/New_York')
-          already_today = bool(published and published.astimezone(eastern).date() == now.astimezone(eastern).date())
+          local_now = now.astimezone(eastern)
+          days_since_sunday = (local_now.weekday() + 1) % 7
+          cycle_start = local_now.date() - timedelta(days=days_since_sunday)
+          after_sunday_noon = local_now.weekday() == 6 and (local_now.hour, local_now.minute) >= (12, 0)
+          scheduled_too_early = os.environ.get('EVENT_NAME') == 'schedule' and not after_sunday_noon
+          already_this_cycle = bool(published and published.astimezone(eastern).date() >= cycle_start)
           forced = os.environ.get('FORCE_REFRESH', 'false').lower() == 'true'
-          proceed = forced or not already_today
+          proceed = forced or (not scheduled_too_early and not already_this_cycle)
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
               output.write(f"proceed={'true' if proceed else 'false'}\n")
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
-              if proceed:
+              if scheduled_too_early and not forced:
+                  summary.write('Formal weekly refresh skipped: this daylight-saving fallback fired before Sunday noon Eastern.\n')
+              elif proceed:
                   summary.write('Formal weekly refresh will run.\n')
               else:
-                  summary.write('Formal weekly refresh skipped: a snapshot was already published today. Use the force input only for an intentional correction.\n')
+                  summary.write('Formal weekly refresh skipped: this publication cycle already has a snapshot. Use the force input only for an intentional correction.\n')
           PY
 
   refresh:
@@ -63,6 +80,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
+          ref: main
           fetch-depth: 0
       - uses: actions/setup-python@v7
         with:
@@ -78,8 +96,17 @@ jobs:
           python -m pip install -r analytics/requirements.txt
           npm ci
       - name: Build frozen weekly v6 snapshot
+        env:
+          ALLOW_PARTIAL_SOURCES: ${{ inputs.allow_partial_sources || 'false' }}
+        shell: bash
         run: |
           python analytics/production_sources.py
+          python analytics/live_feed.py
+          if [[ "$ALLOW_PARTIAL_SOURCES" == "true" ]]; then
+            python analytics/weekly_source_readiness.py --allow-partial
+          else
+            python analytics/weekly_source_readiness.py
+          fi
           python analytics/weekly_refresh.py
           python analytics/fixtures.py
           python analytics/live_feed.py

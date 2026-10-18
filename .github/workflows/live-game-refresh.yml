@@ -75,7 +75,7 @@ jobs:
           git add public/data/live-2026.json
           git commit -m "Refresh current game feed"
           git push origin HEAD:main
-      - name: Backstop the Monday model publication
+      - name: Backstop the Sunday model publication
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -90,18 +90,18 @@ jobs:
 
           eastern = ZoneInfo("America/New_York")
           now = datetime.now(timezone.utc).astimezone(eastern)
-          if now.weekday() != 0 or (now.hour, now.minute) < (4, 0):
-              print("Weekly backstop is only active Monday after 4:00 ET.")
+          if now.weekday() != 6 or (now.hour, now.minute) < (12, 0):
+              print("Weekly backstop is only active Sunday after 12:00 ET.")
               raise SystemExit(0)
 
           manifest = json.loads(Path("public/data/manifest.json").read_text())
           raw = manifest.get("generatedAt")
           published = datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(eastern) if raw else None
           if published and published.date() == now.date():
-              print("Today's formal model snapshot is already published.")
+              print("This Sunday's formal model snapshot is already published.")
               raise SystemExit(0)
 
-          print("No formal snapshot exists for this Monday; dispatching the weekly workflow.")
+          print("No formal snapshot exists for this Sunday; dispatching the weekly workflow.")
           subprocess.run(
               [
                   "gh", "workflow", "run", "weekly-model-refresh.yml",
