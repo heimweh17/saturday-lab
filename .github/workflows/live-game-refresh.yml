@@ -75,7 +75,7 @@ jobs:
           git add public/data/live-2026.json
           git commit -m "Refresh current game feed"
           git push origin HEAD:main
-      - name: Backstop the Sunday model publication
+      - name: Backstop the weekly model publication
         env:
           GH_TOKEN: ${{ github.token }}
         shell: bash
@@ -84,24 +84,30 @@ jobs:
           import json
           import os
           import subprocess
-          from datetime import datetime, timezone
+          from datetime import datetime, timedelta, timezone
           from pathlib import Path
           from zoneinfo import ZoneInfo
 
           eastern = ZoneInfo("America/New_York")
           now = datetime.now(timezone.utc).astimezone(eastern)
-          if now.weekday() != 6 or (now.hour, now.minute) < (12, 0):
-              print("Weekly backstop is only active Sunday after 12:00 ET.")
+          in_retry_window = (
+              (now.weekday() == 6 and (now.hour, now.minute) >= (12, 0))
+              or now.weekday() in (0, 1)
+          )
+          if not in_retry_window:
+              print("Weekly backstop is active Sunday after 12:00 ET through Tuesday.")
               raise SystemExit(0)
 
           manifest = json.loads(Path("public/data/manifest.json").read_text())
           raw = manifest.get("generatedAt")
           published = datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(eastern) if raw else None
-          if published and published.date() == now.date():
-              print("This Sunday's formal model snapshot is already published.")
+          days_since_sunday = (now.weekday() + 1) % 7
+          cycle_start = now.date() - timedelta(days=days_since_sunday)
+          if published and published.date() >= cycle_start:
+              print("This publication cycle's formal model snapshot is already published.")
               raise SystemExit(0)
 
-          print("No formal snapshot exists for this Sunday; dispatching the weekly workflow.")
+          print("No formal snapshot exists for this publication cycle; dispatching the weekly workflow.")
           subprocess.run(
               [
                   "gh", "workflow", "run", "weekly-model-refresh.yml",

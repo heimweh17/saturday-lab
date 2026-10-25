@@ -6,6 +6,13 @@ on:
     # Sunday fallback on both sides of daylight-saving time.
     - cron: "15 16 * * 0"
     - cron: "15 17 * * 0"
+    # SportsDataverse's advanced-team release can arrive after Sunday. These
+    # Monday/Tuesday probes keep retrying the same publication cycle until the
+    # complete frozen-v6 input set is available.
+    - cron: "15 13,17,21 * * 1,2"
+    # If the source is still incomplete Wednesday morning, fail once so the
+    # owner receives a real outage alert rather than silently missing a week.
+    - cron: "15 13 * * 3"
   workflow_dispatch:
     inputs:
       force:
@@ -56,16 +63,19 @@ jobs:
           local_now = now.astimezone(eastern)
           days_since_sunday = (local_now.weekday() + 1) % 7
           cycle_start = local_now.date() - timedelta(days=days_since_sunday)
-          after_sunday_noon = local_now.weekday() == 6 and (local_now.hour, local_now.minute) >= (12, 0)
-          scheduled_too_early = os.environ.get('EVENT_NAME') == 'schedule' and not after_sunday_noon
+          in_retry_window = (
+              (local_now.weekday() == 6 and (local_now.hour, local_now.minute) >= (12, 0))
+              or local_now.weekday() in (0, 1, 2)
+          )
+          scheduled_outside_window = os.environ.get('EVENT_NAME') == 'schedule' and not in_retry_window
           already_this_cycle = bool(published and published.astimezone(eastern).date() >= cycle_start)
           forced = os.environ.get('FORCE_REFRESH', 'false').lower() == 'true'
-          proceed = forced or (not scheduled_too_early and not already_this_cycle)
+          proceed = forced or (not scheduled_outside_window and not already_this_cycle)
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
               output.write(f"proceed={'true' if proceed else 'false'}\n")
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
-              if scheduled_too_early and not forced:
-                  summary.write('Formal weekly refresh skipped: this daylight-saving fallback fired before Sunday noon Eastern.\n')
+              if scheduled_outside_window and not forced:
+                  summary.write('Formal weekly refresh skipped: this fallback fired outside the Sunday-afternoon through Tuesday recovery window.\n')
               elif proceed:
                   summary.write('Formal weekly refresh will run.\n')
               else:
@@ -87,21 +97,43 @@ jobs:
           python-version: "3.12"
           cache: pip
           cache-dependency-path: analytics/requirements.txt
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "22"
-          cache: npm
-      - name: Install analytics and site dependencies
-        run: |
-          python -m pip install -r analytics/requirements.txt
-          npm ci
-      - name: Build frozen weekly v6 snapshot
+      - name: Check whether complete weekly sources are available
+        id: readiness
         env:
           ALLOW_PARTIAL_SOURCES: ${{ inputs.allow_partial_sources || 'false' }}
+          STRICT_SOURCE_DEADLINE: ${{ github.event_name == 'schedule' && github.event.schedule == '15 13 * * 3' }}
         shell: bash
         run: |
           python analytics/production_sources.py
           python analytics/live_feed.py
+          if [[ "$ALLOW_PARTIAL_SOURCES" == "true" ]]; then
+            python analytics/weekly_source_readiness.py --allow-partial
+          elif [[ "$STRICT_SOURCE_DEADLINE" == "true" ]]; then
+            python analytics/weekly_source_readiness.py
+          else
+            python analytics/weekly_source_readiness.py --defer-if-incomplete
+          fi
+      - name: Record a deferred publication
+        if: steps.readiness.outputs.ready != 'true'
+        shell: bash
+        run: |
+          echo "The formal snapshot is unchanged. Complete model inputs are not available yet; a later automated probe will retry." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/setup-node@v7
+        if: steps.readiness.outputs.ready == 'true'
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install analytics and site dependencies
+        if: steps.readiness.outputs.ready == 'true'
+        run: |
+          python -m pip install -r analytics/requirements.txt
+          npm ci
+      - name: Build frozen weekly v6 snapshot
+        if: steps.readiness.outputs.ready == 'true'
+        env:
+          ALLOW_PARTIAL_SOURCES: ${{ inputs.allow_partial_sources || 'false' }}
+        shell: bash
+        run: |
           if [[ "$ALLOW_PARTIAL_SOURCES" == "true" ]]; then
             python analytics/weekly_source_readiness.py --allow-partial
           else
@@ -111,6 +143,7 @@ jobs:
           python analytics/fixtures.py
           python analytics/live_feed.py
       - name: Verify model and application
+        if: steps.readiness.outputs.ready == 'true'
         run: |
           python -m unittest discover -s analytics -p 'test*.py' -v
           node scripts/check-model.mjs
@@ -118,6 +151,7 @@ jobs:
           npm run lint
           npm run build:pages
       - name: Commit weekly snapshot
+        if: steps.readiness.outputs.ready == 'true'
         shell: bash
         run: |
           git config user.name "saturday-lab-bot"
@@ -128,4 +162,5 @@ jobs:
             git push origin HEAD:main
           fi
       - name: Publish static site
+        if: steps.readiness.outputs.ready == 'true'
         run: node scripts/publish-pages.mjs

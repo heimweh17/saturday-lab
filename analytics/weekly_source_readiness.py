@@ -51,6 +51,11 @@ def main() -> None:
         action="store_true",
         help="Report missing upstream games without blocking an intentional manual release",
     )
+    parser.add_argument(
+        "--defer-if-incomplete",
+        action="store_true",
+        help="Treat incomplete upstream data as a successful deferred check and expose ready=false",
+    )
     args = parser.parse_args()
 
     now = parse_timestamp(args.now) if args.now else datetime.now(timezone.utc)
@@ -122,11 +127,21 @@ def main() -> None:
             summary.write(f"- New completed FBS games expected: `{len(expected)}`\n")
             summary.write(f"- Incomplete upstream games: `{len(failures)}`\n")
 
+    output_path = os.environ.get("GITHUB_OUTPUT")
+    if output_path:
+        ready = not failures or args.allow_partial
+        with open(output_path, "a", encoding="utf-8") as output:
+            output.write(f"ready={'true' if ready else 'false'}\n")
+
     if failures and not args.allow_partial:
-        raise SystemExit(
+        message = (
             "SportsDataverse has not published every completed Saturday FBS game yet; "
-            "the formal snapshot was not changed and the next Sunday backstop will retry."
+            "the formal snapshot was not changed and the automated backstop will retry."
         )
+        if args.defer_if_incomplete:
+            print(message)
+            return
+        raise SystemExit(message)
 
 
 if __name__ == "__main__":

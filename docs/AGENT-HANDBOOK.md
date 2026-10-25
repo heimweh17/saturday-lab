@@ -165,10 +165,10 @@ The live feed also drives current team-page schedule placement. A completed game
 
 ## 7. Weekly publication and the UP NEXT board
 
-`.github/workflows/weekly-model-refresh.yml` targets 12:15 p.m. Eastern Sunday and is also manually dispatchable. Two UTC cron entries plus an Eastern-time gate handle daylight-saving time; the hourly Sunday live-feed workflow dispatches it after noon when that cycle has not yet published. It:
+`.github/workflows/weekly-model-refresh.yml` first targets 12:15 p.m. Eastern Sunday and is also manually dispatchable. Two UTC cron entries plus an Eastern-time gate handle daylight-saving time. If SportsDataverse's advanced-team release is late, Monday/Tuesday probes and the independent live-feed clock keep retrying the same cycle until complete inputs arrive; a final Wednesday probe fails loudly only if the delay has become a real outage. It:
 
 1. downloads operational sources with `analytics/production_sources.py`;
-2. refreshes the ESPN live feed and runs `analytics/weekly_source_readiness.py`, requiring every completed FBS game before the Sunday 4:00 a.m. Eastern boundary to have matching rolling schedule, team-box and advanced-team data;
+2. refreshes the ESPN live feed and runs `analytics/weekly_source_readiness.py`, requiring every completed FBS game before the Sunday 4:00 a.m. Eastern boundary to have matching rolling schedule, team-box and advanced-team data; incomplete upstream data defers cleanly and retries without producing a false failure alert;
 3. runs `analytics/weekly_refresh.py` with the frozen v6 configuration;
 4. refreshes the current schedule through `analytics/fixtures.py` and refreshes the live feed against the new snapshot;
 5. runs all Python tests, shared TypeScript/Python forecast checks, lint, and the complete static export;
