@@ -2,17 +2,17 @@ name: Publish weekly model snapshot
 
 on:
   schedule:
-    # Two UTC clocks plus the Eastern-time gate below produce a 12:15 p.m.
-    # Sunday fallback on both sides of daylight-saving time.
-    - cron: "15 16 * * 0"
-    - cron: "15 17 * * 0"
-    # SportsDataverse's advanced-team release can arrive after Sunday. These
+    # Two UTC clocks plus the Eastern-time gate below produce a 6:15 a.m.
+    # Monday first attempt on both sides of daylight-saving time.
+    - cron: "15 10 * * 1"
+    - cron: "15 11 * * 1"
+    # SportsDataverse's advanced-team release has no completion SLA. These
     # Monday/Tuesday probes keep retrying the same publication cycle until the
     # complete frozen-v6 input set is available.
-    - cron: "15 13,17,21 * * 1,2"
+    - cron: "15 14,18,22 * * 1,2"
     # If the source is still incomplete Wednesday morning, fail once so the
     # owner receives a real outage alert rather than silently missing a week.
-    - cron: "15 13 * * 3"
+    - cron: "15 14 * * 3"
   workflow_dispatch:
     inputs:
       force:
@@ -61,11 +61,11 @@ jobs:
           now = datetime.now(timezone.utc)
           eastern = ZoneInfo('America/New_York')
           local_now = now.astimezone(eastern)
-          days_since_sunday = (local_now.weekday() + 1) % 7
-          cycle_start = local_now.date() - timedelta(days=days_since_sunday)
+          days_since_monday = local_now.weekday()
+          cycle_start = local_now.date() - timedelta(days=days_since_monday)
           in_retry_window = (
-              (local_now.weekday() == 6 and (local_now.hour, local_now.minute) >= (12, 0))
-              or local_now.weekday() in (0, 1, 2)
+              (local_now.weekday() == 0 and (local_now.hour, local_now.minute) >= (6, 0))
+              or local_now.weekday() in (1, 2)
           )
           scheduled_outside_window = os.environ.get('EVENT_NAME') == 'schedule' and not in_retry_window
           already_this_cycle = bool(published and published.astimezone(eastern).date() >= cycle_start)
@@ -75,7 +75,7 @@ jobs:
               output.write(f"proceed={'true' if proceed else 'false'}\n")
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
               if scheduled_outside_window and not forced:
-                  summary.write('Formal weekly refresh skipped: this fallback fired outside the Sunday-afternoon through Tuesday recovery window.\n')
+                  summary.write('Formal weekly refresh skipped: this fallback fired outside the Monday-morning through Wednesday recovery window.\n')
               elif proceed:
                   summary.write('Formal weekly refresh will run.\n')
               else:
@@ -103,7 +103,7 @@ jobs:
         id: readiness
         env:
           ALLOW_PARTIAL_SOURCES: ${{ inputs.allow_partial_sources || 'false' }}
-          STRICT_SOURCE_DEADLINE: ${{ github.event_name == 'schedule' && github.event.schedule == '15 13 * * 3' }}
+          STRICT_SOURCE_DEADLINE: ${{ github.event_name == 'schedule' && github.event.schedule == '15 14 * * 3' }}
         shell: bash
         run: |
           python analytics/production_sources.py

@@ -91,18 +91,18 @@ jobs:
           eastern = ZoneInfo("America/New_York")
           now = datetime.now(timezone.utc).astimezone(eastern)
           in_retry_window = (
-              (now.weekday() == 6 and (now.hour, now.minute) >= (12, 0))
-              or now.weekday() in (0, 1)
+              (now.weekday() == 0 and (now.hour, now.minute) >= (6, 0))
+              or now.weekday() == 1
           )
           if not in_retry_window:
-              print("Weekly backstop is active Sunday after 12:00 ET through Tuesday.")
+              print("Weekly backstop is active Monday after 06:00 ET through Tuesday.")
               raise SystemExit(0)
 
           manifest = json.loads(Path("public/data/manifest.json").read_text())
           raw = manifest.get("generatedAt")
           published = datetime.fromisoformat(raw.replace("Z", "+00:00")).astimezone(eastern) if raw else None
-          days_since_sunday = (now.weekday() + 1) % 7
-          cycle_start = now.date() - timedelta(days=days_since_sunday)
+          days_since_monday = now.weekday()
+          cycle_start = now.date() - timedelta(days=days_since_monday)
           if published and published.date() >= cycle_start:
               print("This publication cycle's formal model snapshot is already published.")
               raise SystemExit(0)

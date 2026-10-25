@@ -13,7 +13,7 @@ The application is deliberately split into two clocks:
 1. Mutable game facts refresh independently and frequently. Scores, status, kickoff, period scoring, box data, venue, broadcast, and current-season team schedule placement come from `public/data/live-2026.json`.
 2. Rankings and forecasts are a formal weekly snapshot. They change only when the weekly model workflow succeeds and publishes a new static build.
 
-Do not collapse these clocks. A Friday final may appear in the game center and move from a team's Upcoming section to Results while the ranking remains Sunday's frozen board.
+Do not collapse these clocks. A Friday final may appear in the game center and move from a team's Upcoming section to Results while the ranking remains the prior Monday's frozen board.
 
 ## 2. Repository map
 
@@ -161,27 +161,27 @@ The workflow:
 
 `lib/live-feed.ts` lets the production browser read the raw file from `main` with a five-minute cache bucket and fall back to the copy bundled in the last Pages artifact. This is how current facts update without regenerating more than 9,000 pages. The Scores page gets the most recent successful check time from GitHub's public Actions API; that timestamp advances even when the semantic feed is unchanged and no commit is created.
 
-The live feed also drives current team-page schedule placement. A completed game moves from Upcoming to Results as soon as the feed marks it final; the team ranking and season aggregates still remain frozen until Sunday publication.
+The live feed also drives current team-page schedule placement. A completed game moves from Upcoming to Results as soon as the feed marks it final; the team ranking and season aggregates still remain frozen until Monday publication.
 
 ## 7. Weekly publication and the UP NEXT board
 
-`.github/workflows/weekly-model-refresh.yml` first targets 12:15 p.m. Eastern Sunday and is also manually dispatchable. Two UTC cron entries plus an Eastern-time gate handle daylight-saving time. If SportsDataverse's advanced-team release is late, Monday/Tuesday probes and the independent live-feed clock keep retrying the same cycle until complete inputs arrive; a final Wednesday probe fails loudly only if the delay has become a real outage. It:
+`.github/workflows/weekly-model-refresh.yml` first targets 6:15 a.m. Eastern Monday and is also manually dispatchable. Two UTC cron entries plus an Eastern-time gate handle daylight-saving time. If SportsDataverse's advanced-team release is late, later Monday/Tuesday probes and the independent live-feed clock keep retrying the same cycle until complete inputs arrive; a final Wednesday probe fails loudly only if the delay has become a real outage. It:
 
 1. downloads operational sources with `analytics/production_sources.py`;
-2. refreshes the ESPN live feed and runs `analytics/weekly_source_readiness.py`, requiring every completed FBS game before the Sunday 4:00 a.m. Eastern boundary to have matching rolling schedule, team-box and advanced-team data; incomplete upstream data defers cleanly and retries without producing a false failure alert;
+2. refreshes the ESPN live feed and runs `analytics/weekly_source_readiness.py`, requiring every completed FBS game before the Monday 4:00 a.m. Eastern boundary to have matching rolling schedule, team-box and advanced-team data; incomplete upstream data defers cleanly and retries without producing a false failure alert;
 3. runs `analytics/weekly_refresh.py` with the frozen v6 configuration;
 4. refreshes the current schedule through `analytics/fixtures.py` and refreshes the live feed against the new snapshot;
 5. runs all Python tests, shared TypeScript/Python forecast checks, lint, and the complete static export;
 6. commits the current data files if they changed;
 7. publishes the static artifact to `gh-pages`.
 
-The shared publication concurrency group prevents a weekly write from racing a live-feed write. Before the expensive job begins, a publication-cycle guard skips a second formal snapshot unless a manual operator deliberately selects the `force` input. Both checkouts resolve the latest `main` after waiting in that shared queue. The independent QStash schedules target `live-game-refresh.yml`; its first successful Sunday run after noon acts as the weekly external backstop. The separate manual `allow_partial_sources` input bypasses the completeness failure only for a reviewed emergency and must remain false for scheduled runs.
+The shared publication concurrency group prevents a weekly write from racing a live-feed write. Before the expensive job begins, a publication-cycle guard skips a second formal snapshot unless a manual operator deliberately selects the `force` input. Both checkouts resolve the latest `main` after waiting in that shared queue. The independent QStash schedules target `live-game-refresh.yml`; its first successful Monday run after 6:00 a.m. acts as the weekly external backstop. The separate manual `allow_partial_sources` input bypasses the completeness failure only for a reviewed emergency and must remain false for scheduled runs.
 
 `social-graphics.yml` is a read-only, manually dispatched presentation workflow. It can render either the pregame Weekly Preview or the postgame Monday Recap from already published snapshots, frozen pregame forecasts, final scores and box data. It never commits, deploys, refits the model or creates a new weekly snapshot. See `docs/SOCIAL-GRAPHICS.md`.
 
 `preview-current-rankings.yml` is an intentionally nonpublishing research path linked by the current rankings page. It calculates with the same frozen v6 pipeline, shows the Top 30 in the Actions summary, retains a complete JSON artifact for one day, and has only `contents: read`. Do not add commit, Pages publication or dated-snapshot writes to this workflow.
 
-The homepage `UP NEXT` board is computed in `app/game-strip.tsx` from the refreshed `fixtures.json` plus the latest `99` snapshot. It finds the earliest remaining scheduled FBS week, scores games by 60% team quality and 40% projected closeness, applies the published eligibility rule, and shows up to 10 games. Therefore it advances automatically after the Sunday fixture/model update; it is not a hard-coded Week 4 list. Exact historical ranking snapshot pages omit this current-week board so their context stays frozen.
+The homepage `UP NEXT` board is computed in `app/game-strip.tsx` from the refreshed `fixtures.json` plus the latest `99` snapshot. It finds the earliest remaining scheduled FBS week, scores games by 60% team quality and 40% projected closeness, applies the published eligibility rule, and shows up to 10 games. Therefore it advances automatically after the Monday fixture/model update; it is not a hard-coded Week 4 list. Exact historical ranking snapshot pages omit this current-week board so their context stays frozen.
 
 The frequent feed and weekly workflow share one concurrency group so they cannot push competing commits. Both must remain idempotent: game ID is the unique key, and no-change refreshes exit without a commit.
 
@@ -259,7 +259,7 @@ After an automation change, verify the actual GitHub Actions run, not only the s
 | Change completed game details | `app/games/[season]/[game]/game-page-client.tsx` | box/period JSON contracts, `lib/live-feed.ts` |
 | Add or change permanent routes | `lib/routes.ts`, `lib/server-catalog.ts` | route `page.tsx`, `app/sitemap.ts`, navigation origin handling |
 | Change current score refresh | `analytics/live_feed.py` | live workflow, `lib/live-feed.ts`, `analytics/test_live_feed.py` |
-| Change Sunday publication | `analytics/weekly_refresh.py` | source-readiness gate, weekly workflow, fixtures, full verification suite |
+| Change Monday publication | `analytics/weekly_refresh.py` | source-readiness gate, weekly workflow, fixtures, full verification suite |
 | Research a model idea | relevant audit blueprint/result | causal state construction, nested temporal selection, calibration slices |
 | Change expected scores | `lib/projected-score.ts`, `analytics/full_score_layer.py` | score-layer tests and report |
 | Change deployment | `scripts/build-pages.mjs`, `scripts/publish-pages.mjs` | `next.config.ts`, both workflows, GitHub Pages base path |

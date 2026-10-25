@@ -1,7 +1,7 @@
-"""Refuse a formal weekly release while Saturday results are only partly published.
+"""Refuse a formal weekly release while weekend results are only partly published.
 
 The live ESPN feed is the freshness reference.  SportsDataverse remains the
-model input, so every completed FBS game before the Sunday boundary must exist
+model input, so every completed FBS game before the Monday boundary must exist
 in all model-critical rolling source files before the weekly build may proceed.
 """
 from __future__ import annotations
@@ -26,12 +26,12 @@ def parse_timestamp(value: str) -> datetime:
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def sunday_boundary(now: datetime) -> datetime:
-    """Return the latest Sunday 04:00 ET boundary at or before ``now``."""
+def weekly_boundary(now: datetime) -> datetime:
+    """Return the latest Monday 04:00 ET boundary at or before ``now``."""
     local = now.astimezone(EASTERN)
-    days_since_sunday = (local.weekday() + 1) % 7
-    sunday = local.date() - timedelta(days=days_since_sunday)
-    boundary = datetime.combine(sunday, time(hour=4), EASTERN)
+    days_since_monday = local.weekday()
+    monday = local.date() - timedelta(days=days_since_monday)
+    boundary = datetime.combine(monday, time(hour=4), EASTERN)
     if local < boundary:
         boundary -= timedelta(days=7)
     return boundary
@@ -59,7 +59,7 @@ def main() -> None:
     args = parser.parse_args()
 
     now = parse_timestamp(args.now) if args.now else datetime.now(timezone.utc)
-    boundary = sunday_boundary(now)
+    boundary = weekly_boundary(now)
     live = json.loads((DATA / f"live-{args.season}.json").read_text(encoding="utf-8"))
     season = json.loads((DATA / f"{args.season}.json").read_text(encoding="utf-8"))
     previous_through_raw = season["snapshots"]["99"].get("through")
@@ -113,7 +113,7 @@ def main() -> None:
     report = {
         "status": "ready" if not failures else "waiting-for-upstream",
         "previousSnapshotThrough": previous_through_raw,
-        "saturdayBoundary": boundary.isoformat(),
+        "weeklyBoundary": boundary.isoformat(),
         "completedFbsGamesExpected": len(expected),
         "incompleteGames": failures,
     }
@@ -123,7 +123,7 @@ def main() -> None:
     if summary_path:
         with open(summary_path, "a", encoding="utf-8") as summary:
             summary.write("### Weekly source readiness\n")
-            summary.write(f"- Saturday boundary: `{boundary.isoformat()}`\n")
+            summary.write(f"- Weekly boundary: `{boundary.isoformat()}`\n")
             summary.write(f"- New completed FBS games expected: `{len(expected)}`\n")
             summary.write(f"- Incomplete upstream games: `{len(failures)}`\n")
 
@@ -135,7 +135,7 @@ def main() -> None:
 
     if failures and not args.allow_partial:
         message = (
-            "SportsDataverse has not published every completed Saturday FBS game yet; "
+            "SportsDataverse has not published every completed weekend FBS game yet; "
             "the formal snapshot was not changed and the automated backstop will retry."
         )
         if args.defer_if_incomplete:
