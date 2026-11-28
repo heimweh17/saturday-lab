@@ -1,6 +1,6 @@
 "use client";
 import {useRef,useState} from 'react';
-import type {PointerEvent,WheelEvent} from 'react';
+import type {PointerEvent} from 'react';
 import {Expand,ScanLine,RotateCcw} from 'lucide-react';
 import type {Team} from './types';
 import {Logo,signed,pct} from './ui';
@@ -25,25 +25,20 @@ function Field({teams,onSelect,large=false}:{teams:Team[];onSelect:(id:string)=>
     const anchorSvgX=current.x+current.w*anchorX,anchorSvgY=current.y+current.h*anchorY;
     return clampView({x:anchorSvgX-w*anchorX,y:anchorSvgY-h*anchorY,w,h});
   });
-  const onWheel=(event:WheelEvent<SVGSVGElement>)=>{
-    event.preventDefault();
-    const rect=event.currentTarget.getBoundingClientRect(),ax=(event.clientX-rect.left)/rect.width,ay=(event.clientY-rect.top)/rect.height;
-    setZoom(zoom*(event.deltaY>0 ? .86 : 1.16),ax,ay);
-  };
   const onPointerDown=(event:PointerEvent<SVGSVGElement>)=>{
-    if((event.target as Element).closest('.plot-point'))return;
+    if(event.pointerType!=='mouse'||zoom<=1||(event.target as Element).closest('.plot-point'))return;
     drag.current={x:event.clientX,y:event.clientY,view};event.currentTarget.setPointerCapture(event.pointerId);
   };
   const onPointerMove=(event:PointerEvent<SVGSVGElement>)=>{if(!drag.current)return;const rect=event.currentTarget.getBoundingClientRect(),dx=(event.clientX-drag.current.x)/rect.width*drag.current.view.w,dy=(event.clientY-drag.current.y)/rect.height*drag.current.view.h;setView(clampView({...drag.current.view,x:drag.current.view.x-dx,y:drag.current.view.y-dy}))};
-  const onPointerUp=(event:PointerEvent<SVGSVGElement>)=>{drag.current=null;event.currentTarget.releasePointerCapture(event.pointerId)};
+  const onPointerUp=(event:PointerEvent<SVGSVGElement>)=>{drag.current=null;if(event.currentTarget.hasPointerCapture(event.pointerId))event.currentTarget.releasePointerCapture(event.pointerId)};
   const focusCluster=()=>{
     const xs=teams.map(t=>x(t.offense)).sort((a,b)=>a-b),ys=teams.map(t=>y(t.defense)).sort((a,b)=>a-b),lo=Math.floor(teams.length*.06),hi=Math.max(lo+1,Math.ceil(teams.length*.94)-1);
     const x0=Math.max(0,xs[lo]-55),x1=Math.min(width,xs[hi]+55),y0=Math.max(0,ys[lo]-55),y1=Math.min(height,ys[hi]+55),z=Math.max(1,Math.min(4,Math.min(width/(x1-x0),height/(y1-y0))));
     const w=width/z,h=height/z,cx=(x0+x1)/2,cy=(y0+y1)/2;setView(clampView({x:cx-w/2,y:cy-h/2,w,h}));
   };
   return <div className="strength-map-body">
-    <div className="map-canvas"><div className="map-chart-tools"><Button variant="outline" onClick={()=>setView({x:0,y:0,w:width,h:height})}><RotateCcw size={14}/> All teams</Button><Button variant="outline" onClick={focusCluster}><ScanLine size={14}/> Focus cluster</Button><label>Zoom <input aria-label="Offense defense map zoom" type="range" min="1" max="5" step=".1" value={zoom} onChange={e=>setZoom(Number(e.target.value))}/><span>{zoom.toFixed(1)}×</span></label></div>
-    <svg viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`} className="strength-chart zoomable-chart" onWheel={onWheel} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={()=>{drag.current=null}} role="img" aria-label="Interactive offense and defense map. Better offense is to the right and better defense is higher. Scroll to zoom and drag open space to pan.">
+    <div className="map-canvas"><div className="map-chart-tools"><Button variant="outline" onClick={()=>setView({x:0,y:0,w:width,h:height})}><RotateCcw size={14}/> Reset view</Button><Button variant="outline" onClick={focusCluster}><ScanLine size={14}/> Zoom to cluster</Button><label>Zoom <input aria-label="Offense defense map zoom" type="range" min="1" max="5" step=".1" value={zoom} onChange={e=>setZoom(Number(e.target.value))}/><span>{zoom.toFixed(1)}×</span></label></div>
+    <svg viewBox={`${view.x} ${view.y} ${view.w} ${view.h}`} className={`strength-chart zoomable-chart${zoom>1?' is-zoomed':''}`} onPointerDown={onPointerDown} onPointerMove={onPointerMove} onPointerUp={onPointerUp} onPointerCancel={()=>{drag.current=null}} role="img" aria-label="Interactive offense and defense map. Better offense is to the right and better defense is higher. Use the zoom controls to enlarge; when zoomed, drag empty space with a mouse to pan.">
       <rect x={left} y={top} width={right-left} height={bottom-top} fill="#eef4f7"/>
       <path d={`M${left} ${top}H${right}V${bottom}H${left}Z`} fill="none" stroke="#b9cad4"/>
       {ticks.map(n=><g key={n}><line x1={x(n)} x2={x(n)} y1={top} y2={bottom} stroke={n===0?'#8299a8':'#d2dfe5'} strokeDasharray={n===0?'0':'4 7'}/><line x1={left} x2={right} y1={y(n)} y2={y(n)} stroke={n===0?'#8299a8':'#d2dfe5'} strokeDasharray={n===0?'0':'4 7'}/><text x={x(n)} y={bottom+25} textAnchor="middle">{n>0?`+${n}`:n}</text><text x={left-10} y={y(n)+4} textAnchor="end">{n>0?`+${n}`:n}</text></g>)}
@@ -54,7 +49,7 @@ function Field({teams,onSelect,large=false}:{teams:Team[];onSelect:(id:string)=>
       </g>})}
       <text x={(left+right)/2} y={height-13} textAnchor="middle" className="axis-label">Opponent-adjusted offense →</text>
       <text transform={`translate(16 ${(top+bottom)/2}) rotate(-90)`} textAnchor="middle" className="axis-label">Better defense →</text>
-    </svg><p className="chart-instruction">Scroll or pinch to zoom · drag open space to pan · choose All teams to reset</p></div>
+    </svg><p className="chart-instruction">Select a dot for its team · use the controls to zoom · drag empty space when zoomed</p></div>
     {active&&<button className="map-team-readout" onClick={()=>onSelect(active.id)} aria-label={`Open ${active.name} team report`}>
       <Logo team={active} size={48}/><span><small>#{active.modelRank??active.rank} nationally</small><strong>{active.name}</strong><em>{active.wins}–{active.losses} · {active.conference.replace(' Conference','')}</em></span><dl><div><dt>Strength</dt><dd>{pct(active.winIndex)}</dd></div><div><dt>Offense</dt><dd>{signed(active.offense)}</dd></div><div><dt>Defense</dt><dd>{signed(active.defense)}</dd></div></dl>
     </button>}
@@ -63,7 +58,7 @@ function Field({teams,onSelect,large=false}:{teams:Team[];onSelect:(id:string)=>
 
 export function StrengthMap({teams,onSelect}:{teams:Team[];onSelect:(id:string)=>void}){
   return <section className="strength-map-panel">
-    <div className="panel-title"><div><h2>Offense × defense map</h2><p>Opponent-adjusted points per game</p></div><Dialog><DialogTrigger asChild><Button variant="outline"><Expand size={16}/> Expand</Button></DialogTrigger><DialogContent className="strength-map-dialog" onOpenAutoFocus={e=>e.preventDefault()}><DialogHeader><DialogTitle>FBS offense × defense map</DialogTitle><DialogDescription>Opponent-adjusted points per game. Right and up are better. Zoom into the central pack, pan freely or restore all teams.</DialogDescription></DialogHeader><Field teams={teams} onSelect={onSelect} large/></DialogContent></Dialog></div><p className="map-legend"><span><i className="map-ranked"/> Top 25 in team colors</span><span><i/> Other FBS teams</span></p>
+    <div className="panel-title"><div><h2>Offense × defense map</h2><p>Opponent-adjusted points per game</p></div><Dialog><DialogTrigger asChild><Button variant="outline"><Expand size={16}/> Expand</Button></DialogTrigger><DialogContent className="strength-map-dialog" onOpenAutoFocus={e=>e.preventDefault()}><DialogHeader><DialogTitle>FBS offense × defense map</DialogTitle><DialogDescription>Opponent-adjusted points per game. Right and up are better. Use the controls to zoom; drag empty space with a mouse when zoomed.</DialogDescription></DialogHeader><Field teams={teams} onSelect={onSelect} large/></DialogContent></Dialog></div><p className="map-legend"><span><i className="map-ranked"/> Top 25 in team colors</span><span><i/> Other FBS teams</span></p>
     <Field teams={teams} onSelect={onSelect}/>
   </section>;
 }
