@@ -1,19 +1,18 @@
 /* Saturday Lab's shared editorial surfaces and responsive reading order. */
 :root {
-  --paper: #f2f4f6;
-  --ink: #162434;
-  --navy: #2b2b2b; /* deep charcoal */
-  --line: #d4dce3;
-  --quiet: #526578;
-  --signal: #a53d25; /* retained for chart semantics */
-  --accent: #d14c0e; /* warm vermilion/orange emphasis */
+  --paper: #f3f4f3;
+  --ink: #20282d;
+  --navy: #24292d;
+  --line: #d5d9da;
+  --quiet: #58666b;
+  --sports-accent: #bf421c;
   --display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --background: var(--paper);
   --foreground: var(--ink);
   --primary: var(--navy);
   --border: var(--line);
   --muted-foreground: var(--quiet);
-  --ring: #c44f0c; /* warm vermilion/orange for focus */
+  --ring: #b83f1c;
 }
 
 body { background: var(--paper); color: var(--ink); }
@@ -27,15 +26,17 @@ h1, h2, h3 { text-wrap: balance; }
   padding-inline: clamp(16px, 3vw, 44px);
 }
 .masthead .brand { font-size: 28px; gap: 11px; }
-.masthead .brand-mark { width: 38px; height: 38px; font-size: 18px; }
-.masthead .brand small { font-size: 10px; letter-spacing: .07em; }
-.masthead .source-link { color: #e2e8ef; }
+.masthead .brand { color: #fff; }
+.masthead .brand-mark { width: 38px; height: 38px; font-size: 18px; background: var(--sports-accent); border-bottom-color: #e09b4f; }
+.masthead .brand small { font-size: 10px; letter-spacing: .07em; color: #cbd3d2; }
+.masthead .source-link { color: #f4f4f2; margin-left: auto; }
+.masthead .source-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .masthead::after { display: none; }
 .nav-wrap { background: #fff; padding-inline: clamp(16px, 3vw, 44px); border-bottom: 1px solid var(--line); }
 .main-nav.route-nav { height: auto !important; }
 .route-nav a { min-height: 44px; height: 46px; }
-.route-nav a:hover { color: var(--accent); }
-.route-nav a.active:after { height: 2px; background: var(--accent); }
+.route-nav a:hover { color: var(--sports-accent); }
+.route-nav a.active:after { height: 3px; background: var(--sports-accent); }
 
 .rankings-layout { display: flex; flex-direction: column; }
 .rankings-layout > main { order: 1; }
@@ -62,9 +63,9 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .ranking-panel td { height: 55px; }
 .ranking-panel .power-number { color: var(--ink); }
-.rankings-route .ranking-panel .sort-active { color: var(--accent); }
+.rankings-route .ranking-panel .sort-active { color: var(--sports-accent); }
 .ranking-options { background: #f9fafb; }
-.reset-filters { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.reset-filters { color: var(--sports-accent); text-decoration: underline; text-underline-offset: 3px; }
 
 .game-strip { height: auto; padding: 0; background: #fff; border-bottom: 1px solid var(--line); }
 .game-strip-label {
@@ -133,9 +134,10 @@ h1, h2, h3 { text-wrap: balance; }
   .masthead { height: 56px; }
   .masthead .brand small { display: none; }
   .nav-wrap { padding-inline: 16px; }
-  .main-nav.route-nav { display: grid; width: 100%; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 6px !important; overflow: visible; }
+  .main-nav.route-nav { display: grid; width: 100%; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 2px !important; overflow: visible; }
   .route-nav a { justify-content: center; height: auto; font-size: 13px; white-space: normal; text-align: center; line-height: 1.15; }
-  .route-nav :is(.secondary-nav, .nav-divider) { display: none; }
+  .masthead .source-link { display: flex; font-size: 13px; }
+  .masthead .source-link svg { display: none; }
   .rankings-layout > main { order: 0; }
   .rankings-layout > .game-strip { order: 1; }
   .rankings-layout { reading-flow: flex-visual; }
