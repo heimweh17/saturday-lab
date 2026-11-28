@@ -24,5 +24,5 @@ export function MatchupPageClient(){
   })},[query]);
   if(!data||!report||!defaults)return <main><div className="loading">Loading team comparison…</div></main>;
   const snapshot=data.snapshots['99'];
-  return <main><div className="route-intro"><span className="scoreline">HYPOTHETICAL MATCHUP · {defaults.label}</span><h1>Compare teams</h1><p>Choose any two FBS teams and a venue. Scheduled games have their own game-center pages.</p></div><Matchup key={`${defaults.a}-${defaults.b}-${defaults.venue}`} data={data} snapshot={snapshot} report={report} initial={defaults.a} initialB={defaults.b} initialVenue={defaults.venue} week="99" onSelectionChange={remember}/></main>;
+  return <main className="matchup-page"><div className="route-intro"><span className="scoreline">HYPOTHETICAL MATCHUP · {defaults.label}</span><h1>Compare teams</h1><p>Choose any two FBS teams and a venue. Scheduled games have their own game-center pages.</p></div><Matchup key={`${defaults.a}-${defaults.b}-${defaults.venue}`} data={data} snapshot={snapshot} report={report} initial={defaults.a} initialB={defaults.b} initialVenue={defaults.venue} week="99" onSelectionChange={remember}/></main>;
 }

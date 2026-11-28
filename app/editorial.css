@@ -40,12 +40,14 @@ h1, h2, h3 { text-wrap: balance; }
 
 .rankings-layout { display: flex; flex-direction: column; }
 .rankings-layout > main { order: 1; }
-.context-toolbar { padding-block: 14px; gap: 10px; }
+.context-toolbar { padding-block: 10px; gap: 10px; }
 .snapshot-note strong { color: var(--ink); }
 .rankings-heading, .route-intro {
   padding-block: 23px 16px;
   border-bottom: 1px solid var(--line);
 }
+.rankings-heading { padding-block: 16px 12px; }
+.site-shell main > .route-intro { padding-block: 18px 14px; margin-bottom: 16px; }
 .rankings-heading h1, .route-intro h1 {
   font: 700 clamp(34px, 4.1vw, 56px)/1 var(--display);
   text-transform: none;
@@ -54,7 +56,15 @@ h1, h2, h3 { text-wrap: balance; }
 .rankings-heading .heading-stamp { border-left: 0; }
 .rankings-actions { width: auto; margin-left: auto; }
 .rankings-actions > [data-slot=button] { width: auto; font-size: 13px; }
-.rankings-route > .strength-map-panel { min-width: 0; }
+.rankings-route .data-dashboard { display: block; min-width: 0; }
+.rankings-route .rankings-rail { display: flex; flex-direction: column; gap: 18px; min-width: 0; margin-top: 18px; }
+.rankings-route .rankings-rail .strength-map-panel,
+.rankings-route .rankings-rail .snapshot-pulse { margin-top: 0; }
+@media (min-width: 1180px) {
+  .rankings-route { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(380px, 1fr); gap: 18px; align-items: start; }
+  .rankings-route .data-dashboard { grid-column: 1; }
+  .rankings-route .rankings-rail { grid-column: 2; margin-top: 0; }
+}
 .ranking-panel { max-height: none; }
 .rankings-route .ranking-panel thead th {
   color: var(--quiet) !important;
@@ -126,6 +136,13 @@ h1, h2, h3 { text-wrap: balance; }
 .period-score tbody th a { color: inherit; }
 .matchup-controls { background: #fff; border: 1px solid var(--line); border-radius: 8px; }
 .matchup-controls > * { min-width: 0; }
+.matchup-page .route-intro { margin-bottom: 12px; }
+.matchup-page .route-intro h1 { font-size: clamp(34px, 3.4vw, 48px); }
+.matchup-setup { padding-bottom: 17px; border-bottom: 4px solid var(--sports-accent); }
+.matchup-setup .section-heading { padding: 0 0 12px; }
+.matchup-setup .section-heading h2 { font-size: 25px; }
+.matchup-setup .matchup-controls { background: transparent; border: 0; border-radius: 0; padding: 0; margin: 0; }
+.matchup-setup + .matchup-scoreboard { border-radius: 0 0 9px 9px; }
 .strength-map-dialog, .trend-dialog, .rank-history-expanded, .search-picker-panel { border-top: 1px solid var(--line); border-radius: 8px !important; }
 .loading, .notice { border-radius: 8px; }
 .notice { border: 1px solid #edd3bd; }
