@@ -2,17 +2,18 @@
 :root {
   --paper: #f2f4f6;
   --ink: #162434;
-  --navy: #172638;
+  --navy: #2b2b2b; /* deep charcoal */
   --line: #d4dce3;
   --quiet: #526578;
-  --signal: #a53d25;
+  --signal: #a53d25; /* retained for chart semantics */
+  --accent: #d14c0e; /* warm vermilion/orange emphasis */
   --display: "Barlow Condensed", "Arial Narrow", sans-serif;
   --background: var(--paper);
   --foreground: var(--ink);
   --primary: var(--navy);
   --border: var(--line);
   --muted-foreground: var(--quiet);
-  --ring: #245e8a;
+  --ring: #c44f0c; /* warm vermilion/orange for focus */
 }
 
 body { background: var(--paper); color: var(--ink); }
@@ -33,8 +34,8 @@ h1, h2, h3 { text-wrap: balance; }
 .nav-wrap { background: #fff; padding-inline: clamp(16px, 3vw, 44px); border-bottom: 1px solid var(--line); }
 .main-nav.route-nav { height: auto !important; }
 .route-nav a { min-height: 44px; height: 46px; }
-.route-nav a:hover { color: var(--signal); }
-.route-nav a.active:after { height: 2px; background: var(--signal); }
+.route-nav a:hover { color: var(--accent); }
+.route-nav a.active:after { height: 2px; background: var(--accent); }
 
 .rankings-layout { display: flex; flex-direction: column; }
 .rankings-layout > main { order: 1; }
@@ -61,9 +62,9 @@ h1, h2, h3 { text-wrap: balance; }
 }
 .ranking-panel td { height: 55px; }
 .ranking-panel .power-number { color: var(--ink); }
-.rankings-route .ranking-panel .sort-active { color: var(--signal); }
+.rankings-route .ranking-panel .sort-active { color: var(--accent); }
 .ranking-options { background: #f9fafb; }
-.reset-filters { color: var(--signal); text-decoration: underline; text-underline-offset: 3px; }
+.reset-filters { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
 
 .game-strip { height: auto; padding: 0; background: #fff; border-bottom: 1px solid var(--line); }
 .game-strip-label {
