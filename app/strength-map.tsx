@@ -63,7 +63,7 @@ function Field({teams,onSelect,large=false}:{teams:Team[];onSelect:(id:string)=>
 
 export function StrengthMap({teams,onSelect}:{teams:Team[];onSelect:(id:string)=>void}){
   return <section className="strength-map-panel">
-    <div className="panel-title"><div><h2>Offense × defense map</h2><p>Every dot is a team. Hover for its profile; select it for the full report.</p></div><Dialog><DialogTrigger asChild><Button variant="outline"><Expand size={16}/> Expand</Button></DialogTrigger><DialogContent className="strength-map-dialog" onOpenAutoFocus={e=>e.preventDefault()}><DialogHeader><DialogTitle>FBS offense × defense map</DialogTitle><DialogDescription>Opponent-adjusted points per game. Right and up are better. Zoom into the central pack, pan freely or restore all teams.</DialogDescription></DialogHeader><Field teams={teams} onSelect={onSelect} large/></DialogContent></Dialog></div>
+    <div className="panel-title"><div><h2>Offense × defense map</h2><p>Opponent-adjusted points per game</p></div><Dialog><DialogTrigger asChild><Button variant="outline"><Expand size={16}/> Expand</Button></DialogTrigger><DialogContent className="strength-map-dialog" onOpenAutoFocus={e=>e.preventDefault()}><DialogHeader><DialogTitle>FBS offense × defense map</DialogTitle><DialogDescription>Opponent-adjusted points per game. Right and up are better. Zoom into the central pack, pan freely or restore all teams.</DialogDescription></DialogHeader><Field teams={teams} onSelect={onSelect} large/></DialogContent></Dialog></div><p className="map-legend"><span><i className="map-ranked"/> Top 25 in team colors</span><span><i/> Other FBS teams</span></p>
     <Field teams={teams} onSelect={onSelect}/>
   </section>;
 }
